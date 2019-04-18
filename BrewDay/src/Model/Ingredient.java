@@ -59,6 +59,8 @@ public class Ingredient {
 		ingre1.setValue(20);
 		System.out.println(ingre1.getValue());
 		System.out.println(ingre1.getName());
+	
+		
 	}
 
 }

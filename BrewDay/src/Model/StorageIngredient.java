@@ -9,12 +9,12 @@ public class StorageIngredient extends Ingredient {
 	
 	public boolean addAmount(String name, int amount) {
 		//use the name as key to find the value 
-		//add the value to the amount
+		//add the value to the amount in the database
 		return true;
 	}
 	public boolean subtractAmount(String name, int amount) {
 		//use the name as key to find the value
-		// subtract the value from the amount
+		// subtract the value from the amount in the database
 		return true;
 	}
 
