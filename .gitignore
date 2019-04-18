@@ -2,8 +2,7 @@
 .DS_Store
 
 # ========ECLIPSE IDE========
-.project
-.classpath
+
 .metadata
 bin/
 tmp/
