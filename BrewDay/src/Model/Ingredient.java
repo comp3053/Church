@@ -28,6 +28,16 @@ public class Ingredient {
 		this.value = value;
 	}
 
+	public int getIngredientAmount(String name) {
+		//search the database get the value and return
+		//database 
+		//int amount = value; 
+		return 0;
+	}
+	public String getIngredientName() {
+		//get the ingredient name from the database
+		return null;
+	}
 	public String getName() {
 		return name;
 	}
