@@ -3,7 +3,6 @@ package Model;
 public class Ingredient {
 
 	private String ID;
-	private int value;
 	private String name;
 	private String unit;
 
@@ -18,14 +17,6 @@ public class Ingredient {
 
 	public void setID(String iD) {
 		ID = iD;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
 	}
 
 	public int getIngredientAmount(String name) {
@@ -55,12 +46,7 @@ public class Ingredient {
 	}
 
 	public static void main (String[] args) {
-		Ingredient ingre1 = new Ingredient("pijiuhua", "g"); 
-		ingre1.setValue(20);
-		System.out.println(ingre1.getValue());
-		System.out.println(ingre1.getName());
-	
-		
+			
 	}
 
 }

@@ -1,16 +1,16 @@
 package Model;
 import java.util.ArrayList;
 public class Recipe {
-	private String ID;
+	private String Recipe_ID;
 	private int literOfbeer;
 	private String name;
-	ArrayList<String> ingredient = new ArrayList<String>();
+	ArrayList<RecipeIngredient> ingredient = new ArrayList<RecipeIngredient>();
 	private String description;
 	
-	public Recipe(String iD, int literOfbeer, String name, ArrayList<String> ingredient, String description) {
+	public Recipe(String iD, int literOfbeer, String name, ArrayList<RecipeIngredient> ingredient, String description) {
 		
 		super();
-		ID = iD;
+		Recipe_ID = iD;
 		this.literOfbeer = literOfbeer;
 		this.name = name;
 		this.ingredient = ingredient;
@@ -19,11 +19,11 @@ public class Recipe {
 	}
 	
 	public String getID() {
-		return ID;
+		return Recipe_ID;
 	}
 	
 	public void setID(String iD) {
-		ID = iD;
+		Recipe_ID = iD;
 	}
 	
 	public int getLiterOfbeer() {
@@ -42,11 +42,11 @@ public class Recipe {
 		this.name = name;
 	}
 	
-	public ArrayList<String> getList() {
+	public ArrayList<RecipeIngredient> getList() {
 		return ingredient;
 	}
 	
-	public void setList(ArrayList<String> ingredient) {
+	public void setList(ArrayList<RecipeIngredient> ingredient) {
 		this.ingredient = ingredient;
 	}
 	
@@ -58,5 +58,7 @@ public class Recipe {
 		this.description = description;
 	}
 	
-	
+	public boolean addRecipeToDB() {
+		return true;
+	}
 }

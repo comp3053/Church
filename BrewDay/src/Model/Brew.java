@@ -6,7 +6,6 @@ public class Brew {
 	private String ID;
 	private String batchSize;
 	private String date;
-	
 	public Recipe recipe;
 	
 	Brew(String batchSize){
