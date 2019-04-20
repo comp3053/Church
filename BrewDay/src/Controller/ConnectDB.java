@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectDB {
 	
-	//create the connection method for member to use
+		//create the connection method for member to use
 		//connect the local dataBase and return a connection object
 		public static Connection connectSqlite() {
 			

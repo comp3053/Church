@@ -28,6 +28,8 @@ public class testConnectDB {
 				e.printStackTrace();
 			}
         }
+		
+		scanner.close();
 	}
 
 }
