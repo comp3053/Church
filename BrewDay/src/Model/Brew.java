@@ -16,15 +16,15 @@ public class Brew {
 	}
 
 	public String getID() {
-		return ID;
+		return this.ID;
 	}
 
 	public void setID(String iD) {
-		ID = iD;
+		this.ID = iD;
 	}
 
 	public String getBatchSize() {
-		return batchSize;
+		return this.batchSize;
 	}
 
 	public void setBatchSize(String batchSize) {
