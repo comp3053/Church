@@ -13,7 +13,7 @@ public class Recipe {
 		Recipe_ID = iD;
 		this.literOfbeer = literOfbeer;
 		this.name = name;
-		this.ingredient = ingredient;
+		this.ingredient = new ArrayList<RecipeIngredient>();
 		this.description = description;
 		
 	}
@@ -61,4 +61,13 @@ public class Recipe {
 	public boolean addRecipeToDB() {
 		return true;
 	}
+	// add an ingredient to the recipe
+	public boolean addIngredient(String ingredientName, String unit, int value) {
+		//go through the database to find whether the ingredient is exist
+		//if exist, new a recipe ingredient, add it to the ingredient list, get the storage ingredient ID, and map it with the recipe id. 
+		//if not, new an ingredient both as recipe ingredient and storage ingredient with zero stock. repeat previous step
+		
+		return true;
+	}
+	
 }

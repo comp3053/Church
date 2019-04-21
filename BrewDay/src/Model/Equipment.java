@@ -60,7 +60,6 @@ public class Equipment {
 			
 			pStatement.close();
 			
-			
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();

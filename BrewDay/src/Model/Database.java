@@ -62,5 +62,7 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
-
+	public boolean checkStorageIngredient() {
+		return true;
+	}
 }
