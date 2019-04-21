@@ -77,7 +77,7 @@ public class Database {
 		
 		try {
 			
-			PreparedStatement pStatement = connection.prepareStatement(sql);
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
 			
 			pStatement.setString(1, type);
 			pStatement.setString(2, equip.getID());
@@ -85,6 +85,8 @@ public class Database {
 			status = pStatement.executeUpdate();
 			
 			pStatement.close();
+			
+			this.connection.close();
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -102,7 +104,35 @@ public class Database {
 	}
 	
 	public boolean updateEquipmentCapacity(Equipment equip, String name, int amount) {
-		return true;
+		int status = 0;
+		
+		//prepare SQL
+		String sql = "UPDATE equipment SET capacity = ? WHERE equipment_id = ?;";
+		
+		try {
+			
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			
+			pStatement.setInt(1, amount);
+			pStatement.setString(2, equip.getID());
+			
+			status = pStatement.executeUpdate();
+			pStatement.close();
+			
+			this.connection.close();
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		
+		if (status == 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 	public boolean addBrew(Brew brew) {
