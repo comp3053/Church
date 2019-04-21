@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import Controller.ConnectDB;
+import Tool.ConnectDB;
 
 public class Equipment {
 
@@ -13,6 +13,10 @@ public class Equipment {
 	private int[] capacity;
 	private String type;
 	private boolean isAvaliable;
+	
+	public Equipment(int capacity, String type) {
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	public boolean updateEquipmentType(String type) {
@@ -22,10 +26,10 @@ public class Equipment {
 		
 		int status = 0;
 		
+		//prepare SQL
+		String sql = "UPDATE equipment SET type = ? WHERE equipment_id = ?;";
+		
 		try {
-			
-			//prepare SQL
-			String sql = "UPDATE equipment SET type = ? WHERE equipment_id = ?;";
 			
 			PreparedStatement pStatement = connection.prepareStatement(sql);
 			
@@ -38,9 +42,10 @@ public class Equipment {
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
-			
+			e.printStackTrace();
 		}
 		
+		//return status
 		if (status == 0) {
 			return false;
 		}
