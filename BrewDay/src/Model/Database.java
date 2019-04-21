@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import Tool.ConnectDB;
+
 public class Database {
 	
 	private Connection connection;
@@ -62,7 +64,50 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	public boolean checkStorageIngredient() {
+		return true;
+	}
+	
+	public boolean updateEquipmentType(Equipment equip, String type) {
+		int status = 0;
+		
+		//prepare SQL
+		String sql = "UPDATE equipment SET type = ? WHERE equipment_id = ?;";
+		
+		try {
+			
+			PreparedStatement pStatement = connection.prepareStatement(sql);
+			
+			pStatement.setString(1, type);
+			pStatement.setString(2, equip.getID());
+			
+			status = pStatement.executeUpdate();
+			
+			pStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		//return status
+		if (status == 0) {
+			return false;
+		}
+		
+		else {
+			return true;
+		}
+	}
+	
+	public boolean updateEquipmentCapacity(Equipment equip, String name, int amount) {
+		return true;
+	}
+
+	public boolean addBrew(Brew brew) {
+		//add brew.recipe.getID() as recipe id; 
+		
 		return true;
 	}
 }

@@ -19,64 +19,36 @@ public class Equipment {
 		this.type = type;
 		this.capacity = capacity;
 		this.isAvaliable = true;
-		
-		Database database = new Database();
-		database.addEquipment(this);
 	}
 	
 	public String getID() {
-		return id;
+		return this.id;
 	}
 	
 	public int getCapacity() {
-		return capacity;
+		return this.capacity;
 	}
 	
 	public String getType() {
-		return type;
+		return this.type;
 	}
 	
 	public boolean getAvaliable() {
-		return isAvaliable;
+		return this.isAvaliable;
 	}
 	
+	
+	
 	public boolean updateEquipmentType(String type) {
-		
-		//connect database
-		Connection connection = ConnectDB.connectSqlite();
-		
-		int status = 0;
-		
-		//prepare SQL
-		String sql = "UPDATE equipment SET type = ? WHERE equipment_id = ?;";
-		
-		try {
-			
-			PreparedStatement pStatement = connection.prepareStatement(sql);
-			
-			pStatement.setString(1, type);
-			pStatement.setString(2, this.id);
-			status = pStatement.executeUpdate();
-			
-			pStatement.close();
-			
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		
-		//return status
-		if (status == 0) {
-			return false;
-		}
-		
-		else {
-			return true;
-		}
+	
+		Database db = new Database();
+		return db.updateEquipmentType(this, type);
 	}
 	
 	public boolean updateEquipmentCapacity(String name, int amount) {
-		return true;
+		
+		Database db = new Database();
+		return db.updateEquipmentCapacity(this, name, amount);
 	}
 	
 }

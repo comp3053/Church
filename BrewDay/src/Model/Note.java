@@ -5,15 +5,16 @@ import java.util.Date;
 public class Note {
 
 	private String title;
-	static private int ID = 0;
+	private String ID;
 	private String date;
 	private String recipeName;
 	private String content;
+	
 	public Note(String title, String recipeName, String content) {
 		this.title = title;
 		this.recipeName = recipeName;
 		this.content = content;
-		this.ID +=1; 
+		
 		Date date = new Date();
 		this.date = date.toString();
 		
@@ -34,7 +35,7 @@ public class Note {
 	}
 	
 	public int getID() {
-		return this.ID;
+		return 0;
 	}
 	
 	public String getTitle() {

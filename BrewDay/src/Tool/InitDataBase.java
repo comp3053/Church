@@ -37,7 +37,7 @@ public class InitDataBase {
 			sql = "CREATE TABLE 'storge_ingredient' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'ingredient_id' TEXT,'stock' INTEGER,'name' TEXT, 'unit' TEXT);";
 			statement.execute(sql);
 			
-			sql = "CREATE TABLE 'brew' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'brew_id' TEXT,'batch_size' INTEGER,'date' TEXT);";
+			sql = "CREATE TABLE 'brew' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'recipe_id' INTEGER, 'batch_size' INTEGER,'date' TEXT);";
 			statement.execute(sql);
 			
 			sql = "CREATE TABLE 'note' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'title' TEXT,'note_id' INTEGER,'date' TEXT, 'recipeName' TEXT, 'content' TEXT);";
