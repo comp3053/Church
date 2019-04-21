@@ -49,5 +49,9 @@ public class Note {
 			
 		}
 		
+		Note note1 = new Note("title", "111", "22222");
+		Note note2 = new Note("title", "111", "22222");
+		System.out.println("note1 : "+note1.getID());
+		System.out.println("note2 : "+note2.getID());
 	}
 }
