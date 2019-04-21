@@ -58,9 +58,6 @@ public class Recipe {
 		this.description = description;
 	}
 	
-	public boolean addRecipeToDB() {
-		return true;
-	}
 	// add an ingredient to the recipe
 	public boolean addIngredient(String ingredientName, String unit, int value) {
 		//go through the database to find whether the ingredient is exist
