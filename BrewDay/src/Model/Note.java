@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Date;
+
 public class Note {
 
 	private String title;
@@ -12,6 +14,31 @@ public class Note {
 		this.recipeName = recipeName;
 		this.content = content;
 		this.ID +=1; 
+		Date date = new Date();
+		this.date = date.toString();
+		
+		Database nDatabase = new Database();
+		nDatabase.addNote(this);
+	}
+	
+	public String getDate() {
+		return this.date;
+	}
+	
+	public String getContent() {
+		return this.content;
+	}
+	
+	public String getRecipeName() {
+		return this.recipeName;
+	}
+	
+	public int getID() {
+		return this.ID;
+	}
+	
+	public String getTitle() {
+		return this.title;
 	}
 	
 	

@@ -10,14 +10,35 @@ import Tool.ConnectDB;
 public class Equipment {
 
 	private String id;
-	private int[] capacity;
+	private int capacity;
 	private String type;
 	private boolean isAvaliable;
 	
 	public Equipment(int capacity, String type) {
 		// TODO Auto-generated constructor stub
+		this.type = type;
+		this.capacity = capacity;
+		this.isAvaliable = true;
+		
+		Database database = new Database();
+		database.addEquipment(this);
 	}
 	
+	public String getID() {
+		return id;
+	}
+	
+	public int getCapacity() {
+		return capacity;
+	}
+	
+	public String getType() {
+		return type;
+	}
+	
+	public boolean getAvaliable() {
+		return isAvaliable;
+	}
 	
 	public boolean updateEquipmentType(String type) {
 		
