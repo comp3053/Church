@@ -19,16 +19,6 @@ public class Ingredient {
 		ID = iD;
 	}
 
-	public int getIngredientAmount(String name) {
-		//search the database get the value and return
-		//database 
-		//int amount = value; 
-		return 0;
-	}
-	public String getIngredientName() {
-		//get the ingredient name from the database
-		return null;
-	}
 	public String getName() {
 		return name;
 	}
@@ -43,10 +33,6 @@ public class Ingredient {
 
 	public void setUnit(String unit) {
 		this.unit = unit;
-	}
-
-	public static void main (String[] args) {
-			
 	}
 
 }

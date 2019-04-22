@@ -1,13 +1,27 @@
 package Model;
 
 public class RecipeIngredient extends Ingredient {
+	
 	private int value;
-	public RecipeIngredient(String name, String unit) {
+	
+	public RecipeIngredient(String name, String unit, int value) {
 		// TODO Auto-generated constructor stub
 		super(name, unit);
+		this.value = value;
 	}
 	
-	public boolean updateAmount(String name, int amount) {
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public boolean updateValue(String name, int value) {
+		setValue(value);
+		Database db = new Database();
+		db.updateRecipeIngredientValue(name, value);
 		return true;
 	}
 	

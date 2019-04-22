@@ -1,29 +1,29 @@
 package Model;
 import java.util.ArrayList;
 public class Recipe {
-	private String Recipe_ID;
+	private String recipe_ID;
 	private int literOfbeer;
 	private String name;
-	ArrayList<RecipeIngredient> ingredient = new ArrayList<RecipeIngredient>();
+	ArrayList<RecipeIngredient> ingredients = new ArrayList<RecipeIngredient>();
 	private String description;
 	
 	public Recipe(String iD, int literOfbeer, String name, ArrayList<RecipeIngredient> ingredient, String description) {
 		
 		super();
-		Recipe_ID = iD;
+		recipe_ID = iD;
 		this.literOfbeer = literOfbeer;
 		this.name = name;
-		this.ingredient = new ArrayList<RecipeIngredient>();
+		this.ingredients = new ArrayList<RecipeIngredient>();
 		this.description = description;
 		
 	}
 	
 	public String getID() {
-		return Recipe_ID;
+		return recipe_ID;
 	}
 	
 	public void setID(String iD) {
-		Recipe_ID = iD;
+		recipe_ID = iD;
 	}
 	
 	public int getLiterOfbeer() {
@@ -43,11 +43,11 @@ public class Recipe {
 	}
 	
 	public ArrayList<RecipeIngredient> getList() {
-		return ingredient;
+		return ingredients;
 	}
 	
-	public void setList(ArrayList<RecipeIngredient> ingredient) {
-		this.ingredient = ingredient;
+	public void setList(ArrayList<RecipeIngredient> ingredients) {
+		this.ingredients = ingredients;
 	}
 	
 	public String getDescription() {
@@ -59,12 +59,10 @@ public class Recipe {
 	}
 	
 	// add an ingredient to the recipe
-	public boolean addIngredient(String ingredientName, String unit, int value) {
-		//go through the database to find whether the ingredient is exist
-		//if exist, new a recipe ingredient, add it to the ingredient list, get the storage ingredient ID, and map it with the recipe id. 
-		//if not, new an ingredient both as recipe ingredient and storage ingredient with zero stock. repeat previous step
-		
-		return true;
+	public void addRecipeIngredientRelation() {
+		Database db = new Database();
+		//For each element in the list
+		for(RecipeIngredient n : ingredients)
+			db.addRecipe_Ingredient(n, this.recipe_ID);
 	}
-	
 }

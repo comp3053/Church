@@ -9,15 +9,19 @@ public class StorageIngredient extends Ingredient {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean addAmount(String name, int amount) {
-		//use the name as key to find the value 
-		//add the value to the amount in the database
-		return true;
+	public int getStock(String ingredientName) {
+		Database db = new Database();
+		return db.getIngredientStock(ingredientName);
 	}
-	public boolean subtractAmount(String name, int amount) {
-		//use the name as key to find the value
-		// subtract the value from the amount in the database
-		return true;
+	
+	public boolean addStock(String name, int amount) {
+		Database db = new Database();
+		return db.addStock(name, amount);
+
+	}
+	public boolean subtractStock(String name, int amount) {
+		Database db = new Database();
+		return db.subtractStock(name, amount);
 	}
 
 }

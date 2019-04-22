@@ -21,7 +21,17 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
-	
+	public boolean addStorageIngredient(StorageIngredient storageIngredient) {
+
+		return true;
+	}
+
+	public boolean addBrew(Brew brew) {
+		//add brew.recipe.getID() as recipe id; 
+		
+		return true;
+	}
+
 	public void addEquipment(Equipment equipment) {
 		try {
 			String sql = "INSERT INTO 'equipment' VALUES(?, ?, ?, ?);";
@@ -65,10 +75,11 @@ public class Database {
 		}
 	}
 
-	public boolean checkStorageIngredient() {
-		return true;
-	}
+	//***********************************Brew************************************************
 	
+	
+	
+	//***********************************Equipment************************************************
 	public boolean updateEquipmentType(Equipment equip, String type) {
 		int status = 0;
 		
@@ -114,7 +125,7 @@ public class Database {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
 			
 			pStatement.setInt(1, amount);
-			pStatement.setString(2, equip.getID());
+			pStatement.setInt(2, Integer.parseInt(equip.getID()));
 			
 			status = pStatement.executeUpdate();
 			pStatement.close();
@@ -135,9 +146,59 @@ public class Database {
 		}
 	}
 
-	public boolean addBrew(Brew brew) {
-		//add brew.recipe.getID() as recipe id; 
+	//***********************************Ingredient************************************************
+	public boolean addRecipe_Ingredient(RecipeIngredient recipeIngredient, String recipeID) {
 		
+		if(checkStorageIngredientExist(recipeIngredient.getName()))
+			//add a row into recipe_ingredient table
+			return addRecipe_Ingredient_Relation(Integer.parseInt(recipeID),
+										         Integer.parseInt(recipeIngredient.getID()), 
+										         recipeIngredient.getValue());
+		else {
+			StorageIngredient si = new StorageIngredient(recipeIngredient.getName(), recipeIngredient.getUnit());
+			addStorageIngredient(si);
+		}
+		return addRecipe_Ingredient_Relation(Integer.parseInt(recipeID),
+				                             Integer.parseInt(recipeIngredient.getID()), 
+				                             recipeIngredient.getValue());
+	}
+	
+	public boolean addRecipe_Ingredient_Relation(int recipeID, int recipeIngredientID, int value) {
+		//database table modify
 		return true;
+	}
+	
+	public boolean checkStorageIngredientExist(String ingredientName) {
+		//check whether the ingredient exist
+		return true;
+	}
+	
+	public int getIngredientStock(String ingredientName) {
+		//use the name as key to find the value
+		// return the value in the database
+		return 0;
+	}
+	
+	public boolean addStock(String name, int amount) {
+		//use the name as key to find the value 
+		//add the value to the amount in the database
+		return true;
+	}
+	
+	public boolean subtractStock(String name, int amount) {
+		//use the name as key to find the value
+		// subtract the value from the amount in the database
+		return true;
+	}
+	
+	public boolean updateRecipeIngredientValue(String ingredientName, int value) {
+		return true;
+	}
+	
+	//***********************************Note************************************************
+	
+	public String getNoteContent(String title) {
+		//use the title to search in the database and return the content;
+		return null;
 	}
 }

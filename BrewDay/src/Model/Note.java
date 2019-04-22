@@ -3,7 +3,7 @@ package Model;
 import java.util.Date;
 
 public class Note {
-
+	private static int increse = 0;
 	private String title;
 	private String ID;
 	private String date;
@@ -11,15 +11,14 @@ public class Note {
 	private String content;
 	
 	public Note(String title, String recipeName, String content) {
+		increse++;
 		this.title = title;
 		this.recipeName = recipeName;
 		this.content = content;
+		this.ID = Integer.toString(increse);
 		
 		Date date = new Date();
 		this.date = date.toString();
-		
-		Database nDatabase = new Database();
-		nDatabase.addNote(this);
 	}
 	
 	public String getDate() {
@@ -41,18 +40,10 @@ public class Note {
 	public String getTitle() {
 		return this.title;
 	}
-	
-	
-	public static void main (String[] args) {
-		for(int i = 0; i <5; i++) {
-			Note note = new Note("title", "111", "22222");
-			System.out.println(note.ID);
-			
-		}
 		
-		Note note1 = new Note("title", "111", "22222");
-		Note note2 = new Note("title", "111", "22222");
-		System.out.println("note1 : "+note1.getID());
-		System.out.println("note2 : "+note2.getID());
+	public String displayNote(String title) {
+		Database db = new Database();
+		db.getNoteContent(title);
+		return null;
 	}
 }
