@@ -113,28 +113,33 @@ public class Database {
 		
 	}
 	public ArrayList<Recipe> getRecipes(){
-		String sql = "SELECT * FROM recipe";
+		String sql = "SELECT * FROM recipe JOIN recipe_recipeIngredient JOIN storage_ingredient WHERE recipe_recipeIngredient.ingredient_id = storage_ingredient.ingredient_id AND recipe.recipe_id = recipe_recipeIngredient.recipe_id";
 		ArrayList<Recipe> rList = new ArrayList<Recipe>();
 		
 		try {
-			PreparedStatement pStatement = this.connection.prepareStatement(sql);			
-			ResultSet rs = pStatement.executeQuery(sql);
-			while (rs.next()) {
-				sql = "SELECT * FROM recipe_recipeIngredient join storage_ingredient";
-				Statement statement = this.connection.createStatement();
-				ResultSet rs_1 = statement.executeQuery(sql);
-				ArrayList<RecipeIngredient> rIngredients = new ArrayList<RecipeIngredient>();
-				while (rs_1.next()) {
-					RecipeIngredient tempIngredient = new RecipeIngredient(rs_1.getString(7), 
-																		   rs_1.getString(8), 
-																		   rs_1.getInt(4));
-					rIngredients.add(tempIngredient);
+			Statement statement = this.connection.createStatement();
+			ResultSet rSet = statement.executeQuery(sql);
+			int last_id = 0;
+			while (rSet.next()) {
+				if(last_id != rSet.getInt(1)) {
+					ArrayList<RecipeIngredient> riList = new ArrayList<RecipeIngredient>();
+					RecipeIngredient rTemp = new RecipeIngredient(rSet.getString(11), rSet.getString(12), rSet.getInt(8));
+					riList.add(rTemp);
+					Recipe recipeTemp = new Recipe(Integer.toString(rSet.getInt(1)), rSet.getInt(3), rSet.getString(2), riList, rSet.getString(4));
+					rList.add(recipeTemp);
+					last_id = rSet.getInt(1);
 				}
-				Recipe tempRecipe = new Recipe(Integer.toString(rs.getInt(1)), rs.getInt(3), rs.getString(2),rIngredients,rs.getString(4));
-				rList.add(tempRecipe);
+				else {
+					RecipeIngredient rTemp = new RecipeIngredient(rSet.getString(11), rSet.getString(12), rSet.getInt(8));
+					for(Recipe rL :rList) {
+						if (Integer.parseInt(rL.getID()) == rSet.getInt(1)) {
+							rL.ingredients.add(rTemp);
+						}
+					}
+				}
 			}
-			
-		} catch(SQLException e){
+		}
+		catch(SQLException e){
 			// TODO: handle exception
 			e.printStackTrace();
 		}
