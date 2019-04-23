@@ -77,8 +77,11 @@ public class Database {
 
 	//***********************************Brew************************************************
 	
-	
-	
+	//***********************************Recipe************************************************
+	public void updateRecipe(Recipe recipe) {
+		//check the content in the recipe if the input is null, skip, otherwise modify the content in the database
+		
+	}
 	//***********************************Equipment************************************************
 	public boolean updateEquipmentType(Equipment equip, String type) {
 		int status = 0;

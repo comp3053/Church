@@ -1,12 +1,5 @@
 package Model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import Tool.ConnectDB;
-
 public class Equipment {
 
 	private String id;
@@ -25,19 +18,33 @@ public class Equipment {
 		return this.id;
 	}
 	
+	public void setID(String id) {
+		this.id = id;
+	}
+	
 	public int getCapacity() {
 		return this.capacity;
+	}
+	
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
 	}
 	
 	public String getType() {
 		return this.type;
 	}
 	
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	public boolean getAvaliable() {
 		return this.isAvaliable;
 	}
 	
-	
+	public void setAvaliable(boolean isAvaliable) {
+		this.isAvaliable = isAvaliable;
+	}
 	
 	public boolean updateEquipmentType(String type) {
 	
@@ -50,5 +57,4 @@ public class Equipment {
 		Database db = new Database();
 		return db.updateEquipmentCapacity(this, name, amount);
 	}
-	
 }

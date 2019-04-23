@@ -3,19 +3,20 @@ package Model;
 import java.util.Date;
 
 public class Note {
-	private static int increse = 0;
+	private static int increase = 0;
 	private String title;
 	private String ID;
 	private String date;
-	private String recipeName;
+	private String recipeName; 
 	private String content;
 	
 	public Note(String title, String recipeName, String content) {
-		increse++;
-		this.title = title;
+		increase++;
+		
+		this.title = title;		
 		this.recipeName = recipeName;
 		this.content = content;
-		this.ID = Integer.toString(increse);
+		this.ID = Integer.toString(increase);
 		
 		Date date = new Date();
 		this.date = date.toString();
@@ -25,25 +26,39 @@ public class Note {
 		return this.date;
 	}
 	
+	public void setDate(Date date) {
+		this.date = date.toString();
+	}
+	
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public String getContent() {
 		return this.content;
 	}
-	
+		
 	public String getRecipeName() {
 		return this.recipeName;
+	}
+	
+	public void setRecipeName(String recipeName) {
+		this.recipeName = recipeName;
 	}
 	
 	public int getID() {
 		return 0;
 	}
 	
+	public void setID(String ID) {
+		this.ID = ID;
+	}
+	
 	public String getTitle() {
 		return this.title;
 	}
-		
-	public String displayNote(String title) {
-		Database db = new Database();
-		db.getNoteContent(title);
-		return null;
+	
+	public void setTitle(String title) {
+		this.title = title;
 	}
+	
 }

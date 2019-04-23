@@ -1,15 +1,17 @@
 package Model;
+
 import java.util.ArrayList;
+
+
 public class Recipe {
 	private String recipe_ID;
 	private int literOfbeer;
 	private String name;
-	ArrayList<RecipeIngredient> ingredients = new ArrayList<RecipeIngredient>();
+	ArrayList<RecipeIngredient> ingredients;
 	private String description;
 	
 	public Recipe(String iD, int literOfbeer, String name, ArrayList<RecipeIngredient> ingredient, String description) {
 		
-		super();
 		recipe_ID = iD;
 		this.literOfbeer = literOfbeer;
 		this.name = name;
@@ -51,6 +53,7 @@ public class Recipe {
 	}
 	
 	public String getDescription() {
+		
 		return description;
 	}
 	
@@ -65,4 +68,19 @@ public class Recipe {
 		for(RecipeIngredient n : ingredients)
 			db.addRecipe_Ingredient(n, this.recipe_ID);
 	}
+	
+	public void updateRecipe() {
+		//get a recipe from the db, set all the attributes of the recipe by the user input
+		//wrap the recipe to database class
+		Database db = new Database();
+		
+		//Recipe r = db======;
+		//r.setIngredients();
+		//r.setName("");
+		//r.setLiterOfBeer(5);
+		
+		//db.updateRecipe(r);
+	}
+	
+	
 }

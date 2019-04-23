@@ -4,11 +4,12 @@ import java.util.Date;
 
 public class Brew {
 	private String ID;
-	private String batchSize;
+	private int batchSize;
 	private String date;
-	public Recipe recipe;
+	private Recipe recipe;
+	private Note note;
 	
-	Brew(String batchSize, Recipe recipe){
+	Brew(int batchSize, Recipe recipe){
 		Date date = new Date();
 		this.recipe = recipe;
 		this.date = date.toString();
@@ -23,15 +24,33 @@ public class Brew {
 		this.ID = iD;
 	}
 
-	public String getBatchSize() {
+	public int getBatchSize() {
 		return this.batchSize;
 	}
-	
+
+	public void setBatchSize(int batchSize) {
+		this.batchSize = batchSize;
+	}
+
 	public Recipe getRecipe() {
 		return this.recipe;
 	}
-
-	public void setBatchSize(String batchSize) {
-		this.batchSize = batchSize;
+	
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
+	}
+	
+	public Note getNote() {
+		return this.note;
+	}
+	
+	public void setNote(Note note) {
+		this.note = note;
+	}
+	
+	public void addNote(String title, String recipeName, String content) {
+		this.note = new Note(title, recipeName, content);
+		Database db = new Database();
+		db.addNote(this.note);
 	}
 }
