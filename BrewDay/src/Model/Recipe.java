@@ -87,20 +87,17 @@ public class Recipe {
 		Database db = new Database();
 		ArrayList<Recipe> recommendList = new ArrayList<Recipe>();
 		ArrayList<Equipment> eList = db.getAvailableEquipments(batchSize);
-		ArrayList<RecipeIngredient> missIngredients = new ArrayList<RecipeIngredient>();
-		
 		if(eList == null) {
 			//no available equipments
 		}
 		else {
 			ArrayList<Recipe> rList = db.getRecipes();
 			for(Recipe r : rList) {
-				missIngredients = r.produceMissingIngredient(batchSize); //check if there is any missing ingredient
 				if(r.isAvaliable)
 					recommendList.add(r);
 			}
 		}
-		return null;
+		return recommendList;
 	}
 	
 	public ArrayList<RecipeIngredient> produceMissingIngredient(int batchSize){
@@ -114,9 +111,7 @@ public class Recipe {
 				isAvaliable = false;
 			}
 		}
-		
 		return missingList;
-		
 	}
 	
 	//batchSize x % = amount

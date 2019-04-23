@@ -31,19 +31,19 @@ public class InitDataBase {
 			sql = "CREATE TABLE 'recipe_recipeIngredient' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'recipe_id' TEXT,'ingredient_id' TEXT,'value' INTEGER);";
 			statement.execute(sql);
 			
-			sql = "CREATE TABLE 'recipe' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'recipe_name' TEXT,'recipe_id' TEXT, 'literOfBeer' INTEGER, 'description' TEXT);";
+			sql = "CREATE TABLE 'recipe' ('recipe_id' INTEGER PRIMARY KEY AUTOINCREMENT,'recipe_name' TEXT, 'literOfBeer' INTEGER, 'description' TEXT);";
 			statement.execute(sql);
 			
-			sql = "CREATE TABLE 'storage_ingredient' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'ingredient_id' TEXT,'stock' INTEGER,'name' TEXT, 'unit' TEXT);";
+			sql = "CREATE TABLE 'storage_ingredient' ('ingredient_id' INTEGER PRIMARY KEY AUTOINCREMENT,'stock' INTEGER,'name' TEXT, 'unit' TEXT);";
 			statement.execute(sql);
 			
-			sql = "CREATE TABLE 'brew' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'recipe_id' INTEGER, 'batch_size' INTEGER,'date' TEXT, 'note_id' INTEGER);";
+			sql = "CREATE TABLE 'brew' ('brew_id' INTEGER PRIMARY KEY AUTOINCREMENT,'recipe_id' INTEGER, 'batch_size' INTEGER,'date' TEXT, 'note_id' INTEGER);";
 			statement.execute(sql);
 			
-			sql = "CREATE TABLE 'note' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'title' TEXT,'note_id' INTEGER,'date' TEXT, 'recipeName' TEXT, 'content' TEXT);";
+			sql = "CREATE TABLE 'note' ('note_id' INTEGER PRIMARY KEY AUTOINCREMENT,'title' TEXT,'date' TEXT, 'recipeName' TEXT, 'content' TEXT);";
 			statement.execute(sql);
 			
-			sql = "CREATE TABLE 'equipment' ('id' INTEGER PRIMARY KEY AUTOINCREMENT,'capacity' REAL ,'avaliableCapacity' REAL ,'type' TEXT,'isAvailable' BOLB);";
+			sql = "CREATE TABLE 'equipment' ('equipment_id' INTEGER PRIMARY KEY AUTOINCREMENT,'capacity' REAL ,'avaliableCapacity' REAL ,'type' TEXT,'isAvailable' BOLB);";
 			statement.execute(sql);
 			
 			System.out.println("Create table successful");
