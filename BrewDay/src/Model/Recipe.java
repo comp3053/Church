@@ -79,7 +79,6 @@ public class Recipe {
 		//r.setIngredients();
 		//r.setName("");
 		//r.setLiterOfBeer(5);
-		
 		//db.updateRecipe(r);
 	}
 	
@@ -93,6 +92,7 @@ public class Recipe {
 		else {
 			ArrayList<Recipe> rList = db.getRecipes();
 			for(Recipe r : rList) {
+				
 				if(r.isAvaliable)
 					recommendList.add(r);
 			}
