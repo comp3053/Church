@@ -3,15 +3,17 @@ package Model;
 public class Equipment {
 
 	private String id;
-	private int capacity;
+	private float capacity;
 	private String type;
 	private boolean isAvaliable;
+	private float avaliableCapacity;
 	
-	public Equipment(int capacity, String type) {
+	public Equipment(float capacity, String type) {
 		// TODO Auto-generated constructor stub
 		this.type = type;
 		this.capacity = capacity;
 		this.isAvaliable = true;
+		this.avaliableCapacity = capacity;
 	}
 	
 	public String getID() {
@@ -22,8 +24,16 @@ public class Equipment {
 		this.id = id;
 	}
 	
-	public int getCapacity() {
+	public float getCapacity() {
 		return this.capacity;
+	}
+	
+	public void setAvaliableCapacity(int avaliableCapacity) {
+		this.avaliableCapacity = avaliableCapacity;
+	}
+	
+	public float getAvaliableCapacity() {
+		return this.avaliableCapacity;
 	}
 	
 	public void setCapacity(int capacity) {

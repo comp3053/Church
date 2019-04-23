@@ -9,6 +9,7 @@ public class Recipe {
 	private String name;
 	ArrayList<RecipeIngredient> ingredients;
 	private String description;
+	private boolean isAvaliable;
 	
 	public Recipe(String iD, int literOfbeer, String name, ArrayList<RecipeIngredient> ingredient, String description) {
 		
@@ -17,6 +18,7 @@ public class Recipe {
 		this.name = name;
 		this.ingredients = new ArrayList<RecipeIngredient>();
 		this.description = description;
+		this.isAvaliable = true;
 		
 	}
 	
@@ -61,7 +63,6 @@ public class Recipe {
 		this.description = description;
 	}
 	
-	// add an ingredient to the recipe
 	public void addRecipeIngredientRelation() {
 		Database db = new Database();
 		//For each element in the list
@@ -82,5 +83,46 @@ public class Recipe {
 		//db.updateRecipe(r);
 	}
 	
+	public ArrayList<Recipe> recommendRecipe(int batchSize) {
+		Database db = new Database();
+		ArrayList<Recipe> recommendList = new ArrayList<Recipe>();
+		ArrayList<Equipment> eList = db.getAvailableEquipments(batchSize);
+		ArrayList<RecipeIngredient> missIngredients = new ArrayList<RecipeIngredient>();
+		
+		if(eList == null) {
+			//no available equipments
+		}
+		else {
+			ArrayList<Recipe> rList = db.getRecipes();
+			for(Recipe r : rList) {
+				missIngredients = r.produceMissingIngredient(batchSize); //check if there is any missing ingredient
+				if(r.isAvaliable)
+					recommendList.add(r);
+			}
+		}
+		return null;
+	}
+	
+	public ArrayList<RecipeIngredient> produceMissingIngredient(int batchSize){
+		ArrayList<RecipeIngredient> missingList = new ArrayList<RecipeIngredient>();
+		Database db = new Database();
+		for(RecipeIngredient i : ingredients) {
+			float amount = convertMeasure(i, batchSize);
+			StorageIngredient si = db.getStorageIngredient(i.getID());
+			if(si.getStock(si.getName()) < amount) { //no enough stock
+				missingList.add(i);
+				isAvaliable = false;
+			}
+		}
+		
+		return missingList;
+		
+	}
+	
+	//batchSize x % = amount
+	private float convertMeasure(RecipeIngredient i, int batchSize) {
+		
+		return (i.getValue() / this.literOfbeer) * batchSize;
+	}
 	
 }

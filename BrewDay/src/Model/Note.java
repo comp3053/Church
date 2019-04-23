@@ -45,8 +45,8 @@ public class Note {
 		this.recipeName = recipeName;
 	}
 	
-	public int getID() {
-		return 0;
+	public String getID() {
+		return ID;
 	}
 	
 	public void setID(String ID) {
@@ -59,6 +59,13 @@ public class Note {
 	
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public void modifyNote(String content) {
+		setContent(content);
+		//sent the note to db
+		Database db = new Database();
+		db.modifyNote(this);
 	}
 	
 }

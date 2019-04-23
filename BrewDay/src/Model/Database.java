@@ -3,7 +3,11 @@ package Model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import Tool.ConnectDB;
 
@@ -34,13 +38,14 @@ public class Database {
 
 	public void addEquipment(Equipment equipment) {
 		try {
-			String sql = "INSERT INTO 'equipment' VALUES(?, ?, ?, ?);";
+			String sql = "INSERT INTO 'equipment' VALUES(?, ?, ?, ?, ?);";
 			
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
-			pStatement.setString(1, equipment.getID());
-			pStatement.setString(2, equipment.getType());
-			pStatement.setInt(3, equipment.getCapacity());
-			pStatement.setBoolean(4, equipment.getAvaliable());
+			pStatement.setInt(1, Integer.parseInt(equipment.getID()));
+			pStatement.setFloat(2, equipment.getCapacity());
+			pStatement.setFloat(3, equipment.getAvaliableCapacity());
+			pStatement.setString(4, equipment.getType());
+			pStatement.setBoolean(5, equipment.getAvaliable());
 			
 			//execute the sql language
 			pStatement.executeUpdate();
@@ -59,7 +64,7 @@ public class Database {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
 			
 			pStatement.setString(1, note.getTitle());
-			pStatement.setInt(2, note.getID());
+			pStatement.setInt(2, Integer.parseInt(note.getID()));
 			pStatement.setString(3, note.getDate());
 			pStatement.setString(4, note.getRecipeName());
 			pStatement.setString(5, note.getContent());
@@ -75,13 +80,68 @@ public class Database {
 		}
 	}
 
+	public void addRecipe(Recipe recipe) {
+		
+	}
+	
+	public Recipe getRecipe(){
+		return null;
+	}
+	
+	public Brew getBrew() {
+		return null;
+	}
+	
+	public Note getNote() {
+		return null;
+	}
+	
+	public Equipment getEquipment() {
+		return null;
+	}
+	
+
+	public StorageIngredient getStorageIngredient(String id) {
+		return null;
+	}
 	//***********************************Brew************************************************
 	
 	//***********************************Recipe************************************************
 	public void updateRecipe(Recipe recipe) {
 		//check the content in the recipe if the input is null, skip, otherwise modify the content in the database
 		
+		
 	}
+	public ArrayList<Recipe> getRecipes(){
+		String sql = "SELECT * FROM recipe";
+		ArrayList<Recipe> rList = new ArrayList<Recipe>();
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);			
+			ResultSet rs = pStatement.executeQuery(sql);
+			while (rs.next()) {
+				sql = "SELECT * FROM recipe_recipeIngredient join storage_ingredient";
+				Statement statement = this.connection.createStatement();
+				ResultSet rs_1 = statement.executeQuery(sql);
+				ArrayList<RecipeIngredient> rIngredients = new ArrayList<RecipeIngredient>();
+				while (rs_1.next()) {
+					RecipeIngredient tempIngredient = new RecipeIngredient(rs_1.getString(7), 
+																		   rs_1.getString(8), 
+																		   rs_1.getInt(4));
+					rIngredients.add(tempIngredient);
+				}
+				Recipe tempRecipe = new Recipe(Integer.toString(rs.getInt(1)), rs.getInt(3), rs.getString(2),rIngredients,rs.getString(4));
+				rList.add(tempRecipe);
+			}
+			
+		} catch(SQLException e){
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return rList;
+
+	}
+	
 	//***********************************Equipment************************************************
 	public boolean updateEquipmentType(Equipment equip, String type) {
 		int status = 0;
@@ -149,6 +209,30 @@ public class Database {
 		}
 	}
 
+	public ArrayList<Equipment> getAvailableEquipments(int batchSize){
+		String sql = "SELECT * FROM equipment WHERE avaliableCapacity >= ?";
+		
+		ArrayList<Equipment> equipmentsList = new ArrayList<Equipment>();
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			
+			pStatement.setInt(1,batchSize);
+			
+			ResultSet rs = pStatement.executeQuery(sql);
+			while (rs.next()) {
+				Equipment tempEquipment = new Equipment(rs.getFloat(1), rs.getString(2));
+				equipmentsList.add(tempEquipment);
+			}
+			
+		} catch(SQLException e){
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return equipmentsList;
+	}
+	
+	
 	//***********************************Ingredient************************************************
 	public boolean addRecipe_Ingredient(RecipeIngredient recipeIngredient, String recipeID) {
 		
@@ -200,8 +284,8 @@ public class Database {
 	
 	//***********************************Note************************************************
 	
-	public String getNoteContent(String title) {
-		//use the title to search in the database and return the content;
-		return null;
+	public void modifyNote(Note note) {
+		int id = Integer.parseInt(note.getID());
+		//use the id to find the note and modify the content;
 	}
 }
