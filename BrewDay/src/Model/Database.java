@@ -26,12 +26,41 @@ public class Database {
 		}
 	}
 	public boolean addStorageIngredient(StorageIngredient storageIngredient) {
+		
+		String sql = "INSERT INTO 'storage_ingredient' VALUES(?, ?, ?, ?);";
+		
+		int status = 0;
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			
+			pStatement.setInt(1, Integer.parseInt(storageIngredient.getID()));
+			pStatement.setInt(2, storageIngredient.getStock());
+			pStatement.setString(3, storageIngredient.getName());
+			pStatement.setString(4, storageIngredient.getUnit());
+			
+			status = pStatement.executeUpdate();
+			
+			pStatement.close();
+			this.connection.close();
+			
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 
-		return true;
+		if (status == 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 	public boolean addBrew(Brew brew) {
-		//add brew.recipe.getID() as recipe id; 
+		//add brew.recipe.getID() as recipe id;
+		
 		
 		return true;
 	}
@@ -81,7 +110,24 @@ public class Database {
 	}
 
 	public void addRecipe(Recipe recipe) {
+		String sql = "INSERT INTO 'recipe' VALUES(?, ?, ?, ?);";
 		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setInt(1, Integer.parseInt(recipe.getID()));
+			pStatement.setString(2, recipe.getName());
+			pStatement.setInt(3, recipe.getLiterOfbeer());
+			pStatement.setString(4, recipe.getDescription());
+			
+			pStatement.executeUpdate();
+			
+			pStatement.close();
+			this.connection.close();
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 	
 	public Recipe getRecipe(){

@@ -9,7 +9,11 @@ public class StorageIngredient extends Ingredient {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getStock(String ingredientName) {
+	public int getStock() {
+		return this.stock;
+	}
+	
+	public int getStockFromDB(String ingredientName) {
 		Database db = new Database();
 		return db.getIngredientStock(ingredientName);
 	}
