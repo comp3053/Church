@@ -133,7 +133,7 @@ public class Database {
 					RecipeIngredient rTemp = new RecipeIngredient(rSet.getString(11), rSet.getString(12), rSet.getInt(8));
 					for(Recipe rL :rList) {
 						if (Integer.parseInt(rL.getID()) == rSet.getInt(1)) {
-							rL.ingredients.add(rTemp);
+							rL.addRecipeIngredient(rTemp);
 						}
 					}
 				}

@@ -50,6 +50,10 @@ public class Recipe {
 		return ingredients;
 	}
 	
+	public void addRecipeIngredient(RecipeIngredient ri) {
+		this.ingredients.add(ri);
+	}
+	
 	public void setList(ArrayList<RecipeIngredient> ingredients) {
 		this.ingredients = ingredients;
 	}
