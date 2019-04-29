@@ -110,7 +110,7 @@ public class Recipe {
 		for(RecipeIngredient i : ingredients) {
 			float amount = convertMeasure(i, batchSize);
 			StorageIngredient si = db.getStorageIngredient(i.getID());
-			if(si.getStock(si.getName()) < amount) { //no enough stock
+			if(si.getStockFromDB(si.getName()) < amount) { //no enough stock
 				missingList.add(i);
 				isAvaliable = false;
 			}
