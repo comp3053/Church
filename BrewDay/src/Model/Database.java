@@ -154,7 +154,28 @@ public class Database {
 	//***********************************Recipe************************************************
 	public void updateRecipe(Recipe recipe) {
 		//check the content in the recipe if the input is null, skip, otherwise modify the content in the database
-		
+		if (recipe != null) {
+			int rId = Integer.parseInt(recipe.getID());
+			
+			String sql = "UPDATE 'recipe' SET recipe_name = ?, literOfBeer = ?, description = ? WHERE recipe_id = ?;";
+			
+			try {
+				PreparedStatement pStatement = this.connection.prepareStatement(sql);
+				
+				pStatement.setString(1, recipe.getName());
+				pStatement.setInt(2, recipe.getLiterOfbeer());
+				pStatement.setString(3, recipe.getDescription());
+				pStatement.setInt(4, rId);
+				
+				pStatement.executeUpdate();
+				pStatement.close();
+				this.connection.close();
+				
+			} catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	public ArrayList<Recipe> getRecipes(){
@@ -302,7 +323,28 @@ public class Database {
 	
 	public boolean addRecipe_Ingredient_Relation(int recipeID, int recipeIngredientID, int value) {
 		//database table modify
-		return true;
+		String sql = "INSERT INTO 'recipe_recipeIngredient' VALUE(?, ?, ?);";
+		int status = 0;
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setString(1, Integer.toString(recipeID));
+			pStatement.setString(2, Integer.toString(recipeIngredientID));
+			pStatement.setInt(3, value);
+			
+			status = pStatement.executeUpdate();
+			pStatement.close();
+			this.connection.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		if (status == 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 	
 	public boolean checkStorageIngredientExist(String ingredientName) {
