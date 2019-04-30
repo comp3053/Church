@@ -79,7 +79,7 @@ public class Recipe {
 		//wrap the recipe to database class
 		Database db = new Database();
 		
-		//Recipe r = db======;
+		//Recipe r = db.getRecipe();
 		//r.setIngredients();
 		//r.setName("");
 		//r.setLiterOfBeer(5);

@@ -129,24 +129,28 @@ public class Database {
 		}
 	}
 	
-	public Recipe getRecipe(){
+	public Recipe getRecipe(String id){
+		//use id to return a recipe
 		return null;
 	}
 	
-	public Brew getBrew() {
+	public Brew getBrew(String id) {
+		//use id to return a brew
 		return null;
 	}
 	
-	public Note getNote() {
+	public Note getNote(String id) {
+		//use id to return a note
 		return null;
 	}
 	
-	public Equipment getEquipment() {
+	public Equipment getEquipment(String id) {
+		//use id to return a equipment
 		return null;
 	}
 	
-
 	public StorageIngredient getStorageIngredient(String id) {
+		//use id to return a storageIngredient
 		return null;
 	}
 	//***********************************Brew************************************************
