@@ -131,6 +131,8 @@ public class Database {
 	
 	public Recipe getRecipe(String id){
 		//use id to return a recipe
+		
+		
 		return null;
 	}
 	
@@ -146,6 +148,23 @@ public class Database {
 	
 	public Equipment getEquipment(String id) {
 		//use id to return a equipment
+		String sql = "SELECT * FROM 'equipment' WHERE equipment_id = ?;";
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setInt(1, Integer.parseInt(id));
+			
+			ResultSet rSet = pStatement.executeQuery();
+			
+			while (rSet.next()) {
+				Equipment equipmentTemp = new Equipment(capacity, type);
+				
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 	

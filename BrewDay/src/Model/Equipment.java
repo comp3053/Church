@@ -16,6 +16,14 @@ public class Equipment {
 		this.avaliableCapacity = capacity;
 	}
 	
+	public Equipment(String id, float capacity, String type, boolean isAvaliable, float avaliableCapacity) {
+		this.id = id;
+		this.capacity = capacity;
+		this.type = type;
+		this.isAvaliable = isAvaliable;
+		this.avaliableCapacity = avaliableCapacity;
+	}
+	
 	public String getID() {
 		return this.id;
 	}
