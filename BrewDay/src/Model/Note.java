@@ -22,6 +22,14 @@ public class Note {
 		this.date = date.toString();
 	}
 	
+	public Note(String id, String title, String date, String recipeName, String content) {
+		this.ID = id;
+		this.title = title;
+		this.date = date;
+		this.recipeName = recipeName;
+		this.content = content;
+	}
+	
 	public String getDate() {
 		return this.date;
 	}

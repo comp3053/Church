@@ -138,26 +138,15 @@ public class Database {
 	
 	public Brew getBrew(String id) {
 		//use id to return a brew
-		return null;
-	}
-	
-	public Note getNote(String id) {
-		//use id to return a note
-		return null;
-	}
-	
-	public Equipment getEquipment(String id) {
-		//use id to return a equipment
-		String sql = "SELECT * FROM 'equipment' WHERE equipment_id = ?;";
+		String sql = "SELECT * FROM 'brew' WHERE brew_id = ?;";
+		Brew result = null;
 		
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
 			pStatement.setInt(1, Integer.parseInt(id));
 			
 			ResultSet rSet = pStatement.executeQuery();
-			
 			while (rSet.next()) {
-				Equipment equipmentTemp = new Equipment(capacity, type);
 				
 			}
 		} catch (SQLException e) {
@@ -166,6 +155,55 @@ public class Database {
 		}
 		
 		return null;
+	}
+	
+	public Note getNote(String id) {
+		//use id to return a note
+		String sql = "SELECT * FROM 'note' HWERE note_id = ?;";
+		Note resutl = null;
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			
+			pStatement.setInt(1, Integer.parseInt(id));
+			
+			ResultSet rSet = pStatement.executeQuery();
+			while (rSet.next()) {
+				Note noteTemp = new Note(Integer.toString(rSet.getInt(1)), rSet.getString(2), rSet.getString(3), rSet.getString(4), rSet.getString(5));
+				resutl = noteTemp;
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return resutl;
+	}
+	
+	public Equipment getEquipment(String id) {
+		//use id to return a equipment
+		String sql = "SELECT * FROM 'equipment' WHERE equipment_id = ?;";
+		Equipment result = null;
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setInt(1, Integer.parseInt(id));
+			
+			ResultSet rSet = pStatement.executeQuery();
+			
+			while (rSet.next()) {
+				Equipment equipmentTemp = new Equipment(Integer.toString(rSet.getInt(1)), rSet.getFloat(2), rSet.getString(4), rSet.getBoolean(5), rSet.getFloat(3));
+				
+				result = equipmentTemp;
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+				
+		return result;
 	}
 	
 	public StorageIngredient getStorageIngredient(String id) {
