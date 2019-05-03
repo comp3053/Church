@@ -34,7 +34,6 @@ public class Start extends Application
         return instance;
     }
 	
-    
 	
 	public void mainPage()
 	{
@@ -47,8 +46,9 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-
-	public void jump()
+	
+	
+	public void maintainRecipe()
 	{
 		try 
 		{
@@ -59,6 +59,7 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
+
 	
 	public static void main(String[] args) {
         launch(args);
