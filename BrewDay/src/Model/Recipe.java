@@ -11,6 +11,15 @@ public class Recipe {
 	private String description;
 	private boolean isAvaliable;
 	
+	public Recipe() {
+		//default setting
+		recipe_ID = null;
+		literOfbeer = -1;
+		name = null;
+		ingredients = null;
+		description = null;
+		this.isAvaliable = true;
+	}
 	public Recipe(String iD, int literOfbeer, String name, ArrayList<RecipeIngredient> ingredient, String description) {
 		
 		recipe_ID = iD;
@@ -74,16 +83,17 @@ public class Recipe {
 			db.addRecipe_Ingredient(n, this.recipe_ID);
 	}
 	
-	public void updateRecipe() {
+	public void updateRecipe(String recipe_Id, int literOfbeer, String name, String description, ArrayList<RecipeIngredient> ingredients) {
 		//get a recipe from the db, set all the attributes of the recipe by the user input
-		//wrap the recipe to database class
 		Database db = new Database();
 		
-		//Recipe r = db.getRecipe();
-		//r.setIngredients();
-		//r.setName("");
-		//r.setLiterOfBeer(5);
-		//db.updateRecipe(r);
+		Recipe r = db.getRecipe(recipe_Id);
+		
+		r.setList(ingredients);
+		r.setName(name);
+		r.setLiterOfbeer(literOfbeer);
+		
+		db.updateRecipe(r);
 	}
 	
 	public ArrayList<Recipe> recommendRecipe(int batchSize) {

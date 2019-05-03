@@ -131,9 +131,30 @@ public class Database {
 	
 	public Recipe getRecipe(String id){
 		//use id to return a recipe
+		String sql = "SELECT* FROM recipe WHERE recipe_id = ?;";
+		Recipe r = new Recipe();
 		
+		ArrayList<Equipment> equipmentsList = new ArrayList<Equipment>();
 		
-		return null;
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			
+			pStatement.setInt(1,Integer.parseInt(id));
+			
+			ResultSet rs = pStatement.executeQuery(sql);
+			
+			while (rs.next()) {
+				Equipment tempEquipment = new Equipment(rs.getFloat(1), rs.getString(2));
+				equipmentsList.add(tempEquipment);
+			}
+			
+		} catch(SQLException e){
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		return r;
+
 	}
 	
 	public Brew getBrew(String id) {
