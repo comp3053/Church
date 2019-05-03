@@ -40,7 +40,7 @@ public class Start extends Application
 	{
 		try 
 		{
-			replaceSceneContent("mainPage.fxml");
+			replaceSceneContent("Main.fxml");
 		} 
 		catch (Exception e) 
 		{
