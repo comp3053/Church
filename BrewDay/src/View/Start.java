@@ -78,10 +78,7 @@ public class Start extends Application
 	
 	private Parent replaceSceneContent(String fxml) throws Exception 
 	{
-        //System.out.println("before");
-        //System.out.println(Start.class.getResource(fxml).toString());
-		Parent page = (Parent) FXMLLoader.load(Start.class.getResource(fxml), null, new JavaFXBuilderFactory());
-		//System.out.println("after");
+        Parent page = (Parent) FXMLLoader.load(Start.class.getResource(fxml), null, new JavaFXBuilderFactory());
 		Scene scene = stage.getScene();
         if (scene == null) 
         {
