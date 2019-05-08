@@ -59,6 +59,17 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
+	
+	public void maintainEquipment(){
+		try 
+		{
+			replaceSceneContent("maintainEquipment.fxml");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
 
 	
 	public static void main(String[] args) {
@@ -67,10 +78,10 @@ public class Start extends Application
 	
 	private Parent replaceSceneContent(String fxml) throws Exception 
 	{
-        System.out.println("before");
-        System.out.println(Start.class.getResource(fxml).toString());
+        //System.out.println("before");
+        //System.out.println(Start.class.getResource(fxml).toString());
 		Parent page = (Parent) FXMLLoader.load(Start.class.getResource(fxml), null, new JavaFXBuilderFactory());
-		System.out.println("after");
+		//System.out.println("after");
 		Scene scene = stage.getScene();
         if (scene == null) 
         {

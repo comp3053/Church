@@ -5,15 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.maintainEquipmentController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.maintainEquipmentController">
    <children>
-      <TitledPane animated="false" layoutX="-94.0" layoutY="-204.0" prefHeight="260.0" prefWidth="283.0" text="Brew Day: Maintain equipment">
+      <TitledPane animated="false" layoutX="130.0" layoutY="53.0" prefHeight="400.0" prefWidth="600.0" text="Brew Day" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="236.0" prefWidth="406.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="addEqipment" layoutX="40.0" layoutY="103.0" mnemonicParsing="false" text="Add equipment " />
-                  <Button fx:id="UpdateEquipment" layoutX="223.0" layoutY="103.0" mnemonicParsing="false" text="Update equipment" />
-                  <Button fx:id="back" layoutX="331.0" layoutY="193.0" mnemonicParsing="false" text="Back" />
+                  <Button layoutX="459.0" layoutY="293.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Back" />
                </children>
             </AnchorPane>
         </content>
