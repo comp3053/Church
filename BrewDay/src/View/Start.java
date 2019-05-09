@@ -17,6 +17,7 @@ public class Start extends Application
 	public void start(Stage primaryStage) throws Exception 
 	{
 		stage = primaryStage;
+		this.stage.setTitle("Brew Day");
 		mainPage();
         stage.show();
         
@@ -80,6 +81,7 @@ public class Start extends Application
 	{
         Parent page = (Parent) FXMLLoader.load(Start.class.getResource(fxml), null, new JavaFXBuilderFactory());
 		Scene scene = stage.getScene();
+		
         if (scene == null) 
         {
             scene = new Scene(page);
