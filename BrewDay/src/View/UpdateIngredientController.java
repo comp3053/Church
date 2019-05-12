@@ -1,0 +1,117 @@
+package View;
+
+import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import Model.Database;
+import Model.StorageIngredient;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart.Data;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+
+public class UpdateIngredientController implements Initializable{
+	
+	//for show data
+	ObservableList<StorageIngredient> StorageIngredientList = FXCollections.observableArrayList();
+	@FXML
+	private TableView<StorageIngredient> ingredientTable = new TableView<StorageIngredient>(StorageIngredientList);
+	@FXML
+	private TableColumn<StorageIngredient, String> nameList;
+	@FXML
+	private TableColumn<StorageIngredient, Integer> stockList;
+	@FXML
+	private TableColumn<StorageIngredient, String> unitList;
+	
+	
+	@FXML
+	private TextField inputValue;
+	
+	
+	@FXML
+	public void addStock(ActionEvent event) {
+		StorageIngredient storageIngredient = ingredientTable.getSelectionModel().getSelectedItem();
+		
+		int stock = Integer.parseInt(inputValue.getText());
+		upgradeIngredient(storageIngredient, 1, stock);
+	}
+	
+	@FXML
+	public void subtractStock(ActionEvent event) {
+		StorageIngredient storageIngredient = ingredientTable.getSelectionModel().getSelectedItem();
+		int stock = Integer.parseInt(inputValue.getText());
+		
+		if (stock >= storageIngredient.getStock()) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning");
+			alert.setHeaderText("Out of stock");
+			alert.setContentText("The current stock unavailable for operate!");
+			ButtonType buttonTypeOK = new ButtonType("OK");
+			alert.getButtonTypes().setAll(buttonTypeOK);
+			alert.showAndWait();
+		}
+		else {
+			upgradeIngredient(storageIngredient, 0, stock);
+		}
+		
+	}
+	
+	public void upgradeIngredient(StorageIngredient ingredient, int choice, int stock) {
+		int tempStock = ingredient.getStock();
+		
+		if (choice == 0) {
+			ingredient.setStock(tempStock - stock);
+		}
+		else if (choice == 1) {
+			ingredient.setStock(tempStock + stock);
+		}
+		
+		Database database = new Database();
+		database.updateStorgeIngredient(ingredient);
+		
+		Start.getInstance().updateIngredient();
+	}
+	
+	@FXML
+	public void backToMaintainIngredient(ActionEvent event) {
+		Start.getInstance().maintainIngredient();
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) 
+	{
+		// TODO Auto-generated method stub
+		StorageIngredientList.clear();
+		
+		ArrayList<StorageIngredient> ingredientList = new ArrayList<StorageIngredient>();
+		Database db = new Database();
+		ingredientList = db.getStorgeIngredient();
+		
+		for(StorageIngredient ingredient:ingredientList) {
+			StorageIngredientList.add(ingredient);
+		}
+		
+		nameList.setCellValueFactory(new PropertyValueFactory<StorageIngredient, String>("Name"));
+		stockList.setCellValueFactory(new PropertyValueFactory<StorageIngredient, Integer>("Stock"));
+		unitList.setCellValueFactory(new PropertyValueFactory<StorageIngredient, String>("Unit"));
+		
+		ingredientTable.setItems(StorageIngredientList);
+	}
+
+}
