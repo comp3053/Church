@@ -5,16 +5,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1067.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainContrller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainContrller">
    <children>
-      <Pane layoutX="165.0" layoutY="121.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="281.0" layoutY="126.0" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button layoutX="25.0" layoutY="182.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Maintain Recipe" />
-            <Button layoutX="212.0" layoutY="182.0" mnemonicParsing="false" onAction="#toMaintainIngredient" text="Maintain Ingredient" />
-            <Button layoutX="427.0" layoutY="182.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Maintain Equipment" />
-            <Button layoutX="673.0" layoutY="182.0" mnemonicParsing="false" text="Recommend Recipe" />
-            <Button layoutX="897.0" layoutY="182.0" mnemonicParsing="false" text="Brew List" />
+            <Button layoutX="29.0" layoutY="187.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Maintain Recipe" />
+            <Button layoutX="187.0" layoutY="187.0" mnemonicParsing="false" onAction="#toMaintainIngredient" text="Maintain Ingredients" />
+            <Button layoutX="397.0" layoutY="187.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Maintain Equipment" />
+            <Button layoutX="582.0" layoutY="187.0" mnemonicParsing="false" text="Recommend Recipe" />
          </children>
       </Pane>
    </children>

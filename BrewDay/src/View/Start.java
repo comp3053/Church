@@ -2,6 +2,7 @@ package View;
 
 import java.io.Console;
 
+import Tool.InitDataBase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
@@ -74,6 +75,7 @@ public class Start extends Application
 
 	
 	public static void main(String[] args) {
+		InitDataBase.initDB();
         launch(args);
     }
 	

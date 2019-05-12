@@ -5,19 +5,35 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MaintainRecipeController">
+<AnchorPane prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MaintainRecipeController">
    <children>
-      <TitledPane animated="false" layoutX="25.0" layoutY="117.0" prefHeight="400.0" prefWidth="600.0" text="Brew Day" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+      <SplitPane dividerPositions="0.14321608040201006" layoutX="248.0" layoutY="57.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button layoutX="65.0" layoutY="173.0" mnemonicParsing="false" text="Button" />
-                  <Button layoutX="270.0" layoutY="173.0" mnemonicParsing="false" text="Button" />
-                  <Button layoutX="461.0" layoutY="173.0" mnemonicParsing="false" text="Button" />
-                  <Button layoutX="461.0" layoutY="271.0" mnemonicParsing="false" onAction="#toMainPage" text="Back" />
+                  <SplitPane dividerPositions="0.8592493297587132" layoutX="213.0" layoutY="-53.0" prefHeight="53.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="17.0" text="Brew Day" />
+                           </children></AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Button layoutY="1.0" mnemonicParsing="false" onAction="#toMainPage" prefHeight="51.0" prefWidth="100.0" text="Back" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
                </children>
             </AnchorPane>
-        </content>
-      </TitledPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Button layoutX="330.0" layoutY="89.0" mnemonicParsing="false" text="Add Recipe" />
+                  <Button layoutX="324.0" layoutY="155.0" mnemonicParsing="false" text="Delete Recipe" />
+                  <Button layoutX="322.0" layoutY="223.0" mnemonicParsing="false" text="Update Recipe" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </children>
 </AnchorPane>

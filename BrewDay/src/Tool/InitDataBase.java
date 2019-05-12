@@ -1,5 +1,6 @@
 package Tool;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,6 +9,21 @@ import java.sql.Statement;
 public class InitDataBase {
 	
 	public static void initDB() {
+		File dbFile = new File("system.db");
+		
+		System.out.println("Checking database file...");
+		
+		if (dbFile.exists() == false) {
+			System.out.println("Database file not found, creating...");
+			createDB();
+		}
+		
+		else {
+			System.out.println("Database file exsits, starting system");
+		}
+	}
+	
+	public static void createDB() {
 		
 		Connection connection = null;
 		

@@ -10,8 +10,8 @@ import javafx.fxml.Initializable;
 public class maintainEquipmentController implements Initializable{
 	
 	@FXML
-	public void toMaintainRecipe(ActionEvent event) {
-		Start.getInstance().mainPage();;
+	public void toMainPage(ActionEvent event) {
+		Start.getInstance().mainPage();
 	}
 	
 	@Override
