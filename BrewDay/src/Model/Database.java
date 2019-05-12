@@ -395,6 +395,54 @@ public class Database {
 	
 	
 	//***********************************Ingredient************************************************
+	
+	
+	public boolean updateStorgeIngredient(StorageIngredient storageIngredient) {
+		String sql = "UPDATE 'storage_ingredient' SET stock = ? WHERE name = ?;";
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setInt(1, storageIngredient.getStock());
+			pStatement.setString(2, storageIngredient.getName());
+			
+			pStatement.executeUpdate();
+			
+			pStatement.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
+	
+	
+	public ArrayList<StorageIngredient> getStorgeIngredient() {
+		String sql = "SELECT * FROM 'storage_ingredient';";
+		
+		ArrayList<StorageIngredient> ingredientList = new ArrayList<StorageIngredient>();
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			ResultSet rSet = pStatement.executeQuery();
+			
+			while (rSet.next()) {
+				StorageIngredient tempIngredient = new StorageIngredient(rSet.getString(3), rSet.getInt(2), rSet.getString(4));
+				ingredientList.add(tempIngredient);
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return ingredientList;
+		
+	}
+	
+	
+	
 	public boolean addRecipe_Ingredient(RecipeIngredient recipeIngredient, String recipeID) {
 		
 		if(checkStorageIngredientExist(recipeIngredient.getName()))

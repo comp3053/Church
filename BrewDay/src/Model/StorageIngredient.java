@@ -9,8 +9,17 @@ public class StorageIngredient extends Ingredient {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public StorageIngredient(String name, int stock, String unit) {
+		super(name, unit);
+		this.stock = stock;
+	}
+	
 	public int getStock() {
 		return this.stock;
+	}
+	
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	
 	public int getStockFromDB(String ingredientName) {
@@ -27,5 +36,7 @@ public class StorageIngredient extends Ingredient {
 		Database db = new Database();
 		return db.subtractStock(name, amount);
 	}
+	
+	
 
 }

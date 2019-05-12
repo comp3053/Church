@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UpdateIngredientController">
+   <children>
+      <SplitPane dividerPositions="0.14824120603015076" layoutX="92.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="6.0" layoutY="16.0" text="Update Ingredient">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView fx:id="ingredientTable" layoutX="11.0" layoutY="10.0" prefHeight="309.0" prefWidth="404.0">
+                    <columns>
+                      <TableColumn fx:id="nameList" prefWidth="184.0" text="Name" />
+                      <TableColumn fx:id="stockList" prefWidth="115.0" text="Stock" />
+                        <TableColumn fx:id="unitList" prefWidth="103.0" text="Unit" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="inputValue" layoutX="468.0" layoutY="118.0" prefHeight="27.0" prefWidth="210.0" />
+                  <Button layoutX="540.0" layoutY="271.0" mnemonicParsing="false" onAction="#backToMaintainIngredient" prefHeight="27.0" prefWidth="69.0" text="Back" />
+                  <Button layoutX="468.0" layoutY="145.0" mnemonicParsing="false" onAction="#addStock" prefHeight="27.0" prefWidth="106.0" text="Add" />
+                  <Button layoutX="574.0" layoutY="145.0" mnemonicParsing="false" onAction="#subtractStock" prefHeight="27.0" prefWidth="106.0" text="Subtract" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
