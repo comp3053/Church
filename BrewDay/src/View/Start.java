@@ -54,7 +54,7 @@ public class Start extends Application
 	{
 		try 
 		{
-			replaceSceneContent("maintainRecipe.fxml");
+			replaceSceneContent("MaintainRecipe.fxml");
 		} 
 		catch (Exception e) 
 		{
@@ -65,7 +65,30 @@ public class Start extends Application
 	public void maintainEquipment(){
 		try 
 		{
-			replaceSceneContent("maintainEquipment.fxml");
+			replaceSceneContent("MaintainEquipment.fxml");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
+	
+	
+	public void maintainIngredient(){
+		try 
+		{
+			replaceSceneContent("MaintainIngredient.fxml");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
+	
+	public void addIngredient(){
+		try 
+		{
+			replaceSceneContent("AddIngredient.fxml");
 		} 
 		catch (Exception e) 
 		{

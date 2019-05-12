@@ -22,8 +22,10 @@ public class MainContrller implements Initializable {
 	
 	@FXML
 	public void toMaintainIngredient(ActionEvent event) {
-		Start.getInstance().maintainEquipment();
+		Start.getInstance().maintainIngredient();
 	}
+	
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 

@@ -24,37 +24,45 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
-	public boolean addStorageIngredient(StorageIngredient storageIngredient) {
-		
-		String sql = "INSERT INTO 'storage_ingredient' VALUES(?, ?, ?, ?);";
-		
-		int status = 0;
-		
+	
+	
+	public int countRow(ResultSet rSet) {
+		int row = 0;
 		try {
-			PreparedStatement pStatement = this.connection.prepareStatement(sql);
-			
-			pStatement.setInt(1, Integer.parseInt(storageIngredient.getID()));
-			pStatement.setInt(2, storageIngredient.getStock());
-			pStatement.setString(3, storageIngredient.getName());
-			pStatement.setString(4, storageIngredient.getUnit());
-			
-			status = pStatement.executeUpdate();
-			
-			pStatement.close();
-			this.connection.close();
-			
-			
+			rSet.afterLast();
+			row = rSet.getRow();
+			rSet.beforeFirst();
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-
-		if (status == 0) {
+		
+		return row;
+	}
+	
+	
+	public boolean addStorageIngredient(String ingredientName, int value, String unit) {
+		
+		String sql = "INSERT INTO 'storage_ingredient' VALUES (null, ?, ?, ?);";
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			
+			pStatement.setInt(1, value);
+			pStatement.setString(2, ingredientName);
+			pStatement.setString(3, unit);
+			
+			pStatement.executeUpdate();
+			
+			pStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
 			return false;
 		}
-		else {
-			return true;
-		}
+		
+		return true;
 	}
 
 	public boolean addBrew(Brew brew) {
@@ -396,7 +404,7 @@ public class Database {
 										         recipeIngredient.getValue());
 		else {
 			StorageIngredient si = new StorageIngredient(recipeIngredient.getName(), recipeIngredient.getUnit());
-			addStorageIngredient(si);
+			//addStorageIngredient(si);
 		}
 		return addRecipe_Ingredient_Relation(Integer.parseInt(recipeID),
 				                             Integer.parseInt(recipeIngredient.getID()), 
