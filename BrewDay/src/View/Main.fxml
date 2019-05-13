@@ -12,7 +12,7 @@
             <Button layoutX="29.0" layoutY="187.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Maintain Recipe" />
             <Button layoutX="196.0" layoutY="187.0" mnemonicParsing="false" onAction="#toMaintainIngredient" text="Maintain Ingredients" />
             <Button layoutX="402.0" layoutY="187.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Maintain Equipment" />
-            <Button layoutX="582.0" layoutY="187.0" mnemonicParsing="false" text="Recommend Recipe" />
+            <Button layoutX="582.0" layoutY="187.0" mnemonicParsing="false" onAction="#toRecommendRecipe" text="Recommend Recipe" />
          </children>
       </Pane>
    </children>

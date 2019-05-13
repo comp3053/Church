@@ -25,7 +25,10 @@ public class MainContrller implements Initializable {
 		Start.getInstance().maintainIngredient();
 	}
 	
-	
+	@FXML
+	public void toRecommendRecipe(ActionEvent event) {
+		Start.getInstance().recommendRecipe();
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 

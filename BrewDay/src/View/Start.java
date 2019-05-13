@@ -129,6 +129,17 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
+	
+	public void recommendRecipe(){
+		try 
+		{
+			replaceSceneContent("RecommendRecipe.fxml");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
 
 	
 	public static void main(String[] args) {

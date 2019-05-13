@@ -103,7 +103,7 @@ public class Recipe {
 		db.updateRecipe(r);
 	}
 	
-	public ArrayList<Recipe> recommendRecipe(int batchSize) {
+	public static ArrayList<Recipe> recommendRecipe(int batchSize) {
 		Database db = new Database();
 		ArrayList<Recipe> recommendList = new ArrayList<Recipe>();
 		ArrayList<Equipment> eList = db.getAvailableEquipments(batchSize);
