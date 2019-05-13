@@ -29,7 +29,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <Button layoutX="330.0" layoutY="89.0" mnemonicParsing="false" onAction="#toAddRecipe" text="Add Recipe" />
-                  <Button layoutX="324.0" layoutY="155.0" mnemonicParsing="false" text="Delete Recipe" />
+                  <Button layoutX="324.0" layoutY="155.0" mnemonicParsing="false" onAction="#toDeleteREcipe" text="Delete Recipe" />
                   <Button layoutX="322.0" layoutY="223.0" mnemonicParsing="false" text="Update Recipe" />
                </children>
             </AnchorPane>

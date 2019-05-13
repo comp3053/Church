@@ -31,6 +31,13 @@ public class Recipe {
 		
 	}
 	
+	public Recipe(String id, int literOfBeer, String name, String description) {
+		this.recipe_ID = id;
+		this.literOfbeer = literOfBeer;
+		this.name = name;
+		this.description = description;
+	}
+	
 	public String getID() {
 		return recipe_ID;
 	}

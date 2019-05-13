@@ -20,6 +20,11 @@ public class MaintainRecipeController implements Initializable{
 		Start.getInstance().addRecipe();
 	}
 	
+	@FXML
+	public void toDeleteREcipe(ActionEvent event) {
+		Start.getInstance().deleteRecipe();
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{

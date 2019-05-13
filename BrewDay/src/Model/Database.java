@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import sun.net.www.content.image.png;
+
 
 public class Database {
 	
@@ -197,6 +199,30 @@ public class Database {
 
 	}
 	
+	
+	public ArrayList<Recipe> getRecipeList(){
+		String sql = "SELECT * FROM 'recipe';";
+		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			ResultSet rSet = pStatement.executeQuery();
+			
+			while (rSet.next()) {
+				Recipe tempRecipe = new Recipe(Integer.toString(rSet.getInt(1)), rSet.getInt(3), rSet.getString(2), rSet.getString(4));
+				recipeList.add(tempRecipe);
+			}
+			
+			pStatement.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return recipeList;
+	}
+	
+	
 	public Brew getBrew(String id) {
 		//use id to return a brew
 		String sql = "SELECT * FROM 'brew' WHERE brew_id = ?;";
@@ -274,6 +300,30 @@ public class Database {
 	//***********************************Brew************************************************
 	
 	//***********************************Recipe************************************************
+	public void deleteRecipe(Recipe recipe) {
+		String sql = "DELETE FROM 'recipe' WHERE recipe_id = ?;";
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setInt(1, Integer.parseInt(recipe.getID()));
+			
+			pStatement.executeUpdate();
+			
+			sql = "DELETE FROM 'recipe_recipeIngredient' WHERE recipe_id = ?;";
+			pStatement = this.connection.prepareStatement(sql);
+			pStatement.setString(1, recipe.getID());
+			
+			pStatement.executeUpdate();
+			
+			pStatement.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	public void updateRecipe(Recipe recipe) {
 		//check the content in the recipe if the input is null, skip, otherwise modify the content in the database
 		if (recipe != null) {

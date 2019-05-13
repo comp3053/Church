@@ -118,6 +118,17 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
+	
+	public void deleteRecipe(){
+		try 
+		{
+			replaceSceneContent("DeleteRecipe.fxml");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
 
 	
 	public static void main(String[] args) {
