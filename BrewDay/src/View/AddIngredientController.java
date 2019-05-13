@@ -9,7 +9,10 @@ import Model.StorageIngredient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class AddIngredientController implements Initializable{
 	
@@ -28,14 +31,52 @@ public class AddIngredientController implements Initializable{
 	
 	@FXML
 	public void addIngredient(ActionEvent event) {
-		String name = ingredientName.getText();
-		String value =  ingredientValue.getText();
-		String unit = ingredientUnit.getText();
+		String name = null;
+		String unit = null;
+		int value = -1;
 		
-		Database db = new Database();
-		db.addStorageIngredient(name, Integer.parseInt(value), unit);
+		int status = 0;
 		
-		Start.getInstance().maintainIngredient();
+		try {
+			name = ingredientName.getText();
+			value =  Integer.parseInt(ingredientValue.getText());
+			unit = ingredientUnit.getText();
+			
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+			status = 1;
+			
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning");
+			alert.setHeaderText("Input Error");
+			alert.setContentText("The cunrrent input is unavailable!");
+			ButtonType buttonTypeOK = new ButtonType("OK");
+			alert.getButtonTypes().setAll(buttonTypeOK);
+			alert.showAndWait();
+			
+			Start.getInstance().addIngredient();
+		}
+		
+		if(name == null || unit == null || value == -1) {
+			status = 1;
+			
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning");
+			alert.setHeaderText("Not input");
+			alert.setContentText("No enough input in TextFeild");
+			ButtonType buttonTypeOK = new ButtonType("OK");
+			alert.getButtonTypes().setAll(buttonTypeOK);
+			alert.showAndWait();
+			
+			Start.getInstance().addIngredient();
+		}
+		
+		if (status == 0) {
+			Database db = new Database();
+			db.addStorageIngredient(name, value, unit);
+			
+			Start.getInstance().maintainIngredient();
+		}
 	}
 	
 	
