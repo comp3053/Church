@@ -14,6 +14,11 @@ public class StorageIngredient extends Ingredient {
 		this.stock = stock;
 	}
 	
+	public StorageIngredient(String id, String name, int stock, String unit) {
+		super(id, name, unit);
+		this.stock = stock;
+	}
+	
 	public int getStock() {
 		return this.stock;
 	}

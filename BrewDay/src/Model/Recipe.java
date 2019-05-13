@@ -7,7 +7,7 @@ public class Recipe {
 	private String recipe_ID;
 	private int literOfbeer;
 	private String name;
-	ArrayList<RecipeIngredient> ingredients;
+	private ArrayList<RecipeIngredient> ingredients;
 	private String description;
 	private boolean isAvaliable;
 	
@@ -25,7 +25,7 @@ public class Recipe {
 		recipe_ID = iD;
 		this.literOfbeer = literOfbeer;
 		this.name = name;
-		this.ingredients = new ArrayList<RecipeIngredient>();
+		this.ingredients = ingredient;
 		this.description = description;
 		this.isAvaliable = true;
 		

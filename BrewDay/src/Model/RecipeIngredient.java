@@ -10,6 +10,12 @@ public class RecipeIngredient extends Ingredient {
 		this.value = value;
 	}
 	
+	public RecipeIngredient(String id, String name, String unit, int value) {
+		// TODO Auto-generated constructor stub
+		super(id, name, unit);
+		this.value = value;
+	}
+	
 	public int getValue() {
 		return value;
 	}

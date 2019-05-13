@@ -71,6 +71,7 @@ public class Database {
 		
 		return true;
 	}
+	
 
 	public void addEquipment(Equipment equipment) {
 		try {
@@ -116,20 +117,51 @@ public class Database {
 		}
 	}
 
-	public void addRecipe(Recipe recipe) {
-		String sql = "INSERT INTO 'recipe' VALUES(?, ?, ?, ?);";
+	public void addRecipeToDB(Recipe recipe) {
+		String sql = "INSERT INTO 'recipe' VALUES(null, ?, ?, ?);";
 		
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
-			pStatement.setInt(1, Integer.parseInt(recipe.getID()));
-			pStatement.setString(2, recipe.getName());
-			pStatement.setInt(3, recipe.getLiterOfbeer());
-			pStatement.setString(4, recipe.getDescription());
+			pStatement.setString(1, recipe.getName());
+			pStatement.setInt(2, recipe.getLiterOfbeer());
+			pStatement.setString(3, recipe.getDescription());
 			
 			pStatement.executeUpdate();
+			//pStatement.close();
+			
+			sql = "SELECT recipe_id FROM 'recipe' WHERE recipe_name = ?;";
+			
+			pStatement = this.connection.prepareStatement(sql);
+			pStatement.setString(1, recipe.getName());
+			
+			ResultSet rSet = pStatement.executeQuery();
+			
+			
+			int recipe_id = 0;
+			while (rSet.next()) {
+				recipe_id = rSet.getInt(1);
+			}
+			
+			//System.out.println(recipe_id);
+			
+			sql = "INSERT INTO 'recipe_recipeIngredient' VALUES (null, ?, ?, ?);";
+			
+			ArrayList<RecipeIngredient> recipeIngredientList = new ArrayList<RecipeIngredient>();
+			recipeIngredientList = recipe.getList();
+			
+			
+			for(RecipeIngredient rIngredient: recipeIngredientList) {
+				pStatement = this.connection.prepareStatement(sql);
+				pStatement.setString(1, Integer.toString(recipe_id));
+				pStatement.setString(2, rIngredient.getID());
+				pStatement.setInt(3, rIngredient.getValue());
+				
+				pStatement.executeUpdate();
+				
+			}
 			
 			pStatement.close();
-			this.connection.close();
+
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -418,7 +450,7 @@ public class Database {
 	}
 	
 	
-	public ArrayList<StorageIngredient> getStorgeIngredient() {
+	public ArrayList<StorageIngredient> getStorgeIngredientList() {
 		String sql = "SELECT * FROM 'storage_ingredient';";
 		
 		ArrayList<StorageIngredient> ingredientList = new ArrayList<StorageIngredient>();
@@ -428,7 +460,7 @@ public class Database {
 			ResultSet rSet = pStatement.executeQuery();
 			
 			while (rSet.next()) {
-				StorageIngredient tempIngredient = new StorageIngredient(rSet.getString(3), rSet.getInt(2), rSet.getString(4));
+				StorageIngredient tempIngredient = new StorageIngredient(Integer.toString(rSet.getInt(1)), rSet.getString(3), rSet.getInt(2), rSet.getString(4));
 				ingredientList.add(tempIngredient);
 			}
 			

@@ -101,7 +101,7 @@ public class UpdateIngredientController implements Initializable{
 		
 		ArrayList<StorageIngredient> ingredientList = new ArrayList<StorageIngredient>();
 		Database db = new Database();
-		ingredientList = db.getStorgeIngredient();
+		ingredientList = db.getStorgeIngredientList();
 		
 		for(StorageIngredient ingredient:ingredientList) {
 			StorageIngredientList.add(ingredient);

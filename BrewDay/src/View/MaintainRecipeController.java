@@ -15,6 +15,11 @@ public class MaintainRecipeController implements Initializable{
 		Start.getInstance().mainPage();
 	}
 	
+	@FXML
+	public void toAddRecipe(ActionEvent event) {
+		Start.getInstance().addRecipe();
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{

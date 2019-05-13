@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddRecipeController">
+   <children>
+      <SplitPane dividerPositions="0.1407035175879397" layoutX="345.0" layoutY="168.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="15.0" text="Brew Day">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.12797619047619047" layoutX="294.0" layoutY="84.0" orientation="VERTICAL" prefHeight="338.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="9.0" text="RECIPE NAME:">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Input_recipeName" layoutX="136.0" layoutY="7.0" prefHeight="27.0" prefWidth="600.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="160.0" layoutY="6.0" prefHeight="17.0" prefWidth="88.0" text="Liter of Beer:" />
+                              <TextField fx:id="Input_liftOfBeer" layoutX="248.0" layoutY="1.0" prefHeight="27.0" prefWidth="223.0" />
+                              <Button layoutX="254.0" layoutY="248.0" mnemonicParsing="false" onAction="#addRecipeTodb" text="Add New Recipe" />
+                              <Button layoutX="410.0" layoutY="249.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Cancel" />
+                              <TextField fx:id="inputValue" layoutX="277.0" layoutY="87.0" />
+                              <Button layoutX="334.0" layoutY="131.0" mnemonicParsing="false" onAction="#addIngredientToRecipe" text="==&gt;&gt;" />
+                              <Label layoutX="77.0" layoutY="34.0" text="StorgeIngredient List" />
+                              <Label layoutX="535.0" layoutY="34.0" text="RecipeIngredient List" />
+                              <TableView fx:id="RecipeIngredientTable" layoutX="489.0" layoutY="62.0" prefHeight="200.0" prefWidth="238.0">
+                                <columns>
+                                  <TableColumn fx:id="RecipeIngredientName" prefWidth="130.0" text="Name" />
+                                  <TableColumn fx:id="RecipeIngredientValue" prefWidth="58.0" text="Value" />
+                                    <TableColumn fx:id="RecipeIngredientUnit" prefWidth="49.0" text="Unit" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="472.0" layoutY="6.0" text="L" />
+                              <TableView fx:id="IngredientList" layoutX="36.0" layoutY="63.0" prefHeight="200.0" prefWidth="211.0">
+                                <columns>
+                                  <TableColumn fx:id="IngredientName" prefWidth="124.0" text="Name" />
+                                  <TableColumn fx:id="IngredientStock" prefWidth="44.0" text="Value" />
+                                    <TableColumn fx:id="IngredientUnit" prefWidth="41.0" text="Unit" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

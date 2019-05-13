@@ -10,6 +10,13 @@ public class Ingredient {
 		this.name = name;
 		this.unit = unit;
 	}
+	
+	public Ingredient(String id, String name, String unit) {
+		// TODO Auto-generated constructor stub
+		this.name = name;
+		this.unit = unit;
+		this.ID = id;
+	}
 
 	public String getID() {
 		return ID;
