@@ -45,7 +45,6 @@ public class RecommendRecipeController implements Initializable{
 		
 		for(Recipe tempR:recipeArrayList) {
 			recipeList.add(getRecipeText(tempR));
-			System.out.println(getRecipeText(tempR));
 		}
 		
 		recipeListView.setItems(recipeList);

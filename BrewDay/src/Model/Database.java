@@ -462,7 +462,7 @@ public class Database {
 			
 			pStatement.setInt(1,batchSize);
 			
-			ResultSet rs = pStatement.executeQuery(sql);
+			ResultSet rs = pStatement.executeQuery();
 			while (rs.next()) {
 				Equipment tempEquipment = new Equipment(rs.getFloat(1), rs.getString(2));
 				equipmentsList.add(tempEquipment);
