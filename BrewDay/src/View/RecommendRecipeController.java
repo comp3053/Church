@@ -11,8 +11,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class RecommendRecipeController implements Initializable{
 	
@@ -37,10 +40,24 @@ public class RecommendRecipeController implements Initializable{
 	public void recommendRecipe(ActionEvent event) {
 		
 		recipeList.clear();
+		int batchSize = 0;
 		
-		int batchSize = Integer.parseInt(inputBatchSizeBlank.getText());
+		try {
+			batchSize = Integer.parseInt(inputBatchSizeBlank.getText());
+		} catch (Exception e) {
+			// TODO: handle exception
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning");
+			alert.setHeaderText("Input Error");
+			alert.setContentText("Please input number");
+			ButtonType buttonTypeOK = new ButtonType("OK");
+			alert.getButtonTypes().setAll(buttonTypeOK);
+			alert.showAndWait();
+			
+			Start.getInstance().recommendRecipe();
+		}
+		
 		ArrayList<Recipe> recipeArrayList = new ArrayList<Recipe>();
-		
 		recipeArrayList = Recipe.recommendRecipe(batchSize);
 		
 		for(Recipe tempR:recipeArrayList) {
