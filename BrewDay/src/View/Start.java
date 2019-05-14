@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Start extends Application
@@ -18,6 +19,7 @@ public class Start extends Application
 	public void start(Stage primaryStage) throws Exception 
 	{
 		stage = primaryStage;
+		this.stage.getIcons().add(new Image("file:resources/images/beer.png"));
 		this.stage.setTitle("Brew Day");
 		mainPage();
         stage.show();
