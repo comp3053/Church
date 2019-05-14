@@ -41,11 +41,26 @@ public class AddIngredientController implements Initializable{
 			name = ingredientName.getText();
 			value =  Integer.parseInt(ingredientValue.getText());
 			unit = ingredientUnit.getText();
+			System.out.println(name);
 			
 		} catch (NumberFormatException e) {
 			// TODO: handle exception
 			status = 1;
 			
+			if(name == null || unit == null || value == -1) {
+				status = 1;
+				
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Warning");
+				alert.setHeaderText("Not input");
+				alert.setContentText("No enough input in TextFeild");
+				ButtonType buttonTypeOK = new ButtonType("OK");
+				alert.getButtonTypes().setAll(buttonTypeOK);
+				alert.showAndWait();
+				
+				Start.getInstance().addIngredient();
+			}
+			else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
 			alert.setHeaderText("Input Error");
@@ -55,25 +70,22 @@ public class AddIngredientController implements Initializable{
 			alert.showAndWait();
 			
 			Start.getInstance().addIngredient();
-		}
 		
-		if(name == null || unit == null || value == -1) {
-			status = 1;
-			
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Warning");
-			alert.setHeaderText("Not input");
-			alert.setContentText("No enough input in TextFeild");
-			ButtonType buttonTypeOK = new ButtonType("OK");
-			alert.getButtonTypes().setAll(buttonTypeOK);
-			alert.showAndWait();
-			
-			Start.getInstance().addIngredient();
+			}
 		}
-		
 		if (status == 0) {
 			Database db = new Database();
-			db.addStorageIngredient(name, value, unit);
+			if(db.addStorageIngredient(name, value, unit) == 0) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Warning");
+				alert.setHeaderText("Input Error");
+				alert.setContentText("The ingredient exists!");
+				ButtonType buttonTypeOK = new ButtonType("OK");
+				alert.getButtonTypes().setAll(buttonTypeOK);
+				alert.showAndWait();
+				
+				Start.getInstance().addIngredient();
+			}
 			
 			Start.getInstance().maintainIngredient();
 		}

@@ -49,7 +49,7 @@ public class UpdateIngredientController implements Initializable{
 		StorageIngredient storageIngredient = ingredientTable.getSelectionModel().getSelectedItem();
 		
 		int stock = Integer.parseInt(inputValue.getText());
-		upgradeIngredient(storageIngredient, 1, stock);
+		updateIngredient(storageIngredient, 1, stock);
 	}
 	
 	@FXML
@@ -57,26 +57,32 @@ public class UpdateIngredientController implements Initializable{
 		StorageIngredient storageIngredient = ingredientTable.getSelectionModel().getSelectedItem();
 		int stock = Integer.parseInt(inputValue.getText());
 		
-		if (stock >= storageIngredient.getStock()) {
+		if (stock > storageIngredient.getStock()) {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
 			alert.setHeaderText("Out of stock");
-			alert.setContentText("The current stock unavailable for operate!");
-			ButtonType buttonTypeOK = new ButtonType("OK");
+			alert.setContentText("The current stock is unavailable for the operation!");
+			ButtonType buttonTypeOK = new ButtonType("Back");
 			alert.getButtonTypes().setAll(buttonTypeOK);
 			alert.showAndWait();
 		}
 		else {
-			upgradeIngredient(storageIngredient, 0, stock);
+			updateIngredient(storageIngredient, 0, stock); //subtract
 		}
 		
 	}
 	
-	public void upgradeIngredient(StorageIngredient ingredient, int choice, int stock) {
+	public void updateIngredient(StorageIngredient ingredient, int choice, int stock) {
 		int tempStock = ingredient.getStock();
-		
+		//choice 0:  subtract 
+		//choice 1:  add
 		if (choice == 0) {
-			ingredient.setStock(tempStock - stock);
+			if(tempStock - stock == 0) {
+				ingredient.setStock(0);
+			}
+			else {
+				ingredient.setStock(tempStock - stock);
+			}
 		}
 		else if (choice == 1) {
 			ingredient.setStock(tempStock + stock);

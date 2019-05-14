@@ -45,14 +45,15 @@ public class Database {
 
 	public int addStorageIngredient(String ingredientName, int value, String unit) {
 
-		String sql = "SEARCH * FROM 'storage_ingredient' WHERE name = ?;";
+		String sql = "SELECT * FROM 'storage_ingredient' WHERE 'name' = ?;";
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
 			
 			pStatement.setString(1, ingredientName);
 			
 			ResultSet rs = pStatement.executeQuery();
-			if(!rs.isBeforeFirst()) {
+			//System.out.println( rs.next());
+			if( rs.next() ) {
 				//result is empty, add a new ingredient
 				sql = "INSERT INTO 'storage_ingredient' VALUES (null, ?, ?, ?);";
 				try {
@@ -72,6 +73,7 @@ public class Database {
 				}
 
 			} else {
+				//return 0, throw out a warning/
 				//warning: the ingredient exists
 				return 0;
 			}
@@ -94,7 +96,6 @@ public class Database {
 
 		return true;
 	}
-
 
 	public void addEquipment(Equipment equipment) {
 		try {
@@ -220,7 +221,6 @@ public class Database {
 
 	}
 
-
 	public ArrayList<Recipe> getRecipeList(){
 		String sql = "SELECT * FROM 'recipe';";
 		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
@@ -243,27 +243,6 @@ public class Database {
 		return recipeList;
 	}
 
-
-	public Brew getBrew(String id) {
-		//use id to return a brew
-		String sql = "SELECT * FROM 'brew' WHERE brew_id = ?;";
-		Brew result = null;
-
-		try {
-			PreparedStatement pStatement = this.connection.prepareStatement(sql);
-			pStatement.setInt(1, Integer.parseInt(id));
-
-			ResultSet rSet = pStatement.executeQuery();
-			while (rSet.next()) {
-
-			}
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-
-		return null;
-	}
 
 	public Note getNote(String id) {
 		//use id to return a note
@@ -316,10 +295,50 @@ public class Database {
 
 	public StorageIngredient getStorageIngredient(String id) {
 		//use id to return a storageIngredient
-		return null;
+		String sql = "SELECT * FROM 'storage_ingredient' WHERE ingredient_id = ?;";
+		StorageIngredient result = null;
+
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setInt(1, Integer.parseInt(id));
+
+			ResultSet rSet = pStatement.executeQuery();
+
+			while (rSet.next()) {
+				StorageIngredient siTemp = new StorageIngredient(Integer.toString(rSet.getInt(1)), rSet.getString(3), rSet.getInt(2), rSet.getString(4));
+
+				result = siTemp;
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		return result;
+
 	}
 	//***********************************Brew************************************************
+	public Brew getBrew(String id) {
+		//use id to return a brew
+		String sql = "SELECT * FROM 'brew' WHERE brew_id = ?;";
+		Brew result = null;
 
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setInt(1, Integer.parseInt(id));
+
+			ResultSet rSet = pStatement.executeQuery();
+			while (rSet.next()) {
+
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
 	//***********************************Recipe************************************************
 	public void deleteRecipe(Recipe recipe) {
 		String sql = "DELETE FROM 'recipe' WHERE recipe_id = ?;";
@@ -342,8 +361,6 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
-
-
 
 	public void updateRecipe(Recipe recipe) {
 		//check the content in the recipe if the input is null, skip, otherwise modify the content in the database
@@ -499,7 +516,6 @@ public class Database {
 
 	//***********************************Ingredient************************************************
 
-
 	public boolean updateStorgeIngredient(StorageIngredient storageIngredient) {
 		String sql = "UPDATE 'storage_ingredient' SET stock = ? WHERE name = ?;";
 
@@ -516,10 +532,8 @@ public class Database {
 			e.printStackTrace();
 			return false;
 		}
-
 		return true;
 	}
-
 
 	public ArrayList<StorageIngredient> getStorgeIngredientList() {
 		String sql = "SELECT * FROM 'storage_ingredient';";
@@ -549,13 +563,15 @@ public class Database {
 	public boolean addRecipe_Ingredient(RecipeIngredient recipeIngredient, String recipeID) {
 
 		if(checkStorageIngredientExist(recipeIngredient.getName()))
+			//the ingredient exists in the storage ingredient table
 			//add a row into recipe_ingredient table
 			return addRecipe_Ingredient_Relation(Integer.parseInt(recipeID),
 					Integer.parseInt(recipeIngredient.getID()), 
 					recipeIngredient.getValue());
 		else {
+			//new a storage ingredient, with 0 stock
 			StorageIngredient si = new StorageIngredient(recipeIngredient.getName(), recipeIngredient.getUnit());
-			//addStorageIngredient(si);
+			addStorageIngredient(si.getName(), 0, si.getUnit());
 		}
 		return addRecipe_Ingredient_Relation(Integer.parseInt(recipeID),
 				Integer.parseInt(recipeIngredient.getID()), 
@@ -590,7 +606,27 @@ public class Database {
 
 	public boolean checkStorageIngredientExist(String ingredientName) {
 		//check whether the ingredient exist
-		return true;
+		
+		String sql = "SELECT * FROM 'storage_ingredient' WHERE 'name' = ?;";
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			
+			pStatement.setString(1, ingredientName);
+			
+			ResultSet rs = pStatement.executeQuery();
+			
+			//result is empty, the ingredient does not exist
+			if(rs.isBeforeFirst())
+				return false;
+			//the ingredient exist
+			else return true;
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 	public int getIngredientStock(String ingredientName) {
@@ -599,17 +635,6 @@ public class Database {
 		return 0;
 	}
 
-	public boolean addStock(String name, int amount) {
-		//use the name as key to find the value 
-		//add the value to the amount in the database
-		return true;
-	}
-
-	public boolean subtractStock(String name, int amount) {
-		//use the name as key to find the value
-		// subtract the value from the amount in the database
-		return true;
-	}
 
 	public boolean updateRecipeIngredientValue(String ingredientName, int value) {
 		return true;
