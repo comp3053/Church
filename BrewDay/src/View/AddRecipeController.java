@@ -14,10 +14,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sun.security.pkcs11.Secmod.DbMode;
 
@@ -28,8 +31,6 @@ public class AddRecipeController implements Initializable {
 	private TableView<StorageIngredient> IngredientList = new TableView<StorageIngredient>(StorageIngredientList);
 	@FXML
 	private TableColumn<StorageIngredient, String> IngredientName;
-	@FXML
-	private TableColumn<StorageIngredient, Integer> IngredientStock;
 	@FXML
 	private TableColumn<StorageIngredient, String> IngredientUnit;
 	
@@ -74,11 +75,24 @@ public class AddRecipeController implements Initializable {
 	
 	@FXML
 	public void addIngredientToRecipe(ActionEvent event) {
-		int value = Integer.parseInt(inputValue.getText());
-		StorageIngredient choosenIngredient = IngredientList.getSelectionModel().getSelectedItem();
-		
-		RecipeIngredient tempIngredient = new RecipeIngredient(choosenIngredient.getID(), choosenIngredient.getName(), choosenIngredient.getUnit(), value);
-		RecipeIngredientList.add(tempIngredient);
+		try {
+			int value = Integer.parseInt(inputValue.getText());
+			System.out.println(value);
+			StorageIngredient choosenIngredient = IngredientList.getSelectionModel().getSelectedItem();
+			
+			RecipeIngredient tempIngredient = new RecipeIngredient(choosenIngredient.getID(), choosenIngredient.getName(), choosenIngredient.getUnit(), value);
+			RecipeIngredientList.add(tempIngredient);
+		}
+		catch(RuntimeException e) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning");
+			alert.setHeaderText("Wrong Input");
+			alert.setContentText("Please input the information for the recipe!");
+			ButtonType buttonTypeOK = new ButtonType("Back");
+			alert.getButtonTypes().setAll(buttonTypeOK);
+			alert.showAndWait();
+		}
+
 		
 		RecipeIngredientName.setCellValueFactory(new PropertyValueFactory<RecipeIngredient, String>("Name"));
 		RecipeIngredientValue.setCellValueFactory(new PropertyValueFactory<RecipeIngredient, Integer>("Value"));
@@ -86,6 +100,16 @@ public class AddRecipeController implements Initializable {
 		RecipeIngredientTable.setItems(RecipeIngredientList);
 		
 		inputValue.setText("");
+		
+	}
+	
+	@FXML
+	public void removeIngredientToRecipe(ActionEvent event) {
+		System.out.println("remove");
+		RecipeIngredient choosenIngredient = RecipeIngredientTable.getSelectionModel().getSelectedItem();
+		//RecipeIngredient tmpIngre = new RecipeIngredient(choosenIngredient.getID(), choosenIngredient.getName(), choosenIngredient.getUnit(), 0);
+		RecipeIngredientList.remove(choosenIngredient);
+		RecipeIngredientTable.setItems(RecipeIngredientList);
 		
 	}
 	
@@ -111,7 +135,6 @@ public class AddRecipeController implements Initializable {
 		}
 		
 		IngredientName.setCellValueFactory(new PropertyValueFactory<StorageIngredient, String>("Name"));
-		IngredientStock.setCellValueFactory(new PropertyValueFactory<StorageIngredient, Integer>("Stock"));
 		IngredientUnit.setCellValueFactory(new PropertyValueFactory<StorageIngredient, String>("Unit"));
 		IngredientList.setItems(StorageIngredientList);
 		

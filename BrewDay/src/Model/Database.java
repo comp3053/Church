@@ -27,7 +27,6 @@ public class Database {
 		}
 	}
 
-
 	public int countRow(ResultSet rSet) {
 		int row = 0;
 		try {
@@ -41,7 +40,6 @@ public class Database {
 
 		return row;
 	}
-
 
 	public int addStorageIngredient(String ingredientName, int value, String unit) {
 
@@ -86,7 +84,6 @@ public class Database {
 			return -1;
 		}
 		
-
 		return 1;
 	}
 
@@ -317,7 +314,9 @@ public class Database {
 		return result;
 
 	}
+	
 	//***********************************Brew************************************************
+	
 	public Brew getBrew(String id) {
 		//use id to return a brew
 		String sql = "SELECT * FROM 'brew' WHERE brew_id = ?;";
@@ -340,6 +339,7 @@ public class Database {
 	}
 	
 	//***********************************Recipe************************************************
+
 	public void deleteRecipe(Recipe recipe) {
 		String sql = "DELETE FROM 'recipe' WHERE recipe_id = ?;";
 
@@ -557,8 +557,6 @@ public class Database {
 		return ingredientList;
 
 	}
-
-
 
 	public boolean addRecipe_Ingredient(RecipeIngredient recipeIngredient, String recipeID) {
 

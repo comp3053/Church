@@ -49,7 +49,7 @@ public class RecommendRecipeController implements Initializable{
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
 			alert.setHeaderText("Input Error");
-			alert.setContentText("Please input number");
+			alert.setContentText("Please input a number");
 			ButtonType buttonTypeOK = new ButtonType("OK");
 			alert.getButtonTypes().setAll(buttonTypeOK);
 			alert.showAndWait();
