@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+
 public class MaintainRecipeController implements Initializable{
 	
 	
@@ -50,8 +51,18 @@ public class MaintainRecipeController implements Initializable{
 		ArrayList<Recipe> recipeArrayList = new ArrayList<Recipe>();
 		Database database = new Database();
 		recipeArrayList = database.getRecipeList();
-		System.out.println(recipeArrayList);
+		System.out.println("raL: " + recipeArrayList.toArray().length);
 		
+		for(Recipe tmpR: recipeArrayList) {
+			recipeList.add(tmpR);
+		}
+		
+		System.out.println("rL: " + recipeList.toArray().length);
+		//System.out.println(new PropertyValueFactory<Recipe, String>("name").getProperty());
+		
+		recipeID.setCellValueFactory(new PropertyValueFactory<Recipe, Integer>("recipe_ID"));
+		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("name"));
+		recipeTableView.setItems(recipeList);
 	}
 
 }

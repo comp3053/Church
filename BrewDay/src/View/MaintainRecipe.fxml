@@ -28,10 +28,10 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TableView layoutX="31.0" layoutY="25.0" prefHeight="290.0" prefWidth="453.0">
+                  <TableView fx:id = "recipeTableView" layoutX="31.0" layoutY="25.0" prefHeight="290.0" prefWidth="453.0">
                     <columns>
-                      <TableColumn prefWidth="112.0" text="No." />
-                        <TableColumn prefWidth="340.0" text="Recipe Name" />
+                      <TableColumn fx:id = "recipeID" prefWidth="112.0" text="No." />
+                        <TableColumn fx:id = "recipeName" prefWidth="340.0" text="Recipe Name" />
                     </columns>
                   </TableView>
                   <Button layoutX="579.0" layoutY="89.0" mnemonicParsing="false" onAction="#toAddRecipe" text="Add Recipe" />

@@ -54,6 +54,7 @@ public class DeleteRecipeController implements Initializable{
 		}
 		
 		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("Name"));
+		
 		recipeTableView.setItems(recipeList);
 	}
 	
