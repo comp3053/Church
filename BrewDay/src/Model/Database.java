@@ -43,47 +43,39 @@ public class Database {
 
 	public int addStorageIngredient(String ingredientName, int value, String unit) {
 
-		String sql = "SELECT * FROM 'storage_ingredient' WHERE 'name' = ?;";
-		try {
-			PreparedStatement pStatement = this.connection.prepareStatement(sql);
-			
-			pStatement.setString(1, ingredientName);
-			
-			ResultSet rs = pStatement.executeQuery();
-			//System.out.println( rs.next());
-			if( rs.next() ) {
-				//result is empty, add a new ingredient
-				sql = "INSERT INTO 'storage_ingredient' VALUES (null, ?, ?, ?);";
-				try {
-					pStatement = this.connection.prepareStatement(sql);
+		String sql;
+		PreparedStatement pStatement;
 
-					pStatement.setInt(1, value);
-					pStatement.setString(2, ingredientName);
-					pStatement.setString(3, unit);
+		if(!checkStorageIngredientExist(ingredientName)) {
+			//result is empty, add a new ingredient
+			sql = "INSERT INTO 'storage_ingredient' VALUES (null, ?, ?, ?);";
+			try {
 
-					pStatement.executeUpdate();
+				pStatement = this.connection.prepareStatement(sql);
 
+				pStatement.setInt(1, value);
+				pStatement.setString(2, ingredientName);
+				pStatement.setString(3, unit);
 
-				} catch (SQLException e) {
-					// TODO: handle exception
-					e.printStackTrace();
-					return -1;
-				}
+				pStatement.executeUpdate();
 
-			} else {
-				//return 0, throw out a warning/
-				//warning: the ingredient exists
-				return 0;
+				pStatement.close();
+			} catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				
+				return -1;
 			}
 
-			pStatement.close();
-
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return -1;
+		} else {
+			//return 0, throw out a warning/
+			//warning: the ingredient exists
+			return 0;
 		}
+
 		
+
+
 		return 1;
 	}
 
@@ -240,7 +232,6 @@ public class Database {
 		return recipeList;
 	}
 
-
 	public Note getNote(String id) {
 		//use id to return a note
 		String sql = "SELECT * FROM 'note' HWERE note_id = ?;";
@@ -314,9 +305,9 @@ public class Database {
 		return result;
 
 	}
-	
+
 	//***********************************Brew************************************************
-	
+
 	public Brew getBrew(String id) {
 		//use id to return a brew
 		String sql = "SELECT * FROM 'brew' WHERE brew_id = ?;";
@@ -337,7 +328,7 @@ public class Database {
 
 		return null;
 	}
-	
+
 	//***********************************Recipe************************************************
 
 	public void deleteRecipe(Recipe recipe) {
@@ -604,27 +595,27 @@ public class Database {
 
 	public boolean checkStorageIngredientExist(String ingredientName) {
 		//check whether the ingredient exist
-		
+
 		String sql = "SELECT * FROM 'storage_ingredient' WHERE 'name' = ?;";
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
-			
+
 			pStatement.setString(1, ingredientName);
-			
+
 			ResultSet rs = pStatement.executeQuery();
-			
+
 			//result is empty, the ingredient does not exist
-			if(rs.isBeforeFirst())
+			if(rs.getRow() == 0)
 				return false;
 			//the ingredient exist
 			else return true;
-			
+
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			return false;
 		}
-		
+
 	}
 
 	public int getIngredientStock(String ingredientName) {

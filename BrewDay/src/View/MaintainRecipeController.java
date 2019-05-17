@@ -60,7 +60,7 @@ public class MaintainRecipeController implements Initializable{
 		System.out.println("rL: " + recipeList.toArray().length);
 		//System.out.println(new PropertyValueFactory<Recipe, String>("name").getProperty());
 		
-		recipeID.setCellValueFactory(new PropertyValueFactory<Recipe, Integer>("recipe_ID"));
+		recipeID.setCellValueFactory(new PropertyValueFactory<Recipe, Integer>("id"));
 		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("name"));
 		recipeTableView.setItems(recipeList);
 	}

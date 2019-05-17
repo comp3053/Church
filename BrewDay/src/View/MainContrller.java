@@ -6,6 +6,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 
 public class MainContrller implements Initializable {
 	
@@ -36,5 +39,6 @@ public class MainContrller implements Initializable {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

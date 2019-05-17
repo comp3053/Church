@@ -8,6 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -144,6 +147,25 @@ public class Start extends Application
 	}
 
 	
+	public void warningMsg (String title, String warning) {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("warning");
+		alert.setHeaderText(title);
+		alert.setContentText(warning);
+		ButtonType buttonTypeOK = new ButtonType("OK");
+		alert.getButtonTypes().setAll(buttonTypeOK);
+		alert.showAndWait();
+	}
+	
+	public void confirmMsg (String title, String msg) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation");
+		alert.setHeaderText(title);
+		alert.setContentText(msg);
+		ButtonType buttonTypeOK = new ButtonType("OK");
+		alert.getButtonTypes().setAll(buttonTypeOK);
+		alert.showAndWait();
+	}
 	public static void main(String[] args) {
 		InitDataBase.initDB();
         launch(args);
