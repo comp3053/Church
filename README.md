@@ -4,7 +4,7 @@ This is the code and documentations of **Church**, COMP3053, Software Developmen
 ## Message from the Course Team
 **Please absolute keep your work SECRET before the course ends!**
 
-Welcome to the COMP3053 - Software Development Workshop III course. This course aims to enable your experience on working on a *software* but not *course* project. Besides of coding, you will be asked to write a series of documents, including specifications, designs, and tests. Hopefully, you can make a better understanding on engineering methods and teamwork.
+Welcome to the COMP3053 - Software Development Workshop III course. This course aims to enable your experience on working on a *software* but not *course* project. Besides of coding, you will be asked to write a series of documents, including specifications, designs, and tests. Hopefully, you can make a better understanding on engineering methods and teamworks.
 
 ### Contact us
 
