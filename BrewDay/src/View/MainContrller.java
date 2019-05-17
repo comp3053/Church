@@ -32,7 +32,10 @@ public class MainContrller implements Initializable {
 	public void toRecommendRecipe(ActionEvent event) {
 		Start.getInstance().recommendRecipe();
 	}
-	
+	@FXML
+	public void toWriteNotePage(ActionEvent event) {
+		Start.getInstance().writeNotePage();
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
