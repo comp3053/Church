@@ -28,8 +28,8 @@ public class writeNotePageController implements Initializable{
 	private TextArea note;
 	
 	@FXML
-	public void backToMaintainIngredient(ActionEvent event) {
-		Start.getInstance().maintainIngredient();
+	public void toMainPage(ActionEvent event) {
+		Start.getInstance().mainPage();
 	}
 	
 	
