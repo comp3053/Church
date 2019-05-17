@@ -9,10 +9,7 @@ import Model.StorageIngredient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 
 public class AddIngredientController implements Initializable{
 
@@ -41,10 +38,6 @@ public class AddIngredientController implements Initializable{
 			name = ingredientName.getText();
 			value =  Integer.parseInt(ingredientValue.getText());
 			unit = ingredientUnit.getText();
-			System.out.println("unit1 " + unit);
-			System.out.println("name1 " + name);
-			System.out.println("value1 " + value);
-
 			if(name != null && unit != null && value != -1) {
 				//all input are completed
 				if(value < 0 ) {
@@ -86,9 +79,7 @@ public class AddIngredientController implements Initializable{
 		} catch (NumberFormatException e) {
 			//  TODO: handle exception
 			if(name == null || unit == null) {
-				System.out.println("EXC Name: " + name);
-				System.out.println("EXC value: " + value);
-				System.out.println("EXC unit: " + unit);
+
 				Start.getInstance().warningMsg("Invalid input", "Please complete all the information!");
 				return;
 			}
