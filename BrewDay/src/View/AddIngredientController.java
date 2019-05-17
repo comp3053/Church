@@ -9,6 +9,7 @@ import Model.StorageIngredient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class AddIngredientController implements Initializable{
@@ -18,26 +19,25 @@ public class AddIngredientController implements Initializable{
 	@FXML
 	private TextField ingredientValue;
 	@FXML
-	private TextField ingredientUnit;
-
+	private ComboBox<String> ingredientUnit;
 
 	@FXML
 	public void backToMaintainIngredient(ActionEvent event) {
 		Start.getInstance().maintainIngredient();
 	}
-
+	
 	@FXML
 	public void addIngredient(ActionEvent event) {
 		String name = null;
 		String unit = null;
 		int value = -1;
 
-		int status = 0;
 
 		try {
 			name = ingredientName.getText();
 			value =  Integer.parseInt(ingredientValue.getText());
-			unit = ingredientUnit.getText();
+			unit = ingredientUnit.getValue();
+			
 			if(name != null && unit != null && value != -1) {
 				//all input are completed
 				if(value < 0 ) {

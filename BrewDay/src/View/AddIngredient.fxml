@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.collections.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -22,7 +22,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <TextField fx:id="ingredientName" layoutX="247.0" layoutY="81.0" prefHeight="29.0" prefWidth="323.0" />
-                  <TextField fx:id="ingredientValue" layoutX="247.0" layoutY="132.0" prefHeight="29.0" prefWidth="323.0" />
+                  <TextField fx:id="ingredientValue" layoutX="247.0" layoutY="132.0" prefHeight="36.0" prefWidth="131.0" />
                   <Label layoutX="158.0" layoutY="87.0" text="Name">
                      <font>
                         <Font size="18.0" />
@@ -35,12 +35,20 @@
                   </Label>
                   <Button layoutX="238.0" layoutY="254.0" mnemonicParsing="false" onAction="#addIngredient" text="Add" />
                   <Button layoutX="437.0" layoutY="254.0" mnemonicParsing="false" onAction="#backToMaintainIngredient" text="Cancel" />
-                  <TextField fx:id="ingredientUnit" layoutX="247.0" layoutY="185.0" prefHeight="29.0" prefWidth="323.0" />
-                  <Label layoutX="172.0" layoutY="191.0" text="Unit">
+                  <Label layoutX="390.0" layoutY="138.0" text="Unit">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <ComboBox fx:id="ingredientUnit" layoutX="444.0" layoutY="132.0" prefHeight="36.0" prefWidth="124.0" promptText="g" visibleRowCount="2" >
+                  	<items>
+                  		<FXCollections fx:factory="observableArrayList">
+                  		<String fx:value="g" />
+            			<String fx:value="ml" />
+                  		</FXCollections>
+                  	</items>
+                  	
+                  </ComboBox>
                </children></AnchorPane>
         </items>
       </SplitPane>

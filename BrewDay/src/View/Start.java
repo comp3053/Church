@@ -145,6 +145,17 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
+	
+	public void writeNotePage() {
+		try 
+		{
+			replaceSceneContent("writeNotePage.fxml");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
 
 	
 	public void warningMsg (String title, String warning) {
@@ -189,4 +200,5 @@ public class Start extends Application
         stage.setResizable(false);
         return page;
 	}
+
 }
