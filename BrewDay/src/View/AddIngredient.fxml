@@ -21,22 +21,22 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TextField fx:id="ingredientName" layoutX="213.0" layoutY="84.0" prefHeight="29.0" prefWidth="323.0" />
-                  <TextField fx:id="ingredientValue" layoutX="213.0" layoutY="135.0" prefHeight="29.0" prefWidth="323.0" />
-                  <Label layoutX="158.0" layoutY="87.0" text="Name:">
+                  <TextField fx:id="ingredientName" layoutX="247.0" layoutY="81.0" prefHeight="29.0" prefWidth="323.0" />
+                  <TextField fx:id="ingredientValue" layoutX="247.0" layoutY="132.0" prefHeight="29.0" prefWidth="323.0" />
+                  <Label layoutX="158.0" layoutY="87.0" text="Name">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="159.0" layoutY="138.0" text="Value:">
+                  <Label layoutX="159.0" layoutY="138.0" text="Value">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Button layoutX="238.0" layoutY="254.0" mnemonicParsing="false" onAction="#addIngredient" text="Add" />
                   <Button layoutX="437.0" layoutY="254.0" mnemonicParsing="false" onAction="#backToMaintainIngredient" text="Cancel" />
-                  <TextField fx:id="ingredientUnit" layoutX="213.0" layoutY="188.0" prefHeight="29.0" prefWidth="323.0" />
-                  <Label layoutX="172.0" layoutY="191.0" text="Unit:">
+                  <TextField fx:id="ingredientUnit" layoutX="247.0" layoutY="185.0" prefHeight="29.0" prefWidth="323.0" />
+                  <Label layoutX="172.0" layoutY="191.0" text="Unit">
                      <font>
                         <Font size="18.0" />
                      </font>
