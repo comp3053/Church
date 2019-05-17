@@ -1,8 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="600.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DeleteRecipeController">
+   <children>
+      <SplitPane dividerPositions="0.15326633165829145" layoutX="335.0" layoutY="134.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="20.0" text="Update Equipment Information">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="867.0">
+               <children>
+                  <Label layoutX="20.0" layoutY="14.0" text="Equipment List" />
+                  <Button layoutX="195.0" layoutY="431.0" mnemonicParsing="false" onAction="#deleteRecipe" text="Update" />
+                  <Button layoutX="470.0" layoutY="431.0" mnemonicParsing="false" onAction="#backToMaintainRecipe" text="Cancel" />
+                  <Label layoutX="132.0" layoutY="346.0" text="Equipment Capacity" />
+                  <TextField layoutX="419.0" layoutY="340.0" prefHeight="36.0" prefWidth="103.0" />
+                  <TableView layoutX="79.0" layoutY="72.0" prefHeight="200.0" prefWidth="519.0">
+                    <columns>
+                      <TableColumn prefWidth="342.0" text="Equipment Name" />
+                      <TableColumn prefWidth="176.0" text="Capacity" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
 </AnchorPane>
-
