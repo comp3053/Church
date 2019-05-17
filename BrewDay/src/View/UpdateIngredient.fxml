@@ -17,6 +17,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Button layoutX="656.0" layoutY="10.0" mnemonicParsing="false" onAction="#backToMaintainIngredient" prefHeight="27.0" prefWidth="69.0" text="Back" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="767.0">
@@ -29,24 +30,10 @@
                     </columns>
                   </TableView>
                   <TextField fx:id="inputValue" layoutX="471.0" layoutY="129.0" prefHeight="27.0" prefWidth="210.0" />
-                  <Button layoutX="444.0" layoutY="276.0" mnemonicParsing="false" onAction="#addStock" prefHeight="27.0" prefWidth="106.0" text="Add" />
-                  <Button layoutX="598.0" layoutY="276.0" mnemonicParsing="false" onAction="#subtractStock" prefHeight="27.0" prefWidth="106.0" text="Subtract" />
+                  <Button layoutX="435.0" layoutY="269.0" mnemonicParsing="false" onAction="#addStock" prefHeight="27.0" prefWidth="106.0" text="Add" />
+                  <Button layoutX="611.0" layoutY="269.0" mnemonicParsing="false" onAction="#subtractStock" prefHeight="27.0" prefWidth="106.0" text="Subtract" />
                </children></AnchorPane>
         </items>
       </SplitPane>
-      <AnchorPane layoutY="-198.0" prefHeight="221.0" prefWidth="339.0">
-         <children>
-            <SplitPane layoutX="94.0" layoutY="144.0" orientation="VERTICAL" prefHeight="54.0" prefWidth="764.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-412.0" AnchorPane.topAnchor="144.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="52.0" prefWidth="732.0">
-                     <children>
-                        <Label layoutX="8.0" layoutY="14.0" text="Brew Day" />
-                        <Button layoutX="664.0" layoutY="10.0" mnemonicParsing="false" onAction="#backToMaintainIngredient" prefHeight="27.0" prefWidth="69.0" text="Back" />
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>
