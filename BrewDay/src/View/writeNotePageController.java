@@ -1,10 +1,12 @@
 package View;
 
+import java.awt.TextArea;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import Model.Database;
 import Model.Ingredient;
+import Model.Note;
 import Model.StorageIngredient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,7 +24,8 @@ public class writeNotePageController implements Initializable{
 	private TextField brewID;
 	@FXML
 	private TextField date;
-	
+	@FXML
+	private TextArea note;
 	
 	@FXML
 	public void backToMaintainIngredient(ActionEvent event) {
