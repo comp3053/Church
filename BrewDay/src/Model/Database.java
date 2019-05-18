@@ -183,10 +183,8 @@ public class Database {
 				pStatement.executeUpdate();
 
 			}
-
 			pStatement.close();
-
-
+			
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();

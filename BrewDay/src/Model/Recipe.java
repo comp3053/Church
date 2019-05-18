@@ -1,6 +1,8 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import View.Start;
 
@@ -130,8 +132,9 @@ public class Recipe {
 		return recommendList;
 	}
 
-	public ArrayList<RecipeIngredient> produceMissingIngredient(int batchSize){
-		//Map<>
+	public HashMap<Recipe, ArrayList<RecipeIngredient>> produceMissingIngredient(int batchSize){
+		HashMap<Recipe, ArrayList<RecipeIngredient>> rec_Ingre_List = new HashMap<Recipe, ArrayList<RecipeIngredient>>();
+		
 		ArrayList<RecipeIngredient> missingList = new ArrayList<RecipeIngredient>();
 		Database db = new Database();
 		for(RecipeIngredient i : ingredients) {
@@ -142,7 +145,9 @@ public class Recipe {
 				isAvaliable = false;
 			}
 		}
-		return missingList;
+		 rec_Ingre_List.put(this, missingList);
+		 return rec_Ingre_List;
+		//return missingList;
 	}
 
 	//batchSize x % = amount
