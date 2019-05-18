@@ -19,7 +19,7 @@ public class Equipment {
 	
 	public Equipment(String id, String type,float capacity) {
 		// TODO Auto-generated constructor stub
-		this.id = null;
+		this.id = id;
 		this.type = type;
 		this.capacity = capacity;
 		this.isAvaliable = true;
@@ -44,6 +44,10 @@ public class Equipment {
 	
 	public float getCapacity() {
 		return this.capacity;
+	}
+	
+	public String getEquipmentName() {
+		return this.id + " " + this.type;
 	}
 	
 	public void setAvaliableCapacity(int avaliableCapacity) {

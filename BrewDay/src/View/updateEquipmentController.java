@@ -1,6 +1,5 @@
 package View;
 
-import java.awt.TextField;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -15,18 +14,33 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class updateEquipmentController implements Initializable {
+	
+	
 	ObservableList<Equipment> EquipmentList = FXCollections.observableArrayList();
 	@FXML
-	private TableView<Equipment>  equipmentTable= new TableView<Equipment>(EquipmentList);
+	private TableView<Equipment> equipmentTable = new TableView<Equipment>(EquipmentList);
 	@FXML
 	private TableColumn<Equipment, String> equipmentNameList;
 	@FXML
 	private TableColumn<Equipment, Float> capacityList;
+	
 	@FXML
 	private TextField capacityValue;
+	
+	@FXML
+	public void toMaintainEquipment(ActionEvent event) {
+		Start.getInstance().maintainEquipment();
+	}
+	
+	@FXML
+	public void toUpdateEquipment(ActionEvent event) {
+		
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
@@ -38,24 +52,15 @@ public class updateEquipmentController implements Initializable {
 		equipmentList = db.getEquipmentsList();
 		
 		for(Equipment equipment:equipmentList) {
-			
-			equipmentList.add(equipment);
+			EquipmentList.add(equipment);
 		}
 		
-		equipmentNameList.setCellValueFactory(new PropertyValueFactory<Equipment, String>("Equipment Name"));
-		capacityList.setCellValueFactory(new PropertyValueFactory<Equipment, Float>("Capacity"));
 		
+		equipmentNameList.setCellValueFactory(new PropertyValueFactory<Equipment, String>("EquipmentName"));
+		capacityList.setCellValueFactory(new PropertyValueFactory<Equipment, Float>("Capacity"));
 		
 		equipmentTable.setItems(EquipmentList);
 	}
-	@FXML
-	public void toMaintainEquipment(ActionEvent event) {
-		Start.getInstance().maintainEquipment();
-	}
 	
-	@FXML
-	public void toUpdateEquipment(ActionEvent event) {
-		
-	}
 
 }

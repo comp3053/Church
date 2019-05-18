@@ -542,6 +542,7 @@ public class Database {
 	public ArrayList<Equipment> getEquipmentsList(){
 		String sql = "SELECT * FROM 'equipment';";
 		ArrayList<Equipment> equipmentList = new ArrayList<Equipment>();
+		
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
 			ResultSet rSet = pStatement.executeQuery();

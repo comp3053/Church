@@ -37,7 +37,15 @@ public class writeNotePageController implements Initializable{
 		Start.getInstance().mainPage();
 	}
 	
+	@FXML
+	public void saveNote(ActionEvent event) {
+		
+	}
 	
+	@FXML
+	public void showNote(ActionEvent event) {
+		
+	}
 	
 	
 	@Override
