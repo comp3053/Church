@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import com.sun.crypto.provider.RSACipher;
 import com.sun.org.apache.bcel.internal.generic.Select;
 
+import View.Start;
 import sun.net.www.content.image.png;
 
 
@@ -48,9 +49,8 @@ public class Database {
 
 		String sql;
 		PreparedStatement pStatement;
-
 		if(!checkStorageIngredientExist(ingredientName)) {
-			//result is empty, add a new ingredient
+			
 			sql = "INSERT INTO 'storage_ingredient' VALUES (null, ?, ?, ?);";
 			try {
 
@@ -296,6 +296,7 @@ public class Database {
 
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			
 			pStatement.setInt(1, Integer.parseInt(id));
 
 			ResultSet rSet = pStatement.executeQuery();
@@ -410,8 +411,10 @@ public class Database {
 		}
 
 	}
+	
+	//get all the recipes return a list of recipes
 	public ArrayList<Recipe> getRecipes(){
-		String sql = "SELECT * FROM recipe JOIN recipe_recipeIngredient JOIN storage_ingredient WHERE recipe_recipeIngredient.ingredient_id = storage_ingredient.ingredient_id AND recipe.recipe_id = recipe_recipeIngredient.recipe_id";
+		String sql = "SELECT * FROM recipe JOIN recipe_recipeIngredient JOIN storage_ingredient WHERE recipe_recipeIngredient.ingredient_id = storage_ingredient.ingredient_id AND recipe.recipe_id = recipe_recipeIngredient.recipe_id;";
 		ArrayList<Recipe> rList = new ArrayList<Recipe>();
 
 		try {
@@ -421,14 +424,15 @@ public class Database {
 			while (rSet.next()) {
 				if(last_id != rSet.getInt(1)) {
 					ArrayList<RecipeIngredient> riList = new ArrayList<RecipeIngredient>();
-					RecipeIngredient rTemp = new RecipeIngredient(rSet.getString(11), rSet.getString(12), rSet.getInt(8));
+																//id, name, unit, value
+					RecipeIngredient rTemp = new RecipeIngredient(Integer.toString(rSet.getInt(9)), rSet.getString(11), rSet.getString(12), rSet.getInt(8));
 					riList.add(rTemp);
 					Recipe recipeTemp = new Recipe(Integer.toString(rSet.getInt(1)), rSet.getInt(3), rSet.getString(2), riList, rSet.getString(4));
 					rList.add(recipeTemp);
 					last_id = rSet.getInt(1);
 				}
 				else {
-					RecipeIngredient rTemp = new RecipeIngredient(rSet.getString(11), rSet.getString(12), rSet.getInt(8));
+					RecipeIngredient rTemp = new RecipeIngredient(Integer.toString(rSet.getInt(9)), rSet.getString(11), rSet.getString(12), rSet.getInt(8));
 					for(Recipe rL :rList) {
 						if (Integer.parseInt(rL.getID()) == rSet.getInt(1)) {
 							rL.addRecipeIngredient(rTemp);
@@ -513,8 +517,9 @@ public class Database {
 	}
 
 	public ArrayList<Equipment> getAvailableEquipments(int batchSize){
+		
 		String sql = "SELECT * FROM equipment WHERE avaliableCapacity >= ?";
-
+		
 		ArrayList<Equipment> equipmentsList = new ArrayList<Equipment>();
 
 		try {
@@ -523,7 +528,8 @@ public class Database {
 			pStatement.setInt(1,batchSize);
 
 			ResultSet rs = pStatement.executeQuery();
-			if(rs.getRow() == 0) {
+			if(rs.getRow() == 0 && !rs.isBeforeFirst()) {
+				System.out.println("0 rows");
 				return null;
 			}
 			while (rs.next()) {
@@ -533,9 +539,10 @@ public class Database {
 
 		} catch(SQLException e){
 			// TODO: handle exception
+			Start.getInstance().warningMsg("Database Error", "Database Error: get equipments");
 			e.printStackTrace();
 		}
-		System.out.println(equipmentsList.toArray().length);
+		
 		return equipmentsList;
 	}
 	
@@ -650,16 +657,15 @@ public class Database {
 	public boolean checkStorageIngredientExist(String ingredientName) {
 		//check whether the ingredient exist
 
-		String sql = "SELECT * FROM 'storage_ingredient' WHERE 'name' = ?;";
+		String sql = "SELECT * FROM storage_ingredient WHERE name = ?;";
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
 
 			pStatement.setString(1, ingredientName);
 
 			ResultSet rs = pStatement.executeQuery();
-
 			//result is empty, the ingredient does not exist
-			if(rs.getRow() == 0)
+			if(!rs.isBeforeFirst() && rs.getRow() == 0)
 				return false;
 			//the ingredient exist
 			else return true;
@@ -672,21 +678,29 @@ public class Database {
 
 	}
 
+	//use the name as key to find the value
+	// return the stock value in the database
+	//return >= 0 the stock 
+	//return -2 no matching ingredient Name
+	//return -1 data base error
 	public int getIngredientStock(String ingredientName) {
-		//use the name as key to find the value
-		// return the value in the database
-		String sql = "SELECT * FROM 'storage_ingredient' WHERE 'name' = ?;";
+		System.out.println("db/668 ingredient name: " + ingredientName);
+		String sql = "SELECT * FROM storage_ingredient WHERE name = ?;";
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
 			pStatement.setString(1, ingredientName);
 			ResultSet rs = pStatement.executeQuery();
-			if(rs.getRow()==1) {
+			
+			if(rs.next()) {
 				return rs.getInt(2);
 			}
-			return -2;
+			else {
+				return -2;
+			}
 
 		} catch (SQLException e){
 			e.printStackTrace();
+			Start.getInstance().warningMsg("Database Error!", "Error in get Ingredient stock!");
 			return -1;
 		}
 	}
