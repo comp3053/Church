@@ -36,7 +36,8 @@ public class EquipmentTest {
 
 	@Test
 	public void testUpdateEquipmentCapacity() {
-		assertEquals(true, equip.updateEquipmentCapacity("line", 20));
+		float f = 0;
+		assertEquals(true, equip.updateEquipmentCapacity("name", f));
 	}
 
 }
