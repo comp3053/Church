@@ -14,6 +14,7 @@ public class Brew {
 		this.recipe = recipe;
 		this.date = date.toString();
 		this.batchSize = batchSize;
+		this.note = null;
 	}
 	Brew(int batchSize, Recipe recipe,Note note){
 		Date date = new Date();

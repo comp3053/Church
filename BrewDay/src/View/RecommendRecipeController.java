@@ -26,6 +26,7 @@ public class RecommendRecipeController implements Initializable{
 	@FXML
 	private TextField inputBatchSizeBlank;
 
+	//return the string that display in the list view
 	public static String getRecipeText(Recipe recipe, int batchSize) {
 		String text = "Recipe: " + recipe.getName() + " || " + "Ingredients: ";
 		int count = 1;
@@ -47,6 +48,7 @@ public class RecommendRecipeController implements Initializable{
 			//get the batch size from the user input
 			batchSize = Integer.parseInt(inputBatchSizeBlank.getText());
 			//pass the batch for recipe recommendation, get the recipe list
+			
 			recipeArrayList = Recipe.recommendRecipe(batchSize);
 
 			if(recipeArrayList == null) {

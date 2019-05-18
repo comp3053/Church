@@ -122,7 +122,7 @@ public class Recipe {
 			//there are available equipments
 			ArrayList<Recipe> rList = db.getRecipes();
 			for(Recipe r : rList) {
-
+				r.produceMissingIngredient(batchSize);
 				if(r.isAvaliable)
 					recommendList.add(r);
 			}
@@ -131,6 +131,7 @@ public class Recipe {
 	}
 
 	public ArrayList<RecipeIngredient> produceMissingIngredient(int batchSize){
+		//Map<>
 		ArrayList<RecipeIngredient> missingList = new ArrayList<RecipeIngredient>();
 		Database db = new Database();
 		for(RecipeIngredient i : ingredients) {
