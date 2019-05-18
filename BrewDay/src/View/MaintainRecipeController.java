@@ -35,6 +35,11 @@ public class MaintainRecipeController implements Initializable{
 		Start.getInstance().deleteRecipe();
 	}
 	
+	@FXML
+	public void toUpdateRecipe(ActionEvent event) {
+		Start.getInstance().updateRecipe();
+	}
+	
 	ObservableList<Recipe> recipeList = FXCollections.observableArrayList();
 	@FXML
 	private TableView<Recipe> recipeTableView = new TableView<Recipe>(recipeList);

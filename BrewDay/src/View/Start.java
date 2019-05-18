@@ -156,6 +156,36 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
+	public void updateEquipment() {
+		try 
+		{
+			replaceSceneContent("updateEquipmentInformation.fxml");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
+	public void addEquipment() {
+		try 
+		{
+			replaceSceneContent("addEquipment.fxml");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
+	public void updateRecipe() {
+		try 
+		{
+			replaceSceneContent("updateRecipe.fxml");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
 
 
 	public void warningMsg (String title, String warning) {
