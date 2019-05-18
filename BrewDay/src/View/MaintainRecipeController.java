@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -40,7 +41,7 @@ public class MaintainRecipeController implements Initializable{
 	@FXML
 	private TableColumn<Recipe, String> recipeName;
 	@FXML
-	private TableColumn<Recipe, Integer> recipeID;
+	private TableColumn<Recipe, String> recipeID;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
@@ -60,7 +61,24 @@ public class MaintainRecipeController implements Initializable{
 		System.out.println("rL: " + recipeList.toArray().length);
 		//System.out.println(new PropertyValueFactory<Recipe, String>("name").getProperty());
 		
-		recipeID.setCellValueFactory(new PropertyValueFactory<Recipe, Integer>("id"));
+		//render the ID
+		recipeID.setCellFactory((col)->{
+			TableCell<Recipe, String> cell = new TableCell<Recipe, String>(){
+				@Override
+				public void updateItem(String item, boolean empty) {
+					super.updateItem(item, empty);
+					this.setText(null);
+					this.setGraphic(null);
+					
+					if(!empty) {
+						int rowIndex = this.getIndex()+1;
+						this.setText(String.valueOf(rowIndex));
+					}
+				}
+			};
+			return cell;
+		});
+		
 		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("name"));
 		recipeTableView.setItems(recipeList);
 	}
