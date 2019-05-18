@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.sun.crypto.provider.RSACipher;
+import com.sun.org.apache.bcel.internal.generic.Select;
+
 import sun.net.www.content.image.png;
 
 
@@ -88,14 +91,14 @@ public class Database {
 
 	public void addEquipment(Equipment equipment) {
 		try {
-			String sql = "INSERT INTO 'equipment' VALUES(?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO 'equipment' VALUES(null, ?, ?, ?, ?);";
 
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
-			pStatement.setInt(1, Integer.parseInt(equipment.getID()));
-			pStatement.setFloat(2, equipment.getCapacity());
-			pStatement.setFloat(3, equipment.getAvaliableCapacity());
-			pStatement.setString(4, equipment.getType());
-			pStatement.setBoolean(5, equipment.getAvaliable());
+			//pStatement.setInt(1, Integer.parseInt(equipment.getID()));
+			pStatement.setFloat(1, equipment.getCapacity());
+			pStatement.setFloat(2, equipment.getAvaliableCapacity());
+			pStatement.setString(3, equipment.getType());
+			pStatement.setBoolean(4, equipment.getAvaliable());
 
 			//execute the sql language
 			pStatement.executeUpdate();
@@ -194,7 +197,7 @@ public class Database {
 
 			pStatement.setInt(1,Integer.parseInt(id));
 
-			ResultSet rs = pStatement.executeQuery(sql);
+			ResultSet rs = pStatement.executeQuery();
 
 			while (rs.next()) {
 				Equipment tempEquipment = new Equipment(rs.getFloat(1), rs.getString(2));
@@ -319,16 +322,38 @@ public class Database {
 
 			ResultSet rSet = pStatement.executeQuery();
 			while (rSet.next()) {
-
+				int recipeID = rSet.getInt(2);
+				Recipe recipe = getRecipe(Integer.toString(recipeID));
+				Brew tmpBrew = new Brew(rSet.getInt(3), recipe);
+				result = tmpBrew;
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			return null;
 		}
 
-		return null;
+		return result;
 	}
 
+	public ArrayList<Brew> getAllBrews(){
+		String sql = "SELECT * FROM brew";
+		ArrayList<Brew> bList = new ArrayList<Brew>();
+		
+		try {
+			 Statement statement = this.connection.createStatement();
+			 ResultSet rSet = statement.executeQuery(sql);
+			 while(rSet.next()) {
+				 Brew tmpBrew = getBrew(Integer.toString(rSet.getInt(1)));
+				 bList.add(tmpBrew);
+			 }
+			 
+		}catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+		return bList;
+	}
 	//***********************************Recipe************************************************
 
 	public void deleteRecipe(Recipe recipe) {

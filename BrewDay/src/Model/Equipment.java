@@ -10,6 +10,7 @@ public class Equipment {
 	
 	public Equipment(float capacity, String type) {
 		// TODO Auto-generated constructor stub
+		this.id = null;
 		this.type = type;
 		this.capacity = capacity;
 		this.isAvaliable = true;

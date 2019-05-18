@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MaintainRecipeController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MaintainRecipeController">
    <children>
       <SplitPane dividerPositions="0.14321608040201006" layoutX="248.0" layoutY="57.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -28,15 +28,21 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TableView fx:id = "recipeTableView" layoutX="31.0" layoutY="25.0" prefHeight="290.0" prefWidth="453.0">
+                  <TableView fx:id="recipeTableView" layoutX="31.0" layoutY="25.0" prefHeight="290.0" prefWidth="453.0">
                     <columns>
-                      <TableColumn fx:id = "recipeID" prefWidth="112.0" text="No." />
-                        <TableColumn fx:id = "recipeName" prefWidth="340.0" text="Recipe Name" />
+                      <TableColumn fx:id="recipeID" prefWidth="112.0" text="No." />
+                        <TableColumn fx:id="recipeName" prefWidth="340.0" text="Recipe Name" />
                     </columns>
                   </TableView>
-                  <Button layoutX="579.0" layoutY="89.0" mnemonicParsing="false" onAction="#toAddRecipe" text="Add Recipe" />
-                  <Button layoutX="568.0" layoutY="155.0" mnemonicParsing="false" onAction="#toDeleteREcipe" text="Delete Recipe" />
-                  <Button layoutX="562.0" layoutY="223.0" mnemonicParsing="false" onAction="#toUpdateRecipe" text="Update Recipe" />
+                  <Button layoutX="279.0" layoutY="428.0" mnemonicParsing="false" onAction="#toAddRecipe" text="Add Recipe" />
+                  <Button layoutX="443.0" layoutY="428.0" mnemonicParsing="false" onAction="#toDeleteREcipe" text="Delete Recipe" />
+                  <Button layoutX="616.0" layoutY="428.0" mnemonicParsing="false" onAction="#toUpdateRecipe" text="Update Recipe" />
+                  <ListView layoutX="536.0" layoutY="63.0" prefHeight="252.0" prefWidth="420.0" />
+                  <Label layoutX="540.0" layoutY="32.0" text="RecipeName:" />
+                  <Label layoutX="744.0" layoutY="32.0" text="LiterOfBeer:" />
+                  <Label layoutX="859.0" layoutY="32.0" text="Label" />
+                  <Label layoutX="654.0" layoutY="32.0" text="Label" />
+                  <Label layoutX="924.0" layoutY="32.0" text="L" />
                </children>
             </AnchorPane>
         </items>

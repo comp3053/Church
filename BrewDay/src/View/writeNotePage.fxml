@@ -25,11 +25,11 @@
                   <TextArea layoutX="370.0" layoutY="48.0" prefHeight="317.0" prefWidth="321.0" />
                   <Button layoutX="193.0" layoutY="420.0" mnemonicParsing="false" text="Save" />
                   <Button layoutX="388.0" layoutY="420.0" mnemonicParsing="false" onAction="#toMainPage" text="Cancel" />
-                  <TableView layoutX="7.0" layoutY="14.0" prefHeight="354.0" prefWidth="355.0">
+                  <TableView fx:id="brewTableView" layoutX="7.0" layoutY="14.0" prefHeight="354.0" prefWidth="355.0">
                     <columns>
-                      <TableColumn prefWidth="59.0" text="ID" />
-                      <TableColumn prefWidth="173.0" text="NAME" />
-                        <TableColumn prefWidth="122.0" text="DATE" />
+                      <TableColumn fx:id="brewId" prefWidth="59.0" text="ID" />
+                      <TableColumn fx:id="RecipeName" prefWidth="173.0" text="Recipe Name" />
+                        <TableColumn fx:id="brewDate" prefWidth="122.0" text="DATE" />
                     </columns>
                   </TableView>
                </children>

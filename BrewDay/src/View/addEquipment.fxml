@@ -22,11 +22,11 @@
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="748.0">
                <children>
-                  <Button layoutX="193.0" layoutY="420.0" mnemonicParsing="false" text="Save" />
+                  <Button layoutX="193.0" layoutY="420.0" mnemonicParsing="false" onAction="#toAddEquipment" text="Add" />
                   <Button layoutX="388.0" layoutY="420.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Cancel" />
                   <Label layoutX="109.0" layoutY="292.0" text="Equipment capacity" />
                   <Label layoutX="103.0" layoutY="108.0" text="Equipment type" />
-                  <ComboBox layoutX="336.0" layoutY="102.0" prefWidth="150.0">
+                  <ComboBox fx:id="equipmentType" layoutX="336.0" layoutY="102.0" prefWidth="150.0">
                   	<items>
                   		<FXCollections fx:factory="observableArrayList">
                   			<String fx:value="kettles" />
@@ -38,6 +38,7 @@
                   	</items>
                   </ComboBox>
                   <TextField fx:id="equipmentCapacity" layoutX="338.0" layoutY="286.0" prefHeight="36.0" prefWidth="148.0" />
+                  <Label layoutX="497.0" layoutY="292.0" text="L" />
                </children>
             </AnchorPane>
          </items>

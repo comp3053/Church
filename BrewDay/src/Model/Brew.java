@@ -15,7 +15,13 @@ public class Brew {
 		this.date = date.toString();
 		this.batchSize = batchSize;
 	}
-
+	Brew(int batchSize, Recipe recipe,Note note){
+		Date date = new Date();
+		this.recipe = recipe;
+		this.date = date.toString();
+		this.batchSize = batchSize;
+		this.note = note;
+	}
 	public String getID() {
 		return this.ID;
 	}
@@ -40,6 +46,9 @@ public class Brew {
 		this.recipe = recipe;
 	}
 	
+	public String getDate() {
+		return this.date;
+	}
 	public Note getNote() {
 		return this.note;
 	}
