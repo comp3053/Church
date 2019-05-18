@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.RecommendRecipeController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.RecommendRecipeController">
    <children>
       <SplitPane dividerPositions="0.15829145728643215" layoutX="255.0" layoutY="28.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -17,15 +17,19 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button layoutX="659.0" layoutY="5.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="48.0" prefWidth="75.0" text="Back" />
+                  <Button layoutX="893.0" layoutY="18.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="48.0" prefWidth="75.0" text="Back" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="48.0" prefWidth="748.0">
                <children>
                   <Label layoutX="57.0" layoutY="33.0" text="Batch size" />
                   <TextField fx:id="inputBatchSizeBlank" layoutX="191.0" layoutY="27.0" />
-                  <Button layoutX="609.0" layoutY="27.0" mnemonicParsing="false" onAction="#recommendRecipe" text="Recommed" />
-                  <ListView fx:id="recipeListView" layoutX="50.0" layoutY="91.0" prefHeight="200.0" prefWidth="660.0" />
+                  <Button layoutX="550.0" layoutY="27.0" mnemonicParsing="false" onAction="#recommendRecipe" text="Recommed" />
+                  <ListView fx:id="recipeListView" layoutX="57.0" layoutY="104.0" prefHeight="145.0" prefWidth="903.0" />
+                  <Label layoutX="57.0" layoutY="80.0" text="Recommended Recipes" />
+                  <Label layoutX="57.0" layoutY="257.0" text="Missing Recipes" />
+                  <TextArea layoutX="57.0" layoutY="281.0" prefHeight="180.0" prefWidth="903.0" />
+                  <Label layoutX="440.0" layoutY="33.0" text="L" />
                </children>
             </AnchorPane>
         </items>

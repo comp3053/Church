@@ -36,7 +36,7 @@
                   </TableView>
                   <Button layoutX="579.0" layoutY="89.0" mnemonicParsing="false" onAction="#toAddRecipe" text="Add Recipe" />
                   <Button layoutX="568.0" layoutY="155.0" mnemonicParsing="false" onAction="#toDeleteREcipe" text="Delete Recipe" />
-                  <Button layoutX="562.0" layoutY="223.0" mnemonicParsing="false" text="Update Recipe" />
+                  <Button layoutX="562.0" layoutY="223.0" mnemonicParsing="false" onAction="#toUpdateRecipe" text="Update Recipe" />
                </children>
             </AnchorPane>
         </items>

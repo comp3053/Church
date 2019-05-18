@@ -13,6 +13,14 @@ public class maintainEquipmentController implements Initializable{
 	public void toMainPage(ActionEvent event) {
 		Start.getInstance().mainPage();
 	}
+	@FXML
+	public void toUpdateEquipment(ActionEvent event) {
+		Start.getInstance().updateEquipment();
+	}
+	@FXML
+	public void toAddEquipment(ActionEvent event) {
+		Start.getInstance().addEquipment();
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
