@@ -25,23 +25,23 @@ public class Start extends Application
 		this.stage.getIcons().add(new Image("file:resources/images/beer.png"));
 		this.stage.setTitle("Brew Day");
 		mainPage();
-        stage.show();
-        
+		stage.show();
+
 	}
-	
+
 	private static Start instance;
 
-    public Start() 
-    {
-        instance = this;
-    }
+	public Start() 
+	{
+		instance = this;
+	}
 
-    public static Start getInstance() 
-    {
-        return instance;
-    }
-	
-	
+	public static Start getInstance() 
+	{
+		return instance;
+	}
+
+
 	public void mainPage()
 	{
 		try 
@@ -53,8 +53,8 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-	
-	
+
+
 	public void maintainRecipe()
 	{
 		try 
@@ -66,7 +66,7 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-	
+
 	public void maintainEquipment(){
 		try 
 		{
@@ -77,8 +77,8 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-	
-	
+
+
 	public void maintainIngredient(){
 		try 
 		{
@@ -89,7 +89,7 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-	
+
 	public void addIngredient(){
 		try 
 		{
@@ -100,8 +100,8 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-	
-	
+
+
 	public void updateIngredient(){
 		try 
 		{
@@ -112,7 +112,7 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-	
+
 	public void addRecipe(){
 		try 
 		{
@@ -123,7 +123,7 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-	
+
 	public void deleteRecipe(){
 		try 
 		{
@@ -134,7 +134,7 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-	
+
 	public void recommendRecipe(){
 		try 
 		{
@@ -145,7 +145,7 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-	
+
 	public void writeNotePage() {
 		try 
 		{
@@ -157,7 +157,7 @@ public class Start extends Application
 		}
 	}
 
-	
+
 	public void warningMsg (String title, String warning) {
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("warning");
@@ -167,7 +167,7 @@ public class Start extends Application
 		alert.getButtonTypes().setAll(buttonTypeOK);
 		alert.showAndWait();
 	}
-	
+
 	public void confirmMsg (String title, String msg) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation");
@@ -179,26 +179,26 @@ public class Start extends Application
 	}
 	public static void main(String[] args) {
 		InitDataBase.initDB();
-        launch(args);
-    }
-	
+		launch(args);
+	}
+
 	private Parent replaceSceneContent(String fxml) throws Exception 
 	{
-        Parent page = (Parent) FXMLLoader.load(Start.class.getResource(fxml), null, new JavaFXBuilderFactory());
+		Parent page = (Parent) FXMLLoader.load(Start.class.getResource(fxml), null, new JavaFXBuilderFactory());
 		Scene scene = stage.getScene();
-		
-        if (scene == null) 
-        {
-            scene = new Scene(page);
-            stage.setScene(scene);
-        } 
-        else 
-        {
-            stage.getScene().setRoot(page);
-        }
-        stage.sizeToScene();
-        stage.setResizable(false);
-        return page;
+
+		if (scene == null) 
+		{
+			scene = new Scene(page);
+			stage.setScene(scene);
+		} 
+		else 
+		{
+			stage.getScene().setRoot(page);
+		}
+		stage.sizeToScene();
+		stage.setResizable(false);
+		return page;
 	}
 
 }

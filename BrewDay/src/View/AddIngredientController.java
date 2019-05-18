@@ -25,7 +25,7 @@ public class AddIngredientController implements Initializable{
 	public void backToMaintainIngredient(ActionEvent event) {
 		Start.getInstance().maintainIngredient();
 	}
-	
+
 	@FXML
 	public void addIngredient(ActionEvent event) {
 		String name = null;
@@ -37,7 +37,7 @@ public class AddIngredientController implements Initializable{
 			name = ingredientName.getText();
 			value =  Integer.parseInt(ingredientValue.getText());
 			unit = ingredientUnit.getValue();
-			
+
 			if(name != null && unit != null && value != -1) {
 				//all input are completed
 				if(value < 0 ) {
