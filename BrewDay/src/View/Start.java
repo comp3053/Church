@@ -199,7 +199,7 @@ public class Start extends Application
 	}
 
 	public void confirmMsg (String title, String msg) {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
+		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Confirmation");
 		alert.setHeaderText(title);
 		alert.setContentText(msg);

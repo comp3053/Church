@@ -218,6 +218,7 @@ public class Database {
 
 	}
 
+	//get all recipes in the recipe  table
 	public ArrayList<Recipe> getRecipeList(){
 		String sql = "SELECT * FROM 'recipe';";
 		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();

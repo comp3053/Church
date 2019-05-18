@@ -28,7 +28,7 @@
                   <ListView fx:id="recipeListView" layoutX="57.0" layoutY="104.0" prefHeight="145.0" prefWidth="903.0" />
                   <Label layoutX="57.0" layoutY="80.0" text="Recommended Recipes" />
                   <Label layoutX="57.0" layoutY="257.0" text="Missing Recipes" />
-                  <TextArea layoutX="57.0" layoutY="281.0" prefHeight="180.0" prefWidth="903.0" />
+                  <ListView fx:id="missingListView" layoutX="57.0" layoutY="281.0" prefHeight="180.0" prefWidth="903.0" />
                   <Label layoutX="440.0" layoutY="33.0" text="L" />
                </children>
             </AnchorPane>

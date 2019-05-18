@@ -131,10 +131,11 @@ public class Recipe {
 		return recommendList;
 	}
 
-	public HashMap<Recipe, ArrayList<RecipeIngredient>> produceMissingIngredient(int batchSize, ArrayList<RecipeIngredient> ingredients){
-		HashMap<Recipe, ArrayList<RecipeIngredient>> rec_Ingre_List = new HashMap<Recipe, ArrayList<RecipeIngredient>>();
+	//return a hashmap k:recipe ingredient, v: missing amount
+	public HashMap<RecipeIngredient, Integer> produceMissingIngredient(int batchSize, ArrayList<RecipeIngredient> ingredients){
+		HashMap<RecipeIngredient, Integer> missingList = new HashMap<RecipeIngredient, Integer>();
 		
-		ArrayList<RecipeIngredient> missingList = new ArrayList<RecipeIngredient>();
+		//ArrayList<RecipeIngredient> missingList = new ArrayList<RecipeIngredient>();
 		Database db = new Database();
 		for(RecipeIngredient i : ingredients) {
 			float amount = convertMeasure(i, batchSize);
@@ -143,13 +144,13 @@ public class Recipe {
 			+ si.getStockFromDB(si.getName()));
 			
 			if(si.getStockFromDB(si.getName()) < amount) { //no enough stock
-				missingList.add(i);
+				missingList.put(i, (int) (amount - si.getStockFromDB(si.getName())));
 				isAvaliable = false;
 			}
 		}
-		 rec_Ingre_List.put(this, missingList);
-		 return rec_Ingre_List;
-		//return missingList;
+		 //rec_Ingre_List.put(this, missingList);
+		 return missingList;
+		
 	}
 
 	//batchSize x % = amount
