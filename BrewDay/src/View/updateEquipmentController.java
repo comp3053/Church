@@ -49,7 +49,7 @@ public class updateEquipmentController implements Initializable {
 			Database database = new Database();
 			database.updateEquipmentCapacity(choosen, capacity);
 			Start.getInstance().confirmMsg("Sucess", "Sucessfully update capacity");
-			
+			Start.getInstance().updateEquipment();
 		} catch (NumberFormatException e) {
 			// TODO: handle exception
 			Start.getInstance().warningMsg("Error input", "Please input number");
