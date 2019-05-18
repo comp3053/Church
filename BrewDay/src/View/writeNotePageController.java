@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,7 +20,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class writeNotePageController implements Initializable{
 	
 	ObservableList<Brew> brewList =FXCollections.observableArrayList();
-	
 	@FXML
 	private TableView<Brew> brewTableView = new TableView<Brew>(brewList);
 	@FXML
@@ -51,34 +51,36 @@ public class writeNotePageController implements Initializable{
 		brewArrayList = db.getAllBrews();
 		
 		for(Brew temp:brewArrayList) {
+			//System.out.println("Brew:"+temp.getRecipeName());
 			brewList.add(temp);
 		}
 		
-		System.out.println(brewArrayList.toArray());
-		System.out.println(brewList.toArray());
+//		System.out.println(brewArrayList.toArray());
+//		System.out.println(brewList.toArray());
 		
-		brewId.setCellValueFactory(new PropertyValueFactory<Brew, String>("ID"));
+		//brewId.setCellValueFactory(new PropertyValueFactory<Brew, String>("ID"));
 		//render the ID
-//		brewId.setCellFactory((col)->{
-//			TableCell<Brew, String> cell = new TableCell<Brew, String>(){
-//				@Override
-//				public void updateItem(String item, boolean empty) {
-//					super.updateItem(item, empty);
-//					this.setText(null);
-//					this.setGraphic(null);
-//					
-//					if(!empty) {
-//						int rowIndex = this.getIndex()+1;
-//						this.setText(String.valueOf(rowIndex));
-//					}
-//				}
-//			};
-//			return cell;
-//		});
+		brewId.setCellFactory((col)->{
+			TableCell<Brew, String> cell = new TableCell<Brew, String>(){
+				@Override
+				public void updateItem(String item, boolean empty) {
+					super.updateItem(item, empty);
+					this.setText(null);
+					this.setGraphic(null);
+					
+					if(!empty) {
+						int rowIndex = this.getIndex()+1;
+						this.setText(String.valueOf(rowIndex));
+					}
+				}
+			};
+			return cell;
+		});
 		
-		RecipeName.setCellValueFactory(new PropertyValueFactory<Brew, String>("Recipe Name"));
-		brewDate.setCellValueFactory(new PropertyValueFactory<Brew, String>("DATE"));
+		RecipeName.setCellValueFactory(new PropertyValueFactory<Brew, String>("RecipeName"));
+		brewDate.setCellValueFactory(new PropertyValueFactory<Brew, String>("Date"));
 		
+		brewTableView.setItems(brewList);
 	}
 
 }

@@ -65,8 +65,7 @@ public class Database {
 				pStatement.close();
 			} catch (SQLException e) {
 				// TODO: handle exception
-				e.printStackTrace();
-				
+				e.printStackTrace();			
 				return -1;
 			}
 
@@ -76,15 +75,24 @@ public class Database {
 			return 0;
 		}
 
-		
-
-
 		return 1;
 	}
 
 	public boolean addBrew(Brew brew) {
-		//add brew.recipe.getID() as recipe id;
-
+		try {
+			String sql = "INSERT INTO 'equipment' VALUES(null, ?, ?, ?, null);";
+			//CREATE TABLE 'brew' ('brew_id' INTEGER PRIMARY KEY AUTOINCREMENT,'recipe_id' INTEGER, 'batch_size' INTEGER,'date' TEXT, 'note_id' INTEGER);";
+			//add brew.recipe.getID() as recipe id;
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			//pStatement.setInt(1, Integer.parseInt(equipment.getID()));
+			pStatement.setInt(1, Integer.parseInt(brew.getRecipe().getID()));
+			pStatement.setFloat(2, brew.getBatchSize());
+			pStatement.setString(3, brew.getDate());
+			
+		}catch(SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 
 		return true;
 	}
@@ -175,22 +183,19 @@ public class Database {
 				pStatement.executeUpdate();
 
 			}
-
 			pStatement.close();
-
-
+			
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
 
+	//use id to return a recipe
 	public Recipe getRecipe(String id){
-		//use id to return a recipe
+		
 		String sql = "SELECT* FROM recipe WHERE recipe_id = ?;";
 		Recipe r = new Recipe();
-
-		ArrayList<Equipment> equipmentsList = new ArrayList<Equipment>();
 
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
@@ -200,8 +205,8 @@ public class Database {
 			ResultSet rs = pStatement.executeQuery();
 
 			while (rs.next()) {
-				Equipment tempEquipment = new Equipment(rs.getFloat(1), rs.getString(2));
-				equipmentsList.add(tempEquipment);
+				Recipe tmp = new Recipe(Integer.toString(rs.getInt(1)), rs.getInt(3), rs.getString(2), rs.getString(4));
+				r = tmp;
 			}
 
 		} catch(SQLException e){
@@ -326,10 +331,7 @@ public class Database {
 				Recipe recipe = getRecipe(Integer.toString(recipeID));
 				Brew tmpBrew = new Brew(rSet.getInt(3), recipe);
 				result = tmpBrew;
-
-				Recipe r = getRecipe(Integer.toString(recipeID));
-				Brew tmp = new Brew(rSet.getInt(3), r);
-				result = tmp;
+				
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -343,18 +345,18 @@ public class Database {
 	public ArrayList<Brew> getAllBrews(){
 		String sql = "SELECT * FROM brew";
 		ArrayList<Brew> bList = new ArrayList<Brew>();
-		
+
 		try {
-			 Statement statement = this.connection.createStatement();
-			 ResultSet rSet = statement.executeQuery(sql);
-			 while(rSet.next()) {
-				 Brew tmpBrew = getBrew(Integer.toString(rSet.getInt(1)));
-				 bList.add(tmpBrew);
-			 }
-			 
+			Statement statement = this.connection.createStatement();
+			ResultSet rSet = statement.executeQuery(sql);
+			while(rSet.next()) {
+				Brew tmpBrew = getBrew(Integer.toString(rSet.getInt(1)));
+				bList.add(tmpBrew);
+			}
+
 		}catch (SQLException e) {
 			e.printStackTrace();
-			
+
 		}
 		return bList;
 	}
@@ -681,7 +683,7 @@ public class Database {
 				return rs.getInt(2);
 			}
 			return -2;
-			
+
 		} catch (SQLException e){
 			e.printStackTrace();
 			return -1;
