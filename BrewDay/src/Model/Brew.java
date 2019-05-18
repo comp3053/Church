@@ -43,6 +43,10 @@ public class Brew {
 		return this.recipe;
 	}
 	
+	public String getRecipeName() {
+		return this.recipe.getName();
+	}
+	
 	public void setRecipe(Recipe recipe) {
 		this.recipe = recipe;
 	}
