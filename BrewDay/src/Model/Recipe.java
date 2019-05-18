@@ -109,8 +109,10 @@ public class Recipe {
 		ArrayList<Equipment> eList = db.getAvailableEquipments(batchSize);
 		if(eList == null) {
 			//no available equipments
+			return null;
 		}
 		else {
+			//there are available equipments
 			ArrayList<Recipe> rList = db.getRecipes();
 			for(Recipe r : rList) {
 				
@@ -136,7 +138,7 @@ public class Recipe {
 	}
 	
 	//batchSize x % = amount
-	private float convertMeasure(RecipeIngredient i, int batchSize) {
+	public float convertMeasure(RecipeIngredient i, int batchSize) {
 		
 		return (i.getValue() / this.literOfbeer) * batchSize;
 	}

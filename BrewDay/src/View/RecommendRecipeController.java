@@ -26,13 +26,12 @@ public class RecommendRecipeController implements Initializable{
 	@FXML
 	private TextField inputBatchSizeBlank;
 	
-	public static String getRecipeText(Recipe recipe) {
-		String text = recipe.getName() + " ";
-		
+	public static String getRecipeText(Recipe recipe, int batchSize) {
+		String text = "Recipe: " + recipe.getName() + " ";
 		for(RecipeIngredient rg:recipe.getList()) {
-			text = text + " " + rg.getName() + ": " + rg.getValue() + rg.getUnit();
+			float ingredientValue = recipe.convertMeasure(rg, batchSize);
+			text = text + "Ingredients: " + rg.getName() + ": " + ingredientValue + " " + rg.getUnit() + " ";
 		}
-		
 		return text;
 	}
 	
@@ -41,10 +40,29 @@ public class RecommendRecipeController implements Initializable{
 		
 		recipeList.clear();
 		int batchSize = 0;
+		ArrayList<Recipe> recipeArrayList = new ArrayList<Recipe>();
 		
 		try {
+			//get the batch size from the user input
 			batchSize = Integer.parseInt(inputBatchSizeBlank.getText());
-		} catch (Exception e) {
+			//pass the batch for recipe recommendation, get the recipe list
+			recipeArrayList = Recipe.recommendRecipe(batchSize);
+			
+			if(recipeArrayList == null) {
+				String str = "No recommended recipes";
+				recipeList.add(str);
+				recipeListView.setItems(recipeList);
+				return;
+			}
+			
+			for (Recipe tmp: recipeArrayList) {
+				//get the content to render the table
+				String str = getRecipeText(tmp, batchSize);
+				recipeList.add(str);
+			}
+			recipeListView.setItems(recipeList);
+			
+		} catch (NumberFormatException e) {
 			// TODO: handle exception
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
@@ -55,16 +73,9 @@ public class RecommendRecipeController implements Initializable{
 			alert.showAndWait();
 			
 			Start.getInstance().recommendRecipe();
+			return;
+			
 		}
-		
-		ArrayList<Recipe> recipeArrayList = new ArrayList<Recipe>();
-		recipeArrayList = Recipe.recommendRecipe(batchSize);
-		
-		for(Recipe tempR:recipeArrayList) {
-			recipeList.add(getRecipeText(tempR));
-		}
-		
-		recipeListView.setItems(recipeList);
 	}
 	
 	@FXML
