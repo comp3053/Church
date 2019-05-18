@@ -32,6 +32,7 @@
                   <TextField fx:id="inputValue" layoutX="471.0" layoutY="129.0" prefHeight="27.0" prefWidth="210.0" />
                   <Button layoutX="435.0" layoutY="269.0" mnemonicParsing="false" onAction="#addStock" prefHeight="27.0" prefWidth="106.0" text="Add" />
                   <Button layoutX="611.0" layoutY="269.0" mnemonicParsing="false" onAction="#subtractStock" prefHeight="27.0" prefWidth="106.0" text="Subtract" />
+                  <Label layoutX="471.0" layoutY="97.0" text="Chage Stock" />
                </children></AnchorPane>
         </items>
       </SplitPane>

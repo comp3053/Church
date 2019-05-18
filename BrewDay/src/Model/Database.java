@@ -303,10 +303,9 @@ public class Database {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			return null;
 		}
-
 		return result;
-
 	}
 
 	//***********************************Brew************************************************
@@ -323,9 +322,14 @@ public class Database {
 			ResultSet rSet = pStatement.executeQuery();
 			while (rSet.next()) {
 				int recipeID = rSet.getInt(2);
+
 				Recipe recipe = getRecipe(Integer.toString(recipeID));
 				Brew tmpBrew = new Brew(rSet.getInt(3), recipe);
 				result = tmpBrew;
+
+				Recipe r = getRecipe(Integer.toString(recipeID));
+				Brew tmp = new Brew(rSet.getInt(3), r);
+				result = tmp;
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -517,6 +521,9 @@ public class Database {
 			pStatement.setInt(1,batchSize);
 
 			ResultSet rs = pStatement.executeQuery();
+			if(rs.getRow() == 0) {
+				return null;
+			}
 			while (rs.next()) {
 				Equipment tempEquipment = new Equipment(rs.getFloat(1), rs.getString(2));
 				equipmentsList.add(tempEquipment);
@@ -526,6 +533,7 @@ public class Database {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		System.out.println(equipmentsList.toArray().length);
 		return equipmentsList;
 	}
 
@@ -646,9 +654,21 @@ public class Database {
 	public int getIngredientStock(String ingredientName) {
 		//use the name as key to find the value
 		// return the value in the database
-		return 0;
+		String sql = "SELECT * FROM 'storage_ingredient' WHERE 'name' = ?;";
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setString(1, ingredientName);
+			ResultSet rs = pStatement.executeQuery();
+			if(rs.getRow()==1) {
+				return rs.getInt(2);
+			}
+			return -2;
+			
+		} catch (SQLException e){
+			e.printStackTrace();
+			return -1;
+		}
 	}
-
 
 	public boolean updateRecipeIngredientValue(String ingredientName, int value) {
 		return true;
