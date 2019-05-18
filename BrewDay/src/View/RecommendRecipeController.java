@@ -50,22 +50,27 @@ public class RecommendRecipeController implements Initializable{
 			//pass the batch for recipe recommendation, get the recipe list
 			
 			recipeArrayList = Recipe.recommendRecipe(batchSize);
-
-			if(recipeArrayList == null) {
+			System.out.println("Recommend: Im here line 53 ");
+			
+			if(recipeArrayList == null || recipeArrayList.size() == 0) {
 				String str = "No recommended recipes";
 				recipeList.add(str);
+				System.out.println("Recommend: Im here line 57");
 				recipeListView.setItems(recipeList);
 				return;
 			}
 
 			for (Recipe tmp: recipeArrayList) {
+				System.out.println("Recommend: Im here line 63");
 				//get the content to render the table
 				String str = getRecipeText(tmp, batchSize);
 				recipeList.add(str);
 			}
+			System.out.println("Recommend: Im here line 68");
 			recipeListView.setItems(recipeList);
 
 		} catch (NumberFormatException e) {
+			e.printStackTrace();
 			// TODO: handle exception
 			Start.getInstance().warningMsg("Input Error", "Please input a number");			
 			Start.getInstance().recommendRecipe();
