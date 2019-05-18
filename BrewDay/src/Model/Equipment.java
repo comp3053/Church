@@ -17,6 +17,15 @@ public class Equipment {
 		this.avaliableCapacity = capacity;
 	}
 	
+	public Equipment(String id, String type,float capacity) {
+		// TODO Auto-generated constructor stub
+		this.id = null;
+		this.type = type;
+		this.capacity = capacity;
+		this.isAvaliable = true;
+		this.avaliableCapacity = capacity;
+	}
+	
 	public Equipment(String id, float capacity, String type, boolean isAvaliable, float avaliableCapacity) {
 		this.id = id;
 		this.capacity = capacity;
