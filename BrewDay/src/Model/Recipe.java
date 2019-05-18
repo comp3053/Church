@@ -111,20 +111,19 @@ public class Recipe {
 		Database db = new Database();
 		ArrayList<Recipe> recommendList = new ArrayList<Recipe>();
 		ArrayList<Equipment> eList = db.getAvailableEquipments(batchSize);
-		if(eList == null) {
-			Start.getInstance().warningMsg("No available equipment", "You have no equipments");
-			return null;
-		}
-		if(eList.toArray().length == 0) {
-			//no available equipments
+		if(eList == null || eList.toArray().length == 0) {
 			Start.getInstance().warningMsg("No available equipment", "There are no available equipments");
 			return null;
 		}
+
 		else {
 			//there are available equipments
+			//get all the recipes
 			ArrayList<Recipe> rList = db.getRecipes();
 			for(Recipe r : rList) {
-				r.produceMissingIngredient(batchSize);
+				System.out.println("Recipe 128 /RecipeName: " + r.getName());
+				
+				r.produceMissingIngredient(batchSize, r.getList());
 				if(r.isAvaliable)
 					recommendList.add(r);
 			}
@@ -132,7 +131,7 @@ public class Recipe {
 		return recommendList;
 	}
 
-	public HashMap<Recipe, ArrayList<RecipeIngredient>> produceMissingIngredient(int batchSize){
+	public HashMap<Recipe, ArrayList<RecipeIngredient>> produceMissingIngredient(int batchSize, ArrayList<RecipeIngredient> ingredients){
 		HashMap<Recipe, ArrayList<RecipeIngredient>> rec_Ingre_List = new HashMap<Recipe, ArrayList<RecipeIngredient>>();
 		
 		ArrayList<RecipeIngredient> missingList = new ArrayList<RecipeIngredient>();
@@ -140,6 +139,9 @@ public class Recipe {
 		for(RecipeIngredient i : ingredients) {
 			float amount = convertMeasure(i, batchSize);
 			StorageIngredient si = db.getStorageIngredient(i.getID());
+			System.out.println("Recipe 145/ IngredientName: " + i.getName()+ " amount: " + amount + " stock: " 
+			+ si.getStockFromDB(si.getName()));
+			
 			if(si.getStockFromDB(si.getName()) < amount) { //no enough stock
 				missingList.add(i);
 				isAvaliable = false;

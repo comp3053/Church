@@ -1,6 +1,7 @@
 package View;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -38,6 +39,27 @@ public class updateEquipmentController implements Initializable {
 	
 	@FXML
 	public void toUpdateEquipment(ActionEvent event) {
+		Equipment choosen = equipmentTable.getSelectionModel().getSelectedItem();
+		
+		float capacity = 0;
+		
+		try {
+			capacity = Float.parseFloat(capacityValue.getText());
+			
+			Database database = new Database();
+			database.updateEquipmentCapacity(choosen, capacity);
+			Start.getInstance().confirmMsg("Sucess", "Sucessfully update capacity");
+			Start.getInstance().updateEquipment();
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+			Start.getInstance().warningMsg("Error input", "Please input number");
+			Start.getInstance().updateEquipment();
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+			Start.getInstance().warningMsg("Error", "Please choose one equiment for upadte");
+			Start.getInstance().updateEquipment();
+		}
+		
 		
 	}
 	

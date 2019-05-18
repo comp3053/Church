@@ -84,9 +84,9 @@ public class Equipment {
 		return db.updateEquipmentType(this, type);
 	}
 	
-	public boolean updateEquipmentCapacity(String name, int amount) {
+	public boolean updateEquipmentCapacity(String name, Float amount) {
 		
 		Database db = new Database();
-		return db.updateEquipmentCapacity(this, name, amount);
+		return db.updateEquipmentCapacity(this, amount);
 	}
 }
