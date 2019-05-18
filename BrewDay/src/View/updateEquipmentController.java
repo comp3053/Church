@@ -1,6 +1,5 @@
 package View;
 
-import java.awt.TextField;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -26,7 +25,7 @@ public class updateEquipmentController implements Initializable {
 	@FXML
 	private TableColumn<Equipment, Float> capacityList;
 	@FXML
-	private TextField capacityValue;
+	private javafx.scene.control.TextField capacityValue;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
@@ -39,7 +38,7 @@ public class updateEquipmentController implements Initializable {
 		
 		for(Equipment equipment:equipmentList) {
 			
-			equipmentList.add(equipment);
+			EquipmentList.add(equipment);
 		}
 		
 		equipmentNameList.setCellValueFactory(new PropertyValueFactory<Equipment, String>("Equipment Name"));

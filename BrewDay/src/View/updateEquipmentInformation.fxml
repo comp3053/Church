@@ -22,14 +22,14 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="867.0">
                <children>
                   <Label layoutX="20.0" layoutY="14.0" text="Equipment List" />
-                  <Button layoutX="195.0" layoutY="431.0" mnemonicParsing="false"  text="Update" />
+                  <Button layoutX="195.0" layoutY="431.0" mnemonicParsing="false" text="Update" />
                   <Button layoutX="470.0" layoutY="431.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Cancel" />
                   <Label layoutX="132.0" layoutY="346.0" text="Equipment Capacity" />
-                  <TextField layoutX="419.0" layoutY="340.0" prefHeight="36.0" prefWidth="103.0" />
+                  <TextField fx:id="capacityValue" layoutX="419.0" layoutY="340.0" prefHeight="36.0" prefWidth="103.0" />
                   <TableView layoutX="79.0" layoutY="72.0" prefHeight="200.0" prefWidth="519.0">
                     <columns>
-                      <TableColumn prefWidth="342.0" text="Equipment Name" />
-                      <TableColumn prefWidth="176.0" text="Capacity" />
+                      <TableColumn fx:id="equipmentNameList" prefWidth="342.0" text="Equipment Name" />
+                      <TableColumn fx:id="capacityList" prefWidth="176.0" text="Capacity" />
                     </columns>
                   </TableView>
                </children>
