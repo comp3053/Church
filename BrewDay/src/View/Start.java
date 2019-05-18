@@ -159,7 +159,7 @@ public class Start extends Application
 	public void updateEquipment() {
 		try 
 		{
-			replaceSceneContent("updateEquipmentInformation.fxml");
+			replaceSceneContent("UpdateEquipment.fxml");
 		} 
 		catch (Exception e) 
 		{

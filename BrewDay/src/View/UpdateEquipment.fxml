@@ -25,17 +25,13 @@
                   <Button layoutX="195.0" layoutY="431.0" mnemonicParsing="false" text="Update" />
                   <Button layoutX="470.0" layoutY="431.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Cancel" />
                   <Label layoutX="132.0" layoutY="346.0" text="Equipment Capacity" />
-                  <TextField fx:id="capacityValue" layoutX="419.0" layoutY="340.0" prefHeight="36.0" prefWidth="103.0" />
-<<<<<<< HEAD
                   <TableView fx:id="equipmentTable" layoutX="79.0" layoutY="72.0" prefHeight="200.0" prefWidth="519.0">
-=======
-                  <TableView layoutX="79.0" layoutY="72.0" prefHeight="200.0" prefWidth="519.0">
->>>>>>> branch 'master' of https://github.com/comp3053/Church.git
                     <columns>
                       <TableColumn fx:id="equipmentNameList" prefWidth="342.0" text="Equipment Name" />
                       <TableColumn fx:id="capacityList" prefWidth="176.0" text="Capacity" />
                     </columns>
                   </TableView>
+                  <TextField fx:id="capacityValue" layoutX="291.0" layoutY="341.0" />
                </children>
             </AnchorPane>
          </items>

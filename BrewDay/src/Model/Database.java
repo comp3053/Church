@@ -545,7 +545,26 @@ public class Database {
 		
 		return equipmentsList;
 	}
-
+	
+	public ArrayList<Equipment> getEquipmentsList(){
+		String sql = "SELECT * FROM 'equipment';";
+		ArrayList<Equipment> equipmentList = new ArrayList<Equipment>();
+		
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			ResultSet rSet = pStatement.executeQuery();
+			
+			while(rSet.next()) {
+				Equipment tempEquipment= new Equipment(Integer.toString(rSet.getInt(1)),rSet.getString(4),rSet.getFloat(2));
+				equipmentList.add(tempEquipment);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return equipmentList;	
+	}
 
 	//***********************************Ingredient************************************************
 

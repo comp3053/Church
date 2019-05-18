@@ -37,7 +37,15 @@ public class writeNotePageController implements Initializable{
 		Start.getInstance().mainPage();
 	}
 	
+	@FXML
+	public void saveNote(ActionEvent event) {
+		
+	}
 	
+	@FXML
+	public void showNote(ActionEvent event) {
+		
+	}
 	
 	
 	@Override
@@ -51,7 +59,7 @@ public class writeNotePageController implements Initializable{
 		brewArrayList = db.getAllBrews();
 		
 		for(Brew temp:brewArrayList) {
-			System.out.println("Brew:"+temp.getRecipeName());
+			//System.out.println("Brew:"+temp.getRecipeName());
 			brewList.add(temp);
 		}
 		
