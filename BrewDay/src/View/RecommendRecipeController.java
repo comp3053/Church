@@ -37,7 +37,6 @@ public class RecommendRecipeController implements Initializable{
 	
 	@FXML
 	public void recommendRecipe(ActionEvent event) {
-		
 		recipeList.clear();
 		int batchSize = 0;
 		ArrayList<Recipe> recipeArrayList = new ArrayList<Recipe>();
@@ -64,18 +63,16 @@ public class RecommendRecipeController implements Initializable{
 			
 		} catch (NumberFormatException e) {
 			// TODO: handle exception
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Warning");
-			alert.setHeaderText("Input Error");
-			alert.setContentText("Please input a number");
-			ButtonType buttonTypeOK = new ButtonType("OK");
-			alert.getButtonTypes().setAll(buttonTypeOK);
-			alert.showAndWait();
-			
+			Start.getInstance().warningMsg("Input Error", "Please input a number");			
 			Start.getInstance().recommendRecipe();
 			return;
 			
 		}
+	}
+	
+	@FXML
+	public void producingMissingIngredients(ActionEvent event) {
+	
 	}
 	
 	@FXML
