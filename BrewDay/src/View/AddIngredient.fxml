@@ -40,7 +40,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="ingredientUnit" layoutX="444.0" layoutY="132.0" prefHeight="36.0" prefWidth="124.0" promptText="g" visibleRowCount="2" >
+                  <ComboBox fx:id="ingredientUnit" layoutX="444.0" layoutY="132.0" prefHeight="36.0" prefWidth="124.0" visibleRowCount="2" >
                   	<items>
                   		<FXCollections fx:factory="observableArrayList">
                   		<String fx:value="g" />
