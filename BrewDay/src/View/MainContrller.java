@@ -6,13 +6,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MainContrller implements Initializable {
 	
-	
+	@FXML
+	private ImageView iv;
 	@FXML
 	public void toMaintainRecipe(ActionEvent event) {
 		Start.getInstance().maintainRecipe();
@@ -40,6 +40,12 @@ public class MainContrller implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) 
 	{
 		// TODO Auto-generated method stub
+		// load the image
+        Image image = new Image("file:resources/images/beer.jpg");
+
+        // simple displays ImageView the image as is
+        ImageView iv = new ImageView();
+        iv.setImage(image);
 		
 	}
 

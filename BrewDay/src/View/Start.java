@@ -1,9 +1,8 @@
 package View;
 
-import java.io.Console;
-
 import Tool.InitDataBase;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
@@ -12,19 +11,30 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class Start extends Application
-{
-	private Stage stage;
 
+public class Start extends Application
+{	
+	
+	private Stage stage;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception 
-	{
+	{	
 		stage = primaryStage;
 		this.stage.getIcons().add(new Image("file:resources/images/beer.png"));
 		this.stage.setTitle("Brew Day");
+		// load the image
+        Image image = new Image("file:resources/images/beer.jpg");
+
+        // simple displays ImageView the image as is
+        ImageView iv = new ImageView();
+        iv.setImage(image);
+		
 		mainPage();
+		
 		stage.show();
 
 	}
