@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainContrller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainContrller">
    <children>
       <Pane layoutX="281.0" layoutY="126.0" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button layoutX="20.0" layoutY="187.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Maintain Recipe" />
-            <Button layoutX="170.0" layoutY="187.0" mnemonicParsing="false" onAction="#toMaintainIngredient" text="Maintain Ingredients" />
-            <Button layoutX="330.0" layoutY="187.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Maintain Equipment" />
-            <Button layoutX="480.0" layoutY="187.0" mnemonicParsing="false" onAction="#toRecommendRecipe" text="Recommend Recipe" />
-            <Button layoutX="630.0" layoutY="187.0" mnemonicParsing="false" onAction="#toWriteNotePage" text="Write Note"/>
+            <Button layoutX="744.0" layoutY="51.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Maintain Recipe" />
+            <Button layoutX="724.0" layoutY="167.0" mnemonicParsing="false" onAction="#toMaintainIngredient" text="Maintain Ingredients" />
+            <Button layoutX="726.0" layoutY="300.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Maintain Equipment" />
+            <Button layoutX="727.0" layoutY="424.0" mnemonicParsing="false" onAction="#toRecommendRecipe" text="Recommend Recipe" />
+            <Button layoutX="765.0" layoutY="528.0" mnemonicParsing="false" onAction="#toWriteNotePage" text="Write Note" />
+            <ImageView fx:id="iv" fitHeight="457.0" fitWidth="656.0" layoutX="43.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/beer.jpg" />
+               </image></ImageView>
          </children>
       </Pane>
    </children>

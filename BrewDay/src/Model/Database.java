@@ -485,7 +485,7 @@ public class Database {
 		}
 	}
 
-	public boolean updateEquipmentCapacity(Equipment equip, String name, int amount) {
+	public boolean updateEquipmentCapacity(Equipment equip, Float amount) {
 		int status = 0;
 
 		//prepare SQL
@@ -495,7 +495,7 @@ public class Database {
 
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
 
-			pStatement.setInt(1, amount);
+			pStatement.setFloat(1, amount);
 			pStatement.setInt(2, Integer.parseInt(equip.getID()));
 
 			status = pStatement.executeUpdate();
