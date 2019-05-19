@@ -81,6 +81,7 @@ public class AddRecipeController implements Initializable {
 			StorageIngredient choosenIngredient = IngredientList.getSelectionModel().getSelectedItem();
 			
 			RecipeIngredient tempIngredient = new RecipeIngredient(choosenIngredient.getID(), choosenIngredient.getName(), choosenIngredient.getUnit(), value);
+			
 			RecipeIngredientList.add(tempIngredient);
 		}
 		catch(RuntimeException e) {

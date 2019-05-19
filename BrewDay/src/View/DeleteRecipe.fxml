@@ -10,19 +10,19 @@
    <children>
       <SplitPane dividerPositions="0.15326633165829145" layoutX="335.0" layoutY="134.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label layoutX="14.0" layoutY="20.0" text="Brew Day">
+                  <Text layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delete Recipe">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="36.0" />
                      </font>
-                  </Label>
+                  </Text>
                </children>
             </AnchorPane>
           <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <Label layoutX="52.0" layoutY="14.0" text="Recipe List" />
-                  <TableView fx:id="recipeTableView" layoutX="32.0" layoutY="57.0" prefHeight="200.0" prefWidth="684.0">
+                  <TableView fx:id="recipeTableView" layoutX="32.0" layoutY="57.0" prefHeight="200.0" prefWidth="684.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0">
                     <columns>
                       <TableColumn fx:id="recipeName" prefWidth="683.0" text="Recipe Name" />
                     </columns>

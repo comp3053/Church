@@ -26,13 +26,14 @@
 
 
 #title{
-	-fx-background-color:#98FB98;
+    -fx-background-color:#FFDEAD;
 }
 
 .label{
-	-fx-font-family:"Helvetica";
+    -fx-font-family:"Helvetica";
+    
 }
 
 #tablecolumn{
-	-fx-background-color:#FFC125;
+	-fx-background-color:#FFE4E1;
 }
