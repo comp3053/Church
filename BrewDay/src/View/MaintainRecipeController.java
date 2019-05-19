@@ -6,11 +6,14 @@ import java.util.ResourceBundle;
 
 import Model.Database;
 import Model.Recipe;
+import Model.RecipeIngredient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,6 +21,23 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 
 public class MaintainRecipeController implements Initializable{
+	
+	ObservableList<Recipe> recipeList = FXCollections.observableArrayList();
+	@FXML
+	private TableView<Recipe> recipeTableView = new TableView<Recipe>(recipeList);
+	@FXML
+	private TableColumn<Recipe, String> recipeName;
+	@FXML
+	private TableColumn<Recipe, String> recipeID;
+	
+	ObservableList<String> recipeIngredientList = FXCollections.observableArrayList();
+	@FXML
+	private ListView<String> recipeIngredientListView = new ListView<String>(recipeIngredientList);
+	
+	@FXML
+	private Label recipeNameLabel;
+	@FXML
+	private Label literOfBeer;
 	
 	
 	@FXML
@@ -40,13 +60,14 @@ public class MaintainRecipeController implements Initializable{
 		Start.getInstance().updateRecipe();
 	}
 	
-	ObservableList<Recipe> recipeList = FXCollections.observableArrayList();
+	
 	@FXML
-	private TableView<Recipe> recipeTableView = new TableView<Recipe>(recipeList);
-	@FXML
-	private TableColumn<Recipe, String> recipeName;
-	@FXML
-	private TableColumn<Recipe, String> recipeID;
+	public void showRecipeDetail(ActionEvent event) {
+		Recipe choosenRecipe = recipeTableView.getSelectionModel().getSelectedItem();
+		
+		
+	}
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 

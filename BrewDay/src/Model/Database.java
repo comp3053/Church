@@ -47,15 +47,13 @@ public class Database {
 
 	public int addStorageIngredient(String ingredientName, int value, String unit) {
 
-		String sql;
-		PreparedStatement pStatement;
 		if(!checkStorageIngredientExist(ingredientName)) {
 			
-			sql = "INSERT INTO 'storage_ingredient' VALUES (null, ?, ?, ?);";
 			try {
-
-				pStatement = this.connection.prepareStatement(sql);
-
+				String sql = "INSERT INTO 'storage_ingredient' VALUES (null, ?, ?, ?);";
+				
+				PreparedStatement pStatement = this.connection.prepareStatement(sql);
+				
 				pStatement.setInt(1, value);
 				pStatement.setString(2, ingredientName);
 				pStatement.setString(3, unit);
@@ -63,6 +61,8 @@ public class Database {
 				pStatement.executeUpdate();
 
 				pStatement.close();
+				//this.connection.close();
+				
 			} catch (SQLException e) {
 				// TODO: handle exception
 				e.printStackTrace();			
@@ -80,20 +80,29 @@ public class Database {
 
 	public boolean addBrew(Brew brew) {
 		try {
-			String sql = "INSERT INTO 'equipment' VALUES(null, ?, ?, ?, null);";
-			//CREATE TABLE 'brew' ('brew_id' INTEGER PRIMARY KEY AUTOINCREMENT,'recipe_id' INTEGER, 'batch_size' INTEGER,'date' TEXT, 'note_id' INTEGER);";
+			String sql = "INSERT INTO 'brew' VALUES(null, ?, ?, ?, null);";
+			//TABLE 'brew' ('brew_id' INTEGER PRIMARY KEY AUTOINCREMENT,'recipe_id' INTEGER, 'batch_size' INTEGER,'date' TEXT, 'note_id' INTEGER);";
 			//add brew.recipe.getID() as recipe id;
+			System.out.println(brew.getRecipeName());
+			System.out.println(brew.getDate());
+			System.out.println(brew.getBatchSize());
+			
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
-			//pStatement.setInt(1, Integer.parseInt(equipment.getID()));
+			
 			pStatement.setInt(1, Integer.parseInt(brew.getRecipe().getID()));
 			pStatement.setFloat(2, brew.getBatchSize());
 			pStatement.setString(3, brew.getDate());
+			
+			pStatement.executeUpdate();
+
+			pStatement.close();
+			//this.connection.close();
 			
 		}catch(SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-
+		System.out.println("Add brew success");
 		return true;
 	}
 
@@ -102,7 +111,7 @@ public class Database {
 			String sql = "INSERT INTO 'equipment' VALUES(null, ?, ?, ?, ?);";
 
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
-			//pStatement.setInt(1, Integer.parseInt(equipment.getID()));
+
 			pStatement.setFloat(1, equipment.getCapacity());
 			pStatement.setFloat(2, equipment.getAvaliableCapacity());
 			pStatement.setString(3, equipment.getType());
@@ -112,6 +121,7 @@ public class Database {
 			pStatement.executeUpdate();
 
 			pStatement.close();
+			//this.connection.close();
 
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -133,6 +143,7 @@ public class Database {
 			pStatement.executeUpdate();
 
 			pStatement.close();
+			//this.connection.close();
 
 
 		} catch (SQLException e) {
@@ -183,7 +194,9 @@ public class Database {
 				pStatement.executeUpdate();
 
 			}
+			
 			pStatement.close();
+			//this.connection.close();
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -199,7 +212,6 @@ public class Database {
 
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
-
 			pStatement.setInt(1,Integer.parseInt(id));
 
 			ResultSet rs = pStatement.executeQuery();
@@ -208,6 +220,8 @@ public class Database {
 				Recipe tmp = new Recipe(Integer.toString(rs.getInt(1)), rs.getInt(3), rs.getString(2), rs.getString(4));
 				r = tmp;
 			}
+			pStatement.close();
+			//this.connection.close();
 
 		} catch(SQLException e){
 			// TODO: handle exception
@@ -233,6 +247,8 @@ public class Database {
 			}
 
 			pStatement.close();
+			//this.connection.close();
+			
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -256,7 +272,8 @@ public class Database {
 				Note noteTemp = new Note(Integer.toString(rSet.getInt(1)), rSet.getString(2), rSet.getString(3), rSet.getString(4), rSet.getString(5));
 				resutl = noteTemp;
 			}
-
+			pStatement.close();
+			//this.connection.close();
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -281,6 +298,9 @@ public class Database {
 
 				result = equipmentTemp;
 			}
+			pStatement.close();
+			//this.connection.close();
+			
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -307,6 +327,10 @@ public class Database {
 
 				result = siTemp;
 			}
+			
+			pStatement.close();
+			//this.connection.close();
+		
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -335,6 +359,9 @@ public class Database {
 				result = tmpBrew;
 				
 			}
+			pStatement.close();
+			//this.connection.close();
+			
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -355,7 +382,10 @@ public class Database {
 				Brew tmpBrew = getBrew(Integer.toString(rSet.getInt(1)));
 				bList.add(tmpBrew);
 			}
-
+			
+			statement.close();
+			//this.connection.close();
+			
 		}catch (SQLException e) {
 			e.printStackTrace();
 
@@ -380,6 +410,8 @@ public class Database {
 			pStatement.executeUpdate();
 
 			pStatement.close();
+			//this.connection.close();
+			
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -402,8 +434,9 @@ public class Database {
 				pStatement.setInt(4, rId);
 
 				pStatement.executeUpdate();
+				
 				pStatement.close();
-				this.connection.close();
+				//this.connection.close();
 
 			} catch (SQLException e) {
 				// TODO: handle exception
@@ -442,6 +475,8 @@ public class Database {
 				}
 			}
 		}
+		
+
 		catch(SQLException e){
 			// TODO: handle exception
 			e.printStackTrace();
@@ -468,7 +503,7 @@ public class Database {
 
 			pStatement.close();
 
-			this.connection.close();
+			//this.connection.close();
 
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -501,7 +536,7 @@ public class Database {
 			status = pStatement.executeUpdate();
 			pStatement.close();
 
-			this.connection.close();
+			//this.connection.close();
 
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -537,6 +572,7 @@ public class Database {
 				Equipment tempEquipment = new Equipment(rs.getFloat(1), rs.getString(2));
 				equipmentsList.add(tempEquipment);
 			}
+			pStatement.close();
 
 		} catch(SQLException e){
 			// TODO: handle exception
@@ -559,6 +595,9 @@ public class Database {
 				Equipment tempEquipment= new Equipment(Integer.toString(rSet.getInt(1)),rSet.getString(4),rSet.getFloat(2));
 				equipmentList.add(tempEquipment);
 			}
+			
+			pStatement.close();
+			//this.connection.close();
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -580,6 +619,8 @@ public class Database {
 			pStatement.executeUpdate();
 
 			pStatement.close();
+			//this.connection.close();
+			
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -602,6 +643,9 @@ public class Database {
 				ingredientList.add(tempIngredient);
 			}
 
+			pStatement.close();
+			//this.connection.close();
+			
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -640,8 +684,9 @@ public class Database {
 			pStatement.setInt(3, value);
 
 			status = pStatement.executeUpdate();
+			
 			pStatement.close();
-			this.connection.close();
+			//this.connection.close();
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -666,11 +711,20 @@ public class Database {
 
 			ResultSet rs = pStatement.executeQuery();
 			//result is empty, the ingredient does not exist
-			if(!rs.isBeforeFirst() && rs.getRow() == 0)
+			if(!rs.isBeforeFirst() && rs.getRow() == 0) {
+				pStatement.close();
+				//this.connection.close();
 				return false;
+				
+			}
 			//the ingredient exist
-			else return true;
+			else {
+				pStatement.close();
+				//this.connection.close();
+				return true;
+			}
 
+			
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -693,9 +747,14 @@ public class Database {
 			ResultSet rs = pStatement.executeQuery();
 			
 			if(rs.next()) {
-				return rs.getInt(2);
+				int result = rs.getInt(2);
+				pStatement.close();
+				//this.connection.close();
+				return result;
 			}
 			else {
+				pStatement.close();
+				//this.connection.close();
 				return -2;
 			}
 
@@ -704,6 +763,8 @@ public class Database {
 			Start.getInstance().warningMsg("Database Error!", "Error in get Ingredient stock!");
 			return -1;
 		}
+		
+		//this.connection.close();
 	}
 
 	public boolean updateRecipeIngredientValue(String ingredientName, int value) {
