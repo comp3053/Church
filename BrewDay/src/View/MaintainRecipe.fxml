@@ -12,9 +12,9 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <SplitPane id="title" dividerPositions="0.8592493297587132" layoutX="213.0" layoutY="-53.0" prefHeight="86.0" prefWidth="838.0" styleClass="SplitPane" AnchorPane.bottomAnchor="-20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane id="title" dividerPositions="0.8181818181818182" layoutX="213.0" layoutY="-53.0" prefHeight="86.0" prefWidth="838.0" styleClass="SplitPane" AnchorPane.bottomAnchor="-20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="713.0">
+                      <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="740.0">
                            <children>
                               <Text layoutX="14.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintain Recipe">
                                  <font>
@@ -24,7 +24,7 @@
                            </children></AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Button layoutY="1.0" mnemonicParsing="false" onAction="#toMainPage" prefHeight="51.0" prefWidth="100.0" text="Back" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Button layoutX="10.0" layoutY="6.0" mnemonicParsing="false" onAction="#toMainPage" prefHeight="65.0" prefWidth="127.0" text="Back" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="6.0" />
                            </children>
                         </AnchorPane>
                     </items>
@@ -35,8 +35,8 @@
                <children>
                   <TableView fx:id="recipeTableView" layoutX="14.0" layoutY="25.0" prefHeight="290.0" prefWidth="379.0">
                     <columns>
-                      <TableColumn id="tablecolumn" fx:id="recipeID" prefWidth="90.0" styleClass="TableColumn" text="No." />
-                        <TableColumn id="tablecolumn" fx:id="recipeName" prefWidth="362.0" text="Recipe Name" />
+                      <TableColumn fx:id="recipeID" prefWidth="90.0" text="No." />
+                        <TableColumn fx:id="recipeName" prefWidth="362.0" text="Recipe Name" />
                     </columns>
                   </TableView>
                   <Button layoutX="139.0" layoutY="422.0" mnemonicParsing="false" onAction="#toAddRecipe" text="Add Recipe" />
