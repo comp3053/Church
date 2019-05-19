@@ -12,23 +12,32 @@ import Model.RecipeIngredient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class RecommendRecipeController implements Initializable{
 
+	//recipe list is the list content for recommended recipe list rendering
 	ObservableList<String> recipeList = FXCollections.observableArrayList();
 	@FXML
 	private ListView<String> recipeListView = new ListView<String>(recipeList);
 	
+	//missing list is the list content for recipes with missing ingredients
 	ObservableList<String> missingList = FXCollections.observableArrayList();
 	@FXML
 	private ListView<String> missingListView = new ListView<String>(missingList);
 
 	@FXML
 	private TextField inputBatchSizeBlank;
+
+	@FXML
+	public void backToMain(ActionEvent event) {
+		Start.getInstance().mainPage();
+	}
 
 	//return the string that display in the list view
 	public static String getRecipeText(Recipe recipe, int batchSize) {
@@ -106,14 +115,26 @@ public class RecommendRecipeController implements Initializable{
 		return;
 	}
 
-	@FXML
-	public void backToMain(ActionEvent event) {
-		Start.getInstance().mainPage();
-	}
+	//@FXML 
+	//public void addBrew(ActionEvent event) {
+
+	//}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
+		recipeListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle (MouseEvent click) {
+				if(click.getClickCount() == 2) {
+					//Use ListView's getSeleted Item
+					//the listview contains string
+					String currentItemSelected = recipeListView.getSelectionModel().getSelectedItem();
+					System.out.println(currentItemSelected);
+				}
+			}
+		});
 		// TODO Auto-generated method stub
 
 	}

@@ -93,7 +93,6 @@ public class AddRecipeController implements Initializable {
 			alert.showAndWait();
 		}
 
-		
 		RecipeIngredientName.setCellValueFactory(new PropertyValueFactory<RecipeIngredient, String>("Name"));
 		RecipeIngredientValue.setCellValueFactory(new PropertyValueFactory<RecipeIngredient, Integer>("Value"));
 		RecipeIngredientUnit.setCellValueFactory(new PropertyValueFactory<RecipeIngredient, String>("Unit"));
