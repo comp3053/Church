@@ -1,0 +1,38 @@
+.button {
+    -fx-padding: 5 22 5 22;      
+    -fx-background-radius: 12px;
+    -fx-border-color: #e2e2e2;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 18pt;
+    -fx-border-width: 2;
+    -fx-text-fill: black;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx--webkit-transition-duration: 0.4s; /* Safari */
+    -fx-transition-duration: 0.4s;
+    -fx-border-radius: 12px;
+}
+
+.button:hover {
+    -fx-background-color:#EEA2AD ;
+    -fx-color:white;
+}
+#maintain_background{
+	-fx-background-color:black;
+}
+#main_background{
+	-fx-background-color:#C6E2FF;
+}
+
+
+
+#title{
+	-fx-background-color:#98FB98;
+}
+
+.label{
+	-fx-font-family:"Helvetica";
+}
+
+#tablecolumn{
+	-fx-background-color:#FFC125;
+}
