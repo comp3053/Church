@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.updateEquipmentController">
+<AnchorPane id="maintain_background" prefHeight="600.0" prefWidth="831.0" stylesheets="@mainPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.updateEquipmentController">
    <children>
       <SplitPane dividerPositions="0.15326633165829145" layoutX="335.0" layoutY="134.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -19,19 +19,19 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="867.0">
+            <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="867.0">
                <children>
                   <Label layoutX="20.0" layoutY="14.0" text="Equipment List" />
                   <Button layoutX="195.0" layoutY="431.0" mnemonicParsing="false" onAction="#toUpdateEquipment" text="Update" />
                   <Button layoutX="470.0" layoutY="431.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Cancel" />
-                  <Label layoutX="132.0" layoutY="346.0" text="Equipment Capacity" />
-                  <TableView fx:id="equipmentTable" layoutX="79.0" layoutY="72.0" prefHeight="200.0" prefWidth="519.0">
+                  <Label layoutX="155.0" layoutY="346.0" text="Equipment Capacity" />
+                  <TableView fx:id="equipmentTable" layoutX="155.0" layoutY="71.0" prefHeight="200.0" prefWidth="519.0">
                     <columns>
                       <TableColumn fx:id="equipmentNameList" prefWidth="342.0" text="Equipment Name" />
                       <TableColumn fx:id="capacityList" prefWidth="176.0" text="Capacity" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="capacityValue" layoutX="291.0" layoutY="341.0" />
+                  <TextField fx:id="capacityValue" layoutX="563.0" layoutY="340.0" prefHeight="36.0" prefWidth="111.0" />
                </children>
             </AnchorPane>
          </items>

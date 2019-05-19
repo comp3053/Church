@@ -7,26 +7,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainContrller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="831.0" stylesheets="@mainPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainContrller">
    <children>
-      <Pane layoutX="281.0" layoutY="126.0" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="281.0" layoutY="126.0" prefHeight="600.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button layoutX="744.0" layoutY="51.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Maintain Recipe" />
-            <Button layoutX="724.0" layoutY="167.0" mnemonicParsing="false" onAction="#toMaintainIngredient" text="Maintain Ingredients" />
-            <Button layoutX="726.0" layoutY="300.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Maintain Equipment" />
-            <Button layoutX="727.0" layoutY="424.0" mnemonicParsing="false" onAction="#toRecommendRecipe" text="Recommend Recipe" />
-            <Button layoutX="765.0" layoutY="528.0" mnemonicParsing="false" onAction="#toWriteNotePage" text="Write Note" />
-            <ImageView fx:id="iv" fitHeight="457.0" fitWidth="656.0" layoutX="43.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="iv" fitHeight="600.0" fitWidth="878.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../resources/images/beer.jpg" />
                </image></ImageView>
+            <Button layoutX="166.0" layoutY="21.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Maintain Recipe" />
+            <Button layoutX="97.0" layoutY="245.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Maintain Equipment" />
+            <Button layoutX="14.0" layoutY="358.0" mnemonicParsing="false" onAction="#toRecommendRecipe" text="Recommend Recipe" />
+            <Button layoutX="166.0" layoutY="496.0" mnemonicParsing="false" onAction="#toWriteNotePage" text="Write Note" />
          </children>
       </Pane>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="45.0" layoutY="14.0" text="Brew Day!">
-         <font>
-            <Font name="System Bold" size="48.0" />
-         </font>
-      </Label>
+      <Button layoutX="23.0" layoutY="118.0" mnemonicParsing="false" onAction="#toMaintainIngredient" styleClass="Button" text="Maintain Ingredients" />
    </children>
 </AnchorPane>

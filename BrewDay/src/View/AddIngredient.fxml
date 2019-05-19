@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.collections.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -6,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddIngredientController">
+<AnchorPane prefHeight="600.0" prefWidth="831.0" stylesheets="@mainPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddIngredientController">
    <children>
       <SplitPane dividerPositions="0.14824120603015076" layoutX="92.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -19,28 +20,28 @@
                   </Label>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <TextField fx:id="ingredientName" layoutX="247.0" layoutY="81.0" prefHeight="29.0" prefWidth="323.0" />
-                  <TextField fx:id="ingredientValue" layoutX="247.0" layoutY="132.0" prefHeight="36.0" prefWidth="131.0" />
+                  <TextField fx:id="ingredientValue" layoutX="246.0" layoutY="208.0" prefHeight="36.0" prefWidth="131.0" />
                   <Label layoutX="158.0" layoutY="87.0" text="Name">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="159.0" layoutY="138.0" text="Value">
+                  <Label layoutX="158.0" layoutY="214.0" text="Value">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button layoutX="238.0" layoutY="254.0" mnemonicParsing="false" onAction="#addIngredient" text="Add" />
-                  <Button layoutX="437.0" layoutY="254.0" mnemonicParsing="false" onAction="#backToMaintainIngredient" text="Cancel" />
-                  <Label layoutX="390.0" layoutY="138.0" text="Unit">
+                  <Button layoutX="237.0" layoutY="393.0" mnemonicParsing="false" onAction="#addIngredient" text="Add" />
+                  <Button layoutX="436.0" layoutY="393.0" mnemonicParsing="false" onAction="#backToMaintainIngredient" text="Cancel" />
+                  <Label layoutX="389.0" layoutY="214.0" text="Unit">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="ingredientUnit" layoutX="444.0" layoutY="132.0" prefHeight="36.0" prefWidth="124.0" visibleRowCount="2" >
+                  <ComboBox fx:id="ingredientUnit" layoutX="443.0" layoutY="208.0" prefHeight="36.0" prefWidth="124.0" visibleRowCount="2">
                   	<items>
                   		<FXCollections fx:factory="observableArrayList">
                   		<String fx:value="g" />

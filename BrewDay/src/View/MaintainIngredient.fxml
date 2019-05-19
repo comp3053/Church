@@ -6,15 +6,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MaintainIngredientController">
+<AnchorPane id="main_background" prefHeight="600.0" prefWidth="831.0" stylesheets="@mainPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MaintainIngredientController">
    <children>
-      <SplitPane dividerPositions="0.14824120603015076" layoutX="92.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane id="main_background" dividerPositions="0.14824120603015076" layoutX="92.0" layoutY="14.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="831.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <SplitPane dividerPositions="0.8592493297587132" layoutX="283.0" layoutY="-52.0" prefHeight="55.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                      <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
                               <Label layoutX="14.0" layoutY="15.0" text="Maintain">
                                  <font>
@@ -31,8 +31,8 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button layoutX="318.0" layoutY="79.0" mnemonicParsing="false" onAction="#toAddIngredient" text="Add Ingredients" />
-                  <Button layoutX="308.0" layoutY="179.0" mnemonicParsing="false" onAction="#toUpdateIngredient" text="Update Ingredients" />
+                  <Button layoutX="306.0" layoutY="99.0" mnemonicParsing="false" onAction="#toAddIngredient" text="Add Ingredients" />
+                  <Button layoutX="289.0" layoutY="341.0" mnemonicParsing="false" onAction="#toUpdateIngredient" text="Update Ingredients" />
                </children></AnchorPane>
         </items>
       </SplitPane>

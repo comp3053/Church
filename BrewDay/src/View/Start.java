@@ -1,7 +1,5 @@
 package View;
 
-import java.io.Console;
-
 import Tool.InitDataBase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,9 +21,9 @@ public class Start extends Application
 	{
 		stage = primaryStage;
 		this.stage.getIcons().add(new Image("file:resources/images/beer.png"));
-		this.stage.setTitle("Brew Day");
+		this.stage.setTitle("Brew Day");	 
 		mainPage();
-		stage.show();
+		this.stage.show();
 
 	}
 
