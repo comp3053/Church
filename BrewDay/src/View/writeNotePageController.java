@@ -1,12 +1,14 @@
 package View;
 
-import java.awt.TextArea;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.sun.webkit.ThemeClient;
+
 import Model.Brew;
 import Model.Database;
+import Model.Note;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +16,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class writeNotePageController implements Initializable{
@@ -39,12 +43,23 @@ public class writeNotePageController implements Initializable{
 	
 	@FXML
 	public void saveNote(ActionEvent event) {
+		Brew choosenBrew = brewTableView.getSelectionModel().getSelectedItem();
+		
 		
 	}
 	
-	@FXML
-	public void showNote(ActionEvent event) {
+
+	public void showNote(Brew brew) {
+		Note tempNote = brew.getNote();
+		System.out.println("Brew id:"+brew.getID());
 		
+		if (tempNote == null) {
+			//System.out.println("Null");
+			note.setText("Brew id:"+brew.getID());
+		}
+		else {
+			note.setText(tempNote.getContent());
+		}
 	}
 	
 	
@@ -63,8 +78,17 @@ public class writeNotePageController implements Initializable{
 			brewList.add(temp);
 		}
 		
-//		System.out.println(brewArrayList.toArray());
-//		System.out.println(brewList.toArray());
+		//initialize tableView
+		brewTableView.setRowFactory( tv -> {
+		    TableRow<Brew> row = new TableRow<>();
+		    row.setOnMouseClicked(event -> {
+		        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+		            Brew rowData = row.getItem();
+		            showNote(rowData);
+		        }
+		    });
+		    return row ;
+		});
 		
 		//brewId.setCellValueFactory(new PropertyValueFactory<Brew, String>("ID"));
 		//render the ID

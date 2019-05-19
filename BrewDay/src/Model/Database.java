@@ -1,3 +1,4 @@
+
 package Model;
 
 import java.sql.Connection;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 import com.sun.crypto.provider.RSACipher;
 import com.sun.org.apache.bcel.internal.generic.Select;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
 
 import View.Start;
 import sun.net.www.content.image.png;
@@ -356,6 +358,7 @@ public class Database {
 
 				Recipe recipe = getRecipe(Integer.toString(recipeID));
 				Brew tmpBrew = new Brew(rSet.getInt(3), recipe);
+				tmpBrew.setID(id);
 				result = tmpBrew;
 				
 			}
