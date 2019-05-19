@@ -42,12 +42,12 @@
                   <Button layoutX="139.0" layoutY="422.0" mnemonicParsing="false" onAction="#toAddRecipe" text="Add Recipe" />
                   <Button layoutX="344.0" layoutY="422.0" mnemonicParsing="false" onAction="#toDeleteREcipe" text="Delete Recipe" />
                   <Button layoutX="567.0" layoutY="422.0" mnemonicParsing="false" onAction="#toUpdateRecipe" text="Update Recipe" />
-                  <ListView layoutX="406.0" layoutY="63.0" prefHeight="252.0" prefWidth="420.0" />
-                  <Label layoutX="415.0" layoutY="32.0" text="RecipeName:" />
-                  <Label layoutX="616.0" layoutY="32.0" text="LiterOfBeer:" />
-                  <Label layoutX="732.0" layoutY="32.0" text="Label" />
-                  <Label layoutX="546.0" layoutY="32.0" text="Label" />
-                  <Label layoutX="795.0" layoutY="32.0" text="L" />
+                  <ListView fx:id="recipeIngredientListView" layoutX="406.0" layoutY="63.0" prefHeight="252.0" prefWidth="420.0" />
+                  <Label layoutX="415.0" layoutY="32.0" text="RecipeName :" />
+                  <Label fx:id="recipeNameLabel" layoutX="520.0" layoutY="32.0" text="Label" />
+                  <Label layoutX="615.0" layoutY="32.0" text="LiterOfBeer :" />
+                  <Label fx:id="literOfBeerLabel" layoutX="730.0" layoutY="32.0" text="Label" />
+                  <Label layoutX="785.0" layoutY="32.0" text="L" />
                </children>
             </AnchorPane>
         </items>

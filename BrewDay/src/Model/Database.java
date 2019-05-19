@@ -261,7 +261,7 @@ public class Database {
 
 	public Note getNote(String id) {
 		//use id to return a note
-		String sql = "SELECT * FROM 'note' HWERE note_id = ?;";
+		String sql = "SELECT * FROM 'note' WHERE note_id = ?;";
 		Note resutl = null;
 
 		try {

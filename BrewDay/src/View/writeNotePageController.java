@@ -45,7 +45,6 @@ public class writeNotePageController implements Initializable{
 	public void saveNote(ActionEvent event) {
 		Brew choosenBrew = brewTableView.getSelectionModel().getSelectedItem();
 		
-		
 	}
 	
 
