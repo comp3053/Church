@@ -9,14 +9,14 @@ public class Brew {
 	private Recipe recipe;
 	private Note note;
 	
-	Brew(int batchSize, Recipe recipe){
+	public Brew(int batchSize, Recipe recipe){
 		Date date = new Date();
 		this.recipe = recipe;
 		this.date = date.toString();
 		this.batchSize = batchSize;
 		this.note = null;
 	}
-	Brew(int batchSize, Recipe recipe,Note note){
+	public Brew(int batchSize, Recipe recipe,Note note){
 		Date date = new Date();
 		this.recipe = recipe;
 		this.date = date.toString();
