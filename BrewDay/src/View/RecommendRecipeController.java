@@ -133,7 +133,7 @@ public class RecommendRecipeController implements Initializable{
 
 	public void addBrew(String seletctedString, int batchSize, Equipment equipment){
 		//Update equipment capacity
-		Float curr = equipment.getCapacity();
+		Float curr = equipment.getAvaliableCapacity();
 
 		String[] str = seletctedString.split(" :");
 		String firstPart = str[0];
@@ -148,7 +148,7 @@ public class RecommendRecipeController implements Initializable{
 		Brew brew = new Brew(batchSize,recipe);
 		
 		System.out.println("recommend 140/ batch Size: " + batchSize + "recipeID: " + recipe.getName());
-		System.out.println("recommend 141/ Brew: " + brew.getBatchSize() + " brewID: " + brew.getID());
+		System.out.println("recommend 141/ Brew: " + brew.getBatchSize() + " equipment ava: " + equipment.getAvaliableCapacity());
 		
 		if(db.addBrew(brew)) {
 			Start.getInstance().confirmMsg("Success!", "Add Brew Success! ");

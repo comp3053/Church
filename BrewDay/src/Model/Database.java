@@ -674,7 +674,7 @@ public class Database {
 				return null;
 			}
 			while (rSet.next()) {
-				Equipment tempEquipment= new Equipment(Integer.toString(rSet.getInt(1)),rSet.getString(4),rSet.getFloat(2));
+				Equipment tempEquipment= new Equipment(Integer.toString(rSet.getInt(1)),rSet.getString(4),rSet.getFloat(2), rSet.getFloat(3));
 				equipmentsList.add(tempEquipment);
 			}
 			pStatement.close();
@@ -697,7 +697,7 @@ public class Database {
 			ResultSet rSet = pStatement.executeQuery();
 			
 			while(rSet.next()) {
-				Equipment tempEquipment= new Equipment(Integer.toString(rSet.getInt(1)),rSet.getString(4),rSet.getFloat(2));
+				Equipment tempEquipment= new Equipment(Integer.toString(rSet.getInt(1)),rSet.getString(4),rSet.getFloat(2), rSet.getFloat(3));
 				equipmentList.add(tempEquipment);
 			}
 			
