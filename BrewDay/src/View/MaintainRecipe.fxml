@@ -33,22 +33,22 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="479.0" prefWidth="838.0">
                <children>
-                  <TableView fx:id="recipeTableView" layoutX="14.0" layoutY="25.0" prefHeight="290.0" prefWidth="379.0">
+                  <TableView fx:id="recipeTableView" layoutX="14.0" layoutY="25.0" prefHeight="290.0" prefWidth="326.0">
                     <columns>
                       <TableColumn fx:id="recipeID" prefWidth="90.0" text="No." />
-                        <TableColumn fx:id="recipeName" prefWidth="362.0" text="Recipe Name" />
+                        <TableColumn fx:id="recipeName" prefWidth="235.0" text="Recipe Name" />
                     </columns>
                   </TableView>
                   <Button layoutX="139.0" layoutY="422.0" mnemonicParsing="false" onAction="#toAddRecipe" text="Add Recipe" />
                   <Button layoutX="344.0" layoutY="422.0" mnemonicParsing="false" onAction="#toDeleteREcipe" text="Delete Recipe" />
                   <Button layoutX="567.0" layoutY="422.0" mnemonicParsing="false" onAction="#toUpdateRecipe" text="Update Recipe" />
-                  <ListView fx:id="recipeIngredientListView" layoutX="406.0" layoutY="63.0" prefHeight="252.0" prefWidth="420.0" />
-                  <Label id="tablecolumn" layoutX="406.0" layoutY="28.0" text="RecipeName :" />
-                  <Label fx:id="recipeNameLabel" layoutX="549.0" layoutY="28.0" styleClass="Label" text="Label">
+                  <ListView fx:id="recipeIngredientListView" layoutX="371.0" layoutY="63.0" prefHeight="252.0" prefWidth="455.0" />
+                  <Label id="tablecolumn" layoutX="375.0" layoutY="28.0" text="RecipeName :" />
+                  <Label fx:id="recipeNameLabel" layoutX="525.0" layoutY="27.0" styleClass="Label" text="Label">
                      <font>
                         <Font size="24.0" />
                      </font></Label>
-                  <Label id="tablecolumn" layoutX="616.0" layoutY="28.0" text="LiterOfBeer :" />
+                  <Label id="tablecolumn" layoutX="609.0" layoutY="28.0" text="LiterOfBeer :" />
                   <Label fx:id="literOfBeerLabel" layoutX="741.0" layoutY="27.0" styleClass="Label" text="Label" />
                   <Label id="tablecolumn" layoutX="819.0" layoutY="29.0" text="L" />
                </children>

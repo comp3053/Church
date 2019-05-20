@@ -12,11 +12,11 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <SplitPane dividerPositions="0.8592493297587132" layoutX="283.0" layoutY="-52.0" prefHeight="55.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.8512696493349455" layoutX="283.0" layoutY="-52.0" prefHeight="55.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="100.0">
+                      <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="691.0">
                            <children>
-                              <Text layoutX="-4.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintain Ingredient">
+                              <Text layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintain Ingredient">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
@@ -24,7 +24,7 @@
                            </children></AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="51.0" prefWidth="100.0">
                            <children>
-                              <Button layoutX="28.0" layoutY="13.0" mnemonicParsing="false" onAction="#toMainPage" prefHeight="53.0" prefWidth="101.0" text="Back" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Button layoutY="10.0" mnemonicParsing="false" onAction="#toMainPage" prefHeight="63.0" prefWidth="118.0" text="Back" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
                            </children></AnchorPane>
                     </items>
                   </SplitPane>

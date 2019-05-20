@@ -38,7 +38,7 @@ public class AddIngredientController implements Initializable{
 
 			if(name != null && unit != null && value != -1) {
 				//all input are completed
-				if(value < 0 ) {
+				if(value <= 0 ) {
 					//check if the value is positive
 					Start.getInstance().warningMsg("Invalid input", "The value should larger than 0");
 					Start.getInstance().addIngredient();
@@ -69,10 +69,9 @@ public class AddIngredientController implements Initializable{
 				}
 			}
 			else {
-				Start.getInstance().warningMsg("Invalid input", "Please complete all the information!");
+				Start.getInstance().warningMsg("Invalid input", "Please complete all the information!!!!!!");
 				return;
 			}
-
 
 		} catch (NumberFormatException e) {
 			//  TODO: handle exception
