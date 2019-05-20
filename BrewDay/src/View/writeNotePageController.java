@@ -23,7 +23,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class writeNotePageController implements Initializable{
-	
+
 	ObservableList<Brew> brewList =FXCollections.observableArrayList();
 	@FXML
 	private TableView<Brew> brewTableView = new TableView<Brew>(brewList);
@@ -36,78 +36,102 @@ public class writeNotePageController implements Initializable{
 
 	@FXML
 	private TextArea note;
-	
+
 	@FXML
 	public void toMainPage(ActionEvent event) {
 		Start.getInstance().mainPage();
 	}
-	
+
 	@FXML
 	public void saveNote(ActionEvent event) {
-		Brew choosenBrew = brewTableView.getSelectionModel().getSelectedItem();
+		Brew choosenBrew = null;
 		String content = note.getText();
-		
-		Database database = new Database();
-		
-		if (choosenBrew.getNote() == null) {
-			Note tempNote = new Note("Title", choosenBrew.getRecipe().getName(), content);
-			choosenBrew.setNote(tempNote);
-			System.out.println("Null");
-			database.addBrewNote(choosenBrew);
+		try {
+			choosenBrew = brewTableView.getSelectionModel().getSelectedItem();
+			if(choosenBrew == null) {
+				Start.getInstance().warningMsg("Invalid Input", "Please select a brew to add note!");
+				Start.getInstance().writeNotePage();
+				return;
+			}
+		} catch (Exception e) {
+			Start.getInstance().warningMsg("Invalid Input", "Please select a brew to add note!");
+			Start.getInstance().writeNotePage();
+			return;
 		}
+
+		Database database = new Database();
+		//if the brew has no note, attach a new note to the brew
+		if (choosenBrew.getNote() == null) {
+			//check the user input content for note
+			if(content.equals("")) {
+				Start.getInstance().warningMsg("Invalid Input", "Please input the note content!");
+				Start.getInstance().writeNotePage();
+				return;
+			}
+			else {
+				Note tempNote = new Note("Title", choosenBrew.getRecipe().getName(), content);
+				choosenBrew.setNote(tempNote);
+				System.out.println("Null");
+				database.addBrewNote(choosenBrew);
+			}
+		}
+		//the brew has a note already, update the note content
 		else {
+			if(content.equals("")) {
+				Start.getInstance().warningMsg("Invalid Input", "Please input the note content!");
+				Start.getInstance().writeNotePage();
+				return;
+			}
 			Note tempNote = choosenBrew.getNote();
 			tempNote.setContent(content);
 			System.out.println("Already");
 			database.updateBrewNote(choosenBrew);
+			Start.getInstance().confirmMsg("Success!", "The note has been added!");
 		}
-		
+
 		Start.getInstance().writeNotePage();
 	}
-	
 
+	//display the note content
 	public void showNote(Brew brew) {
 		Note tempNote = brew.getNote();
-		System.out.println("Brew id:"+brew.getID());
-		
-		if (tempNote == null) {
+		if (tempNote == null||tempNote.getContent().equals("")) {
 			//System.out.println("Null");
-			note.setText("Brew id:"+brew.getID());
+			note.setText("The note is empty");
 		}
 		else {
 			note.setText(tempNote.getContent());
 		}
 	}
-	
-	
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
 		// TODO Auto-generated method stub
 		brewList.clear();
-		
+
 		ArrayList<Brew>brewArrayList = new ArrayList<Brew>();
 		Database db = new Database();
 		brewArrayList = db.getBrewList();
-		
+
 		for(Brew temp:brewArrayList) {
 			//System.out.println("Brew:"+temp.getRecipeName());
 			brewList.add(temp);
 		}
-		
+
 		//initialize tableView
 		brewTableView.setRowFactory( tv -> {
-		    TableRow<Brew> row = new TableRow<>();
-		    row.setOnMouseClicked(event -> {
-		        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-		            Brew rowData = row.getItem();
-		            showNote(rowData);
-		        }
-		    });
-		    return row ;
+			TableRow<Brew> row = new TableRow<>();
+			row.setOnMouseClicked(event -> {
+				if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+					Brew rowData = row.getItem();
+					showNote(rowData);
+				}
+			});
+			return row ;
 		});
-		
-		//brewId.setCellValueFactory(new PropertyValueFactory<Brew, String>("ID"));
+
 		//render the ID
 		brewId.setCellFactory((col)->{
 			TableCell<Brew, String> cell = new TableCell<Brew, String>(){
@@ -116,7 +140,7 @@ public class writeNotePageController implements Initializable{
 					super.updateItem(item, empty);
 					this.setText(null);
 					this.setGraphic(null);
-					
+
 					if(!empty) {
 						int rowIndex = this.getIndex()+1;
 						this.setText(String.valueOf(rowIndex));
@@ -125,10 +149,10 @@ public class writeNotePageController implements Initializable{
 			};
 			return cell;
 		});
-		
+
 		RecipeName.setCellValueFactory(new PropertyValueFactory<Brew, String>("RecipeName"));
 		brewDate.setCellValueFactory(new PropertyValueFactory<Brew, String>("Date"));
-		
+
 		brewTableView.setItems(brewList);
 	}
 
