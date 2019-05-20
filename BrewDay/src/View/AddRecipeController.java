@@ -22,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import sun.security.pkcs11.Secmod.DbMode;
 
 public class AddRecipeController implements Initializable {
@@ -55,7 +56,7 @@ public class AddRecipeController implements Initializable {
 	@FXML
 	public void addRecipeTodb(ActionEvent event) {
 
-		String recipeName = "";
+		String recipeName = null;
 		int literOfBeer = -1;
 		try{
 			recipeName = Input_recipeName.getText();
@@ -83,12 +84,12 @@ public class AddRecipeController implements Initializable {
 		}
 		catch (NumberFormatException e) {
 			// TODO: handle exception
-			if(recipeName == "" || literOfBeer == -1) {
+			if(recipeName == null || literOfBeer == -1) {
 				Start.getInstance().warningMsg("Invalid input", "Please complete all the information!");
 				return;
 			}
 			else {
-				e.printStackTrace();
+				
 				Start.getInstance().warningMsg("Invalid input", "The input for liter of beer should be integer(s)");
 				Start.getInstance().addRecipe();
 				return;
@@ -100,9 +101,10 @@ public class AddRecipeController implements Initializable {
 
 	@FXML
 	public void addIngredientToRecipe(ActionEvent event) {
+		int value = -1;
 		try {
-			int value = Integer.parseInt(inputValue.getText());
-			System.out.println(value);
+			value = Integer.parseInt(inputValue.getText());
+			
 			StorageIngredient choosenIngredient = IngredientList.getSelectionModel().getSelectedItem();
 
 			RecipeIngredient tempIngredient = new RecipeIngredient(choosenIngredient.getID(), choosenIngredient.getName(), choosenIngredient.getUnit(), value);
@@ -111,7 +113,12 @@ public class AddRecipeController implements Initializable {
 		}
 		catch (NumberFormatException e) {
 			// TODO: handle exception
-			Start.getInstance().warningMsg("Invalid input", "The input for liter of beer should be integer(s)");
+			System.out.println("value: " + value);
+			if(value == -1) {
+				Start.getInstance().warningMsg("Invalid input", "Please input the value for ingredient!");
+				return;
+			}
+			Start.getInstance().warningMsg("Invalid input", "The input for ingredient value should be integer(s)");
 		}
 		catch(RuntimeException e) {
 			Alert alert = new Alert(AlertType.WARNING);
