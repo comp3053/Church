@@ -29,11 +29,12 @@
     -fx-background-color:#FFDEAD;
 }
 
-.label{
-    -fx-font-family:"Helvetica";
-    
+.Label{
+    -fx-font-size:22px;
+    -fx-font-weight: bold;
 }
 
 #tablecolumn{
-	-fx-background-color:#FFE4E1;
+	-fx-font-size:20px;
+	
 }
