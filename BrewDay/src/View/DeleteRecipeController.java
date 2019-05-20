@@ -27,13 +27,17 @@ public class DeleteRecipeController implements Initializable{
 	@FXML
 	public void deleteRecipe(ActionEvent event) {
 		Recipe choosen = recipeTableView.getSelectionModel().getSelectedItem();
-		if(choosen == null) {
+		
+		try {
+			Database database = new Database();
+			database.deleteRecipe(choosen);
+			Start.getInstance().confirmMsg("Success!", "The Recipe has been deleted!");
+			Start.getInstance().deleteRecipe();
+		} catch (RuntimeException e) {
+			// TODO: handle exception
 			Start.getInstance().warningMsg("Warning!", "Please select a recipe!");
 		}
-		Database database = new Database();
-		database.deleteRecipe(choosen);
-		Start.getInstance().confirmMsg("Success!", "The Recipe has been deleted!");
-		Start.getInstance().deleteRecipe();
+
 	}
 	
 	@FXML
