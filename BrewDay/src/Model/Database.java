@@ -807,7 +807,24 @@ public class Database {
 	}
 	
 	public void updateBrewNote(Brew brew) {
+		String sql = null;
 		
+		Note tempNote = brew.getNote();
+		
+		try {
+			sql = "UPDATE 'Note' SET content = ? WHERE note_id = ?;";
+			
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setString(1, tempNote.getContent());
+			pStatement.setInt(2, Integer.parseInt(tempNote.getID()));
+			
+			pStatement.executeUpdate();
+			
+			pStatement.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 	
 	public void addBrewNote(Brew brew) {
