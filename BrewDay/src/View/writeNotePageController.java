@@ -114,10 +114,10 @@ public class writeNotePageController implements Initializable{
 
 		ArrayList<Brew>brewArrayList = new ArrayList<Brew>();
 		Database db = new Database();
-		brewArrayList = db.getBrewList();
+		brewArrayList = db.getBrewListName();
 
 		for(Brew temp:brewArrayList) {
-			//System.out.println("Brew:"+temp.getRecipeName());
+			System.out.println("Brew:"+temp.getRecipeName());
 			brewList.add(temp);
 		}
 
