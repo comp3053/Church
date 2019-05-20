@@ -183,7 +183,7 @@ public class RecommendRecipeController implements Initializable{
 	    Database database = new Database();
 	    ArrayList<Equipment> equipments = database.getAvailableEquipments(batchSize);
 	    for(Equipment equipment : equipments) {
-	    	equipmentList.add(equipment.getType()+"_"+equipment.getID()+" - Capacity: "+equipment.getCapacity());
+	    	equipmentList.add(equipment.getType()+"_"+equipment.getID()+" - Capacity: "+equipment.getAvaliableCapacity());
 	    }
 	    ChoiceDialog<String> choiceDialog = new ChoiceDialog<>("Choose a equipment",equipmentList);
 	    choiceDialog.setTitle("Confirm!");
