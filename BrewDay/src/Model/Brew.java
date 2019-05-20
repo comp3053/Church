@@ -8,6 +8,7 @@ public class Brew {
 	private String date;
 	private Recipe recipe;
 	private Note note;
+	private String recipeName;
 	
 	public Brew(int batchSize, Recipe recipe){
 		Date date = new Date();
@@ -16,6 +17,16 @@ public class Brew {
 		this.batchSize = batchSize;
 		this.note = null;
 	}
+	
+	public Brew(String id, int batchSize, Recipe recipe, Note note, String date, String recipeName) {
+		this.ID = id;
+		this.batchSize = batchSize;
+		this.recipe = recipe;
+		this.note = note;
+		this.date = date;
+		this.recipeName = recipeName;
+	}
+	
 	public Brew(int batchSize, Recipe recipe,Note note){
 		Date date = new Date();
 		this.recipe = recipe;
@@ -51,7 +62,7 @@ public class Brew {
 	}
 	
 	public String getRecipeName() {
-		return this.recipe.getName();
+		return this.recipeName;
 	}
 	
 	public void setRecipe(Recipe recipe) {

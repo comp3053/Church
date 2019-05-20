@@ -408,7 +408,7 @@ public class Database {
 				Note tempNote = getNote(Integer.toString(rSet.getInt(5)));
 				Recipe tempRecipe = getRecipe(Integer.toString(rSet.getInt(2)));
 				
-				Brew tempBrew = new Brew(Integer.toString(rSet.getInt(1)), rSet.getInt(3), tempRecipe, tempNote, rSet.getString(4));
+				Brew tempBrew = new Brew(Integer.toString(rSet.getInt(1)), rSet.getInt(3), tempRecipe, tempNote, rSet.getString(4), tempRecipe.getName());
 				
 				brewList.add(tempBrew);
 			}
