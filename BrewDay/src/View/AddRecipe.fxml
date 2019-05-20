@@ -26,7 +26,7 @@
                     <items>
                       <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="9.0" text="RECIPE NAME">
+                              <Label id="tablecolumn" layoutX="2.0" layoutY="12.0" text="RECIPE NAME">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -36,17 +36,17 @@
                         </AnchorPane>
                       <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="240.0" layoutY="301.0" prefHeight="24.0" prefWidth="149.0" text="Liter of Beer" />
+                              <Label id="tablecolumn" layoutX="240.0" layoutY="301.0" prefHeight="24.0" prefWidth="149.0" text="Liter of Beer" />
                               <TextField fx:id="Input_liftOfBeer" layoutX="473.0" layoutY="295.0" prefHeight="36.0" prefWidth="82.0" />
                               <Button layoutX="181.0" layoutY="373.0" mnemonicParsing="false" onAction="#addRecipeTodb" text="Add New Recipe" />
                               <Button layoutX="513.0" layoutY="373.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Cancel" />
                               
                               <TextField fx:id="inputValue" layoutX="355.0" layoutY="126.0" prefHeight="36.0" prefWidth="66.0" />
-                              <Button layoutX="262.0" layoutY="198.0" mnemonicParsing="false" onAction="#addIngredientToRecipe" text="Add" />
-                              <Button layoutX="421.0" layoutY="197.0" mnemonicParsing="false" onAction="#removeIngredientToRecipe" text="Remove" />
-                              <Label layoutX="25.0" layoutY="41.0" text="Storge Ingredient List" />
-                              <Label layoutX="335.0" layoutY="77.0" text="Adjust value" />
-                              <Label layoutX="558.0" layoutY="41.0" text="Recipe Ingredient List" />
+                              <Button layoutX="289.0" layoutY="171.0" mnemonicParsing="false" onAction="#addIngredientToRecipe" text="Add Ingredient" />
+                              <Button layoutX="268.0" layoutY="228.0" mnemonicParsing="false" onAction="#removeIngredientToRecipe" text="Remove Ingredient" />
+                              <Label id="tablecolumn" layoutX="27.0" layoutY="28.0" text="Storge Ingredient List" />
+                              <Label id="tablecolumn" layoutX="335.0" layoutY="77.0" text="Adjust value" />
+                              <Label id="tablecolumn" layoutX="562.0" layoutY="28.0" text="Recipe Ingredient List" />
                               <TableView fx:id="RecipeIngredientTable" layoutX="562.0" layoutY="71.0" prefHeight="200.0" prefWidth="238.0">
                                 <columns>
                                   <TableColumn fx:id="RecipeIngredientName" prefWidth="94.0" text="Name" />

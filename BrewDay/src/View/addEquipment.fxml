@@ -24,8 +24,8 @@
                <children>
                   <Button layoutX="258.0" layoutY="421.0" mnemonicParsing="false" onAction="#toAddEquipment" text="Add" />
                   <Button layoutX="453.0" layoutY="421.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Cancel" />
-                  <Label layoutX="199.0" layoutY="290.0" text="Equipment capacity" />
-                  <Label layoutX="193.0" layoutY="106.0" prefHeight="60.0" prefWidth="161.0" text="Equipment type">
+                  <Label id="tablecolumn" layoutX="199.0" layoutY="290.0" text="Equipment capacity" />
+                  <Label id="tablecolumn" layoutX="193.0" layoutY="106.0" prefHeight="60.0" prefWidth="193.0" text="Equipment type">
                      <font>
                         <Font size="24.0" />
                      </font></Label>
