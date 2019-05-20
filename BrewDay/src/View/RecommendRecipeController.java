@@ -65,7 +65,13 @@ public class RecommendRecipeController implements Initializable{
 			//get the batch size from the user input
 			batchSize = Integer.parseInt(inputBatchSizeBlank.getText());
 			//pass the batch for recipe recommendation, get the recipe list
-			
+			if(batchSize<=0) {
+				Start.getInstance().warningMsg("Input Error", "Please input a positive number!");
+				String str = "No recommended recipes";
+				recipeList.add(str);
+				recipeListView.setItems(recipeList);
+				return;
+			}
 			recipeArrayList = Recipe.recommendRecipe(batchSize);
 //			System.out.println("Recommend: Im here line 53 ");
 			
