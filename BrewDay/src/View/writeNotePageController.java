@@ -97,7 +97,8 @@ public class writeNotePageController implements Initializable{
 		Note tempNote = brew.getNote();
 		if (tempNote == null||tempNote.getContent().equals("")) {
 			//System.out.println("Null");
-			note.setText("The note is empty");
+			Start.getInstance().warningMsg("Invalid Input", "This brew has no note, please write a note for it");
+			note.setText("");
 		}
 		else {
 			note.setText(tempNote.getContent());
