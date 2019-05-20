@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="maintain_background" prefHeight="600.0" prefWidth="831.0" stylesheets="@mainPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.updateEquipmentController">
+<AnchorPane id="maintain_background" prefHeight="600.0" prefWidth="831.0" stylesheets="@mainPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ChooseEquipmentController">
    <children>
       <SplitPane dividerPositions="0.15326633165829145" layoutX="335.0" layoutY="134.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Text layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Equipment">
+                  <Text layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Equipment">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -21,18 +21,15 @@
             </AnchorPane>
             <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="867.0">
                <children>
-                  <Label id="tablecolumn" layoutX="20.0" layoutY="14.0" text="Equipment List" />
-                  <Button layoutX="195.0" layoutY="431.0" mnemonicParsing="false" onAction="#toUpdateEquipment" text="Update" />
-                  <Button layoutX="470.0" layoutY="431.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Cancel" />
-                  <Label id="tablecolumn" layoutX="155.0" layoutY="346.0" text="Equipment Capacity" />
-                  <TableView fx:id="equipmentTable" layoutX="155.0" layoutY="71.0" prefHeight="200.0" prefWidth="519.0">
+                  <Label layoutX="155.0" layoutY="36.0" text="Equipment List" />
+                  <Button layoutX="195.0" layoutY="431.0" mnemonicParsing="false" text="Confirm" />
+                  <Button layoutX="470.0" layoutY="431.0" mnemonicParsing="false" onAction="#toRecommendRecipe" text="Cancel" />
+                  <TableView fx:id="equipmentTable" layoutX="155.0" layoutY="71.0" prefHeight="259.0" prefWidth="519.0">
                     <columns>
                       <TableColumn fx:id="equipmentNameList" prefWidth="342.0" text="Equipment Name" />
                       <TableColumn fx:id="capacityList" prefWidth="176.0" text="Capacity  (L)" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="capacityValue" layoutX="522.0" layoutY="340.0" prefHeight="36.0" prefWidth="111.0" />
-                  <Text layoutX="658.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="L" />
                </children>
             </AnchorPane>
          </items>

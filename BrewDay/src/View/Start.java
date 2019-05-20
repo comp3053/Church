@@ -51,8 +51,7 @@ public class Start extends Application
 			System.out.println(e);
 		}
 	}
-
-
+	
 	public void maintainRecipe()
 	{
 		try 
@@ -144,6 +143,17 @@ public class Start extends Application
 		}
 	}
 
+	public void chooseEquipment() {
+		try 
+		{
+			replaceSceneContent("ChooseEquipment.fxml");
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+		}
+	}
+	
 	public void writeNotePage() {
 		try 
 		{

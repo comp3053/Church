@@ -8,14 +8,20 @@ import java.util.ResourceBundle;
 
 import Model.Brew;
 import Model.Database;
+import Model.Equipment;
 import Model.Recipe;
 import Model.RecipeIngredient;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -93,9 +99,9 @@ public class RecommendRecipeController implements Initializable{
 			recipeListView.setItems(recipeList);
 
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			// TODO: handle exception
-			Start.getInstance().warningMsg("Input Error", "Please input a number");			
+			Start.getInstance().warningMsg("Input Error", "Please input a number for batch size");			
 			Start.getInstance().recommendRecipe();
 			return;
 		}
@@ -125,20 +131,24 @@ public class RecommendRecipeController implements Initializable{
 		return;
 	}
 
-	public void addBrew(String seletctedString, int batchSize){
-		
+	public void addBrew(String seletctedString, int batchSize, Equipment equipment){
+		//Update equipment capacity
+		Float curr = equipment.getCapacity();
+
 		String[] str = seletctedString.split(" :");
 		String firstPart = str[0];
-		System.out.println(firstPart);
+		//System.out.println(firstPart);
 		String[] str2 =  firstPart.split(": ");
 		String recipe_id = str2[1];
-		System.out.println("Recommend 129/ Recipe ID: " + recipe_id);
+		//System.out.println("Recommend 135/ Recipe ID: " + recipe_id);
 		Database db = new Database();
+		db.updateEquipmentAvaCapacity(equipment, curr - batchSize);
 		Recipe recipe = db.getRecipe(recipe_id.toString());
 		
 		Brew brew = new Brew(batchSize,recipe);
-		System.out.println("recommend 134/ batch Size: " + batchSize + "recipeID: " + recipe.getName());
-		System.out.println("recommend 135/ Brew: " + brew.getBatchSize() + " brewID: " + brew.getID());
+		
+		System.out.println("recommend 140/ batch Size: " + batchSize + "recipeID: " + recipe.getName());
+		System.out.println("recommend 141/ Brew: " + brew.getBatchSize() + " brewID: " + brew.getID());
 		
 		if(db.addBrew(brew)) {
 			Start.getInstance().confirmMsg("Success!", "Add Brew Success! ");
@@ -157,13 +167,58 @@ public class RecommendRecipeController implements Initializable{
 					//Use ListView's getSeleted Item
 					//the listview contains string
 					currentItemSelected = recipeListView.getSelectionModel().getSelectedItem();
-					addBrew(currentItemSelected, batchSize);
+					chooseEquipment(currentItemSelected);
+					//Start.getInstance().chooseEquipment();
+					//addBrew(currentItemSelected, batchSize);
 				}
 			}
 		});
 		
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void chooseEquipment(String seletctedString) {
+	    ObservableList<String> equipmentList = FXCollections.observableArrayList();
+	    Database database = new Database();
+	    ArrayList<Equipment> equipments = database.getAvailableEquipments(batchSize);
+	    for(Equipment equipment : equipments) {
+	    	equipmentList.add(equipment.getType()+"_"+equipment.getID()+" - Capacity: "+equipment.getAvaliableCapacity());
+	    }
+	    ChoiceDialog<String> choiceDialog = new ChoiceDialog<>("Choose a equipment",equipmentList);
+	    choiceDialog.setTitle("Confirm!");
+	    choiceDialog.setHeaderText("Confirm!");
+	    choiceDialog.setContentText("Please Choose an equipment: ");
+	    ButtonType okType = new ButtonType("OK");
+	    choiceDialog.getDialogPane().getButtonTypes().set(0, okType);
+	    
+	    choiceDialog.getDialogPane().getButtonTypes().remove(1);
+	    
+	    choiceDialog.selectedItemProperty().addListener(new ChangeListener<String>() {
+	    	@Override
+	    	public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+	    		System.out.println("recommend recipe/195: " + newValue);
+	    		Button ok = (Button)choiceDialog.getDialogPane().lookupButton(okType);
+	    		//System.out.println(ok);
+	    		ok.setOnAction(new EventHandler<ActionEvent>() {
+	    			@Override
+	    			public void handle(ActionEvent event) {
+	    				if(event != null) {
+	    					String[] str = newValue.split(" - ");
+	    					String[] str2 = str[0].split("_");
+	    					System.out.println("EquipmentID: " + str2[1]);
+	    					Equipment equipment = database.getEquipment(str2[1]);
+	    					addBrew(seletctedString, batchSize, equipment);
+	    					
+	    				}
+	    					
+	    					//System.out.println("OK: " + newValue);
+	    			}
+				});
+	    	}
+		});
+	   
+	    choiceDialog.show();
 	}
 
 }

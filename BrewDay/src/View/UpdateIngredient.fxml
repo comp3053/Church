@@ -12,7 +12,7 @@
         <items>
           <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="748.0">
                <children>
-                  <Button layoutX="679.0" layoutY="19.0" mnemonicParsing="false" onAction="#backToMaintainIngredient" prefHeight="43.0" prefWidth="106.0" text="Back" />
+                  <Button layoutX="688.0" layoutY="10.0" mnemonicParsing="false" onAction="#backToMaintainIngredient" prefHeight="65.0" prefWidth="127.0" text="Back" />
                   <Text layoutX="14.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Ingredient">
                      <font>
                         <Font size="36.0" />
@@ -32,7 +32,7 @@
                   <TextField fx:id="inputValue" layoutX="490.0" layoutY="181.0" prefHeight="27.0" prefWidth="210.0" />
                   <Button layoutX="440.0" layoutY="354.0" mnemonicParsing="false" onAction="#addStock" prefHeight="27.0" prefWidth="106.0" text="Add" />
                   <Button layoutX="629.0" layoutY="354.0" mnemonicParsing="false" onAction="#subtractStock" prefHeight="43.0" prefWidth="142.0" text="Subtract" />
-                  <Label layoutX="530.0" layoutY="93.0" text="Change Stock" />
+                  <Label id="tablecolumn" layoutX="530.0" layoutY="93.0" text="Change Stock" />
                </children></AnchorPane>
         </items>
       </SplitPane>

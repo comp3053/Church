@@ -12,7 +12,7 @@
         <items>
           <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button layoutX="700.0" layoutY="21.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="48.0" prefWidth="115.0" text="Back" />
+                  <Button layoutX="696.0" layoutY="13.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="65.0" prefWidth="127.0" text="Back" />
                   <Text layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recommend Recipe">
                      <font>
                         <Font size="36.0" />
@@ -22,14 +22,14 @@
             </AnchorPane>
           <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="48.0" prefWidth="748.0">
                <children>
-                  <Label layoutX="57.0" layoutY="33.0" text="Batch size" />
-                  <TextField fx:id="inputBatchSizeBlank" layoutX="191.0" layoutY="27.0" />
-                  <Button layoutX="550.0" layoutY="27.0" mnemonicParsing="false" onAction="#recommendRecipe" text="Recommed" />
+                  <Label layoutX="57.0" layoutY="20.0" text="Batch size" />
+                  <TextField fx:id="inputBatchSizeBlank" layoutX="191.0" layoutY="13.0" styleClass="Label" />
+                  <Button layoutX="549.0" layoutY="12.0" mnemonicParsing="false" onAction="#recommendRecipe" text="Recommed" />
                   <ListView fx:id="recipeListView" layoutX="57.0" layoutY="104.0" prefHeight="145.0" prefWidth="711.0" />
-                  <Label layoutX="57.0" layoutY="80.0" text="Recommended Recipes" />
-                  <Label layoutX="57.0" layoutY="257.0" text="Missing Recipes" />
-                  <ListView fx:id="missingListView" layoutX="57.0" layoutY="281.0" prefHeight="180.0" prefWidth="711.0" />
-                  <Label layoutX="440.0" layoutY="33.0" text="L" />
+                  <Label id="tablecolumn" layoutX="57.0" layoutY="63.0" text="Recommended Recipes" />
+                  <Label id="tablecolumn" layoutX="57.0" layoutY="257.0" text="Missing Recipes" />
+                  <ListView fx:id="missingListView" layoutX="57.0" layoutY="298.0" prefHeight="180.0" prefWidth="711.0" />
+                  <Label layoutX="465.0" layoutY="22.0" text="L" />
                </children>
             </AnchorPane>
         </items>
