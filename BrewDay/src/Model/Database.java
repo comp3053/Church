@@ -421,6 +421,7 @@ public class Database {
 		return brewList;
 	}
 	//***********************************Recipe************************************************
+	
 
 	public void deleteRecipe(Recipe recipe) {
 		String sql = "DELETE FROM 'recipe' WHERE recipe_id = ?;";
@@ -511,6 +512,48 @@ public class Database {
 		}
 		return rList;
 
+	}
+	
+	public void updateRecipeWithIngrdient(Recipe recipe) {
+		String sql = null;
+		
+		String recipe_id = recipe.getID();
+		ArrayList<RecipeIngredient> recipeIngredient = recipe.getList();
+		
+		//first update the relation database
+		try {
+			sql = "UPDATE 'recipe_recipeIngredient' SET value = ? WHERE recipe_id = ? AND ingredient_id = ?;";
+			
+			for(RecipeIngredient tempIngredient:recipeIngredient) {
+				PreparedStatement pStatement = this.connection.prepareStatement(sql);
+				pStatement.setInt(1, tempIngredient.getValue());
+				pStatement.setString(2, recipe_id);
+				pStatement.setString(3, tempIngredient.getID());
+				
+				pStatement.executeUpdate();
+				pStatement.close();
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		//next update recipe
+		try {
+			sql = "UPDATE 'recipe' SET literOfBeer = ? WHERE recipe_id = ?;";
+			
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setInt(1, recipe.getLiterOfbeer());
+			pStatement.setInt(2, Integer.parseInt(recipe.getID()));
+			
+			pStatement.executeUpdate();
+			pStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 	//***********************************Equipment************************************************
