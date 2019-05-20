@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -44,8 +45,24 @@ public class writeNotePageController implements Initializable{
 	@FXML
 	public void saveNote(ActionEvent event) {
 		Brew choosenBrew = brewTableView.getSelectionModel().getSelectedItem();
+		String content = note.getText();
 		
+		Database database = new Database();
 		
+		if (choosenBrew.getNote() == null) {
+			Note tempNote = new Note("Title", choosenBrew.getRecipe().getName(), content);
+			choosenBrew.setNote(tempNote);
+			System.out.println("Null");
+			database.addBrewNote(choosenBrew);
+		}
+		else {
+			Note tempNote = choosenBrew.getNote();
+			tempNote.setContent(content);
+			System.out.println("Already");
+			database.updateBrewNote(choosenBrew);
+		}
+		
+		Start.getInstance().writeNotePage();
 	}
 	
 
@@ -71,7 +88,7 @@ public class writeNotePageController implements Initializable{
 		
 		ArrayList<Brew>brewArrayList = new ArrayList<Brew>();
 		Database db = new Database();
-		brewArrayList = db.getAllBrews();
+		brewArrayList = db.getBrewList();
 		
 		for(Brew temp:brewArrayList) {
 			//System.out.println("Brew:"+temp.getRecipeName());

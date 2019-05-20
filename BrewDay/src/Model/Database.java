@@ -261,7 +261,7 @@ public class Database {
 
 	public Note getNote(String id) {
 		//use id to return a note
-		String sql = "SELECT * FROM 'note' HWERE note_id = ?;";
+		String sql = "SELECT * FROM 'note' WHERE note_id = ?;";
 		Note resutl = null;
 
 		try {
@@ -394,6 +394,31 @@ public class Database {
 
 		}
 		return bList;
+	}
+	
+	public ArrayList<Brew> getBrewList(){
+		ArrayList<Brew> brewList = new ArrayList<Brew>();
+		
+		String sql = "SELECT * FROM 'brew'";
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			
+			ResultSet rSet = pStatement.executeQuery();
+			while(rSet.next()) {
+				Note tempNote = getNote(Integer.toString(rSet.getInt(5)));
+				Recipe tempRecipe = getRecipe(Integer.toString(rSet.getInt(2)));
+				
+				Brew tempBrew = new Brew(Integer.toString(rSet.getInt(1)), rSet.getInt(3), tempRecipe, tempNote, rSet.getString(4));
+				
+				brewList.add(tempBrew);
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return brewList;
 	}
 	//***********************************Recipe************************************************
 
@@ -779,5 +804,67 @@ public class Database {
 	public void modifyNote(Note note) {
 		int id = Integer.parseInt(note.getID());
 		//use the id to find the note and modify the content;
+	}
+	
+	public void updateBrewNote(Brew brew) {
+		
+	}
+	
+	public void addBrewNote(Brew brew) {
+		String sql = null;
+		
+		Note tempNote = brew.getNote();
+		
+		try {
+			sql = "INSERT INTO 'Note' VALUES (NULL, ?, ?, ?, ?);";
+			
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setString(1, tempNote.getTitle());
+			pStatement.setString(2, tempNote.getDate());
+			pStatement.setString(3, tempNote.getRecipeName());
+			pStatement.setString(4, tempNote.getContent());
+			
+			pStatement.executeUpdate();
+			
+			pStatement.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		int note_id = 0;
+		
+		try {
+			sql = "SELECT * FROM 'note' WHERE date = ?;";
+			
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setString(1, tempNote.getDate());
+			
+			ResultSet resultSet = pStatement.executeQuery();
+			while (resultSet.next()) {
+				note_id = resultSet.getInt(1);
+			}
+			
+			resultSet.close();
+			pStatement.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		try {
+			sql = "UPDATE 'brew' SET note_id = ? WHERE brew_id = ?;";
+			
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			pStatement.setInt(1, note_id);
+			pStatement.setInt(2, Integer.parseInt(brew.getID()));
+			
+			pStatement.executeUpdate();
+			
+			pStatement.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 }

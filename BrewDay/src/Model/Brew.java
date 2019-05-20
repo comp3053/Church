@@ -23,6 +23,13 @@ public class Brew {
 		this.batchSize = batchSize;
 		this.note = note;
 	}
+	public Brew(String id, int batchSize, Recipe recipe, Note note, String date) {
+		this.ID = id;
+		this.batchSize = batchSize;
+		this.recipe = recipe;
+		this.note = note;
+		this.date = date;
+	}
 	public String getID() {
 		return this.ID;
 	}
