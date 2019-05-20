@@ -29,7 +29,7 @@
                         <TableColumn fx:id="unitList" prefWidth="103.0" text="Unit" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="inputValue" layoutX="490.0" layoutY="181.0" prefHeight="27.0" prefWidth="210.0" />
+                  <TextField fx:id="inputValue" layoutX="490.0" layoutY="181.0" prefHeight="27.0" prefWidth="210.0" styleClass="Label" />
                   <Button layoutX="440.0" layoutY="354.0" mnemonicParsing="false" onAction="#addStock" prefHeight="27.0" prefWidth="106.0" text="Add" />
                   <Button layoutX="629.0" layoutY="354.0" mnemonicParsing="false" onAction="#subtractStock" prefHeight="43.0" prefWidth="142.0" text="Subtract" />
                   <Label id="tablecolumn" layoutX="530.0" layoutY="93.0" text="Change Stock" />

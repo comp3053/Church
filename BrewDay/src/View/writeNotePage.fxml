@@ -21,8 +21,8 @@
             </AnchorPane>
             <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="748.0">
                <children>
-                  <Label id="tablecolumn" layoutX="461.0" layoutY="14.0" text="Notes" />
-                  <TextArea fx:id="note" layoutX="461.0" layoutY="51.0" prefHeight="317.0" prefWidth="321.0" />
+                  <Label id="tablecolumn" layoutX="471.0" layoutY="14.0" text="Notes" />
+                  <TextArea fx:id="note" layoutX="471.0" layoutY="51.0" prefHeight="317.0" prefWidth="321.0" />
                   <Button layoutX="276.0" layoutY="420.0" mnemonicParsing="false" onAction="#saveNote" text="Save" />
                   <Button layoutX="471.0" layoutY="420.0" mnemonicParsing="false" onAction="#toMainPage" text="Cancel" />
                   <TableView fx:id="brewTableView" layoutX="27.0" layoutY="51.0" prefHeight="317.0" prefWidth="354.0">
