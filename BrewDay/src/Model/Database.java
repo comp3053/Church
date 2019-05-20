@@ -409,6 +409,31 @@ public class Database {
 				Note tempNote = getNote(Integer.toString(rSet.getInt(5)));
 				Recipe tempRecipe = getRecipe(Integer.toString(rSet.getInt(2)));
 				
+				Brew tempBrew = new Brew(Integer.toString(rSet.getInt(1)), rSet.getInt(3), tempRecipe, tempNote, rSet.getString(4));
+				
+				brewList.add(tempBrew);
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return brewList;
+	}
+	
+	public ArrayList<Brew> getBrewListName(){
+		ArrayList<Brew> brewList = new ArrayList<Brew>();
+		
+		String sql = "SELECT * FROM 'brew'";
+		try {
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+			
+			ResultSet rSet = pStatement.executeQuery();
+			while(rSet.next()) {
+				Note tempNote = getNote(Integer.toString(rSet.getInt(5)));
+				Recipe tempRecipe = getRecipe(Integer.toString(rSet.getInt(2)));
+				
 				Brew tempBrew = new Brew(Integer.toString(rSet.getInt(1)), rSet.getInt(3), tempRecipe, tempNote, rSet.getString(4), rSet.getString(6));
 				
 				brewList.add(tempBrew);
