@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import sun.util.locale.provider.AvailableLanguageTags;
 
 public class updateEquipmentController implements Initializable {
 	
@@ -28,6 +29,8 @@ public class updateEquipmentController implements Initializable {
 	private TableColumn<Equipment, String> equipmentNameList;
 	@FXML
 	private TableColumn<Equipment, Float> capacityList;
+	@FXML
+	private TableColumn<Equipment, Float> availableCapacity;
 	
 	@FXML
 	private TextField capacityValue;
@@ -47,7 +50,7 @@ public class updateEquipmentController implements Initializable {
 			capacity = Float.parseFloat(capacityValue.getText());
 			
 			Database database = new Database();
-			database.updateEquipmentCapacity(choosen, capacity);
+			database.updateEquipmentAvaCapacity(choosen, capacity);
 			Start.getInstance().confirmMsg("Sucess", "Sucessfully update capacity");
 			Start.getInstance().updateEquipment();
 		} catch (NumberFormatException e) {
@@ -75,12 +78,14 @@ public class updateEquipmentController implements Initializable {
 		equipmentList = db.getEquipmentsList();
 		
 		for(Equipment equipment:equipmentList) {
+			//System.out.println("equiment:"+equipment.getType()+" "+equipment.getAvaliableCapacity());
 			EquipmentList.add(equipment);
 		}
 		
 		
 		equipmentNameList.setCellValueFactory(new PropertyValueFactory<Equipment, String>("EquipmentName"));
 		capacityList.setCellValueFactory(new PropertyValueFactory<Equipment, Float>("Capacity"));
+		availableCapacity.setCellValueFactory(new PropertyValueFactory<Equipment, Float>("AvaliableCapacity"));
 		
 		equipmentTable.setItems(EquipmentList);
 	}

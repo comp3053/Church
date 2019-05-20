@@ -27,8 +27,9 @@
                   <Label id="tablecolumn" layoutX="155.0" layoutY="346.0" text="Equipment Capacity" />
                   <TableView fx:id="equipmentTable" layoutX="155.0" layoutY="71.0" prefHeight="200.0" prefWidth="519.0">
                     <columns>
-                      <TableColumn fx:id="equipmentNameList" prefWidth="342.0" text="Equipment Name" />
-                      <TableColumn fx:id="capacityList" prefWidth="176.0" text="Capacity  (L)" />
+                      <TableColumn fx:id="equipmentNameList" prefWidth="183.0" text="Equipment Name" />
+                      <TableColumn fx:id="capacityList" prefWidth="181.0" text="Capacity  (L)" />
+                        <TableColumn fx:id="availableCapacity" prefWidth="154.0" text="Available Capacity" />
                     </columns>
                   </TableView>
                   <TextField fx:id="capacityValue" layoutX="522.0" layoutY="340.0" prefHeight="36.0" prefWidth="111.0" />
