@@ -6,24 +6,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UpdateRecipeController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@mainPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UpdateRecipeController">
    <children>
       <SplitPane dividerPositions="0.14824120603015076" layoutX="92.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="21.0" prefWidth="748.0">
+            <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="748.0" stylesheets="@mainPage.css">
                <children>
-                  <Label layoutX="6.0" layoutY="16.0" text="Update Recipe">
+                  <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Recipe">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="36.0" />
                      </font>
-                  </Label>
+                  </Text>
                </children>
             </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="888.0">
+            <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="888.0">
                <children>
-                  <Button layoutX="207.0" layoutY="420.0" mnemonicParsing="false" text="Update" />
-                  <Button layoutX="459.0" layoutY="420.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Cancel" />
-                  <TableView layoutX="8.0" layoutY="15.0" prefHeight="322.0" prefWidth="785.0">
+                  <Button layoutX="291.0" layoutY="420.0" mnemonicParsing="false" text="Update" />
+                  <Button layoutX="543.0" layoutY="420.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Cancel" />
+                  <TableView layoutX="8.0" layoutY="15.0" prefHeight="322.0" prefWidth="785.0" AnchorPane.bottomAnchor="167.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="15.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="NAME" />
                         <TableColumn prefWidth="394.0" text="INGRIDIENTS" />

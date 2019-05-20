@@ -10,6 +10,7 @@ import Model.RecipeIngredient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -18,6 +19,8 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+
 
 
 public class MaintainRecipeController implements Initializable{
@@ -33,11 +36,12 @@ public class MaintainRecipeController implements Initializable{
 	ObservableList<String> recipeIngredientList = FXCollections.observableArrayList();
 	@FXML
 	private ListView<String> recipeIngredientListView = new ListView<String>(recipeIngredientList);
+
 	
 	@FXML
 	private Label recipeNameLabel;
 	@FXML
-	private Label literOfBeer;
+	private Label literOfBeerLabel;
 	
 	
 	@FXML
@@ -61,11 +65,24 @@ public class MaintainRecipeController implements Initializable{
 	}
 	
 	
-	@FXML
-	public void showRecipeDetail(ActionEvent event) {
-		Recipe choosenRecipe = recipeTableView.getSelectionModel().getSelectedItem();
-		
-		
+	public void showRecipeDetail(Recipe recipe) {
+		if(recipe!=null) {
+			//fill the labels with info from the person object
+			recipeNameLabel.setText(recipe.getName());
+			literOfBeerLabel.setText(Integer.toString(recipe.getLiterOfbeer()));
+			//fill the list view
+			for(RecipeIngredient rIngredient : recipe.getList()) {
+				recipeIngredientList.add(rIngredient.getName());
+			}
+			recipeIngredientListView.setItems(recipeIngredientList);
+		}
+		else {
+			//recipe is null, remove all contents
+			recipeNameLabel.setText("");
+			literOfBeerLabel.setText("");
+			recipeIngredientList.clear();
+			recipeIngredientListView.setItems(recipeIngredientList);
+		}
 	}
 	
 	
@@ -77,15 +94,11 @@ public class MaintainRecipeController implements Initializable{
 		
 		ArrayList<Recipe> recipeArrayList = new ArrayList<Recipe>();
 		Database database = new Database();
-		recipeArrayList = database.getRecipeList();
-		System.out.println("raL: " + recipeArrayList.toArray().length);
+		recipeArrayList = database.getRecipes();
 		
 		for(Recipe tmpR: recipeArrayList) {
 			recipeList.add(tmpR);
 		}
-		
-		System.out.println("rL: " + recipeList.toArray().length);
-		//System.out.println(new PropertyValueFactory<Recipe, String>("name").getProperty());
 		
 		//render the ID
 		recipeID.setCellFactory((col)->{
@@ -107,6 +120,26 @@ public class MaintainRecipeController implements Initializable{
 		
 		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("name"));
 		recipeTableView.setItems(recipeList);
+		
+		//initial the content is blank
+		showRecipeDetail(null);
+		
+		//listen for selection changes and show the recipe details
+		
+		recipeTableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle (MouseEvent click) {
+				showRecipeDetail(null);
+				if(click.getClickCount() >= 1) {
+					//Use ListView's getSeleted Item
+					//the listview contains string
+					Recipe currentItemSelected = recipeTableView.getSelectionModel().getSelectedItem();
+					//System.out.println("Clicked--recipeList!");
+					showRecipeDetail(currentItemSelected);
+					
+				}
+			}
+		});
 	}
 
 }

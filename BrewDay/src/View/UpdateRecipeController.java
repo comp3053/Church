@@ -26,16 +26,9 @@ public class UpdateRecipeController implements Initializable{
 		@FXML
 		private TableColumn<StorageIngredient, String> unitList;
 		
-		
 		@FXML
 		private TextField inputValue;
 		
-	
-	
-	
-	
-	
-	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 

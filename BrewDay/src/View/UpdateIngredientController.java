@@ -47,9 +47,16 @@ public class UpdateIngredientController implements Initializable{
 	@FXML
 	public void addStock(ActionEvent event) {
 		StorageIngredient storageIngredient = ingredientTable.getSelectionModel().getSelectedItem();
+		try{
+			int stock = Integer.parseInt(inputValue.getText());
+			updateIngredient(storageIngredient, 1, stock);
+		}catch (NumberFormatException e) {
+			// TODO: handle exception
+			Start.getInstance().warningMsg("Invalid input", "The value should be integer(s)");
+			Start.getInstance().updateIngredient();
+			return;
+		}
 		
-		int stock = Integer.parseInt(inputValue.getText());
-		updateIngredient(storageIngredient, 1, stock);
 	}
 	
 	@FXML
@@ -72,10 +79,10 @@ public class UpdateIngredientController implements Initializable{
 		
 	}
 	
+	//choice 0:  subtract 
+	//choice 1:  add
 	public void updateIngredient(StorageIngredient ingredient, int choice, int stock) {
 		int tempStock = ingredient.getStock();
-		//choice 0:  subtract 
-		//choice 1:  add
 		if (choice == 0) {
 			if(tempStock - stock == 0) {
 				ingredient.setStock(0);
@@ -91,6 +98,7 @@ public class UpdateIngredientController implements Initializable{
 		Database database = new Database();
 		database.updateStorgeIngredient(ingredient);
 		
+		Start.getInstance().confirmMsg("Success!", "The Ingredient has been updated!");
 		Start.getInstance().updateIngredient();
 	}
 	

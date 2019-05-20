@@ -11,13 +11,13 @@
    <children>
       <SplitPane dividerPositions="0.14824120603015076" layoutX="92.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="21.0" prefWidth="748.0">
+            <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="748.0">
                <children>
-                  <Label layoutX="6.0" layoutY="16.0" text="Add Equipment">
+                  <Text layoutX="23.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Equipment">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="36.0" />
                      </font>
-                  </Label>
+                  </Text>
                </children>
             </AnchorPane>
             <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="748.0">
@@ -25,8 +25,11 @@
                   <Button layoutX="258.0" layoutY="421.0" mnemonicParsing="false" onAction="#toAddEquipment" text="Add" />
                   <Button layoutX="453.0" layoutY="421.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Cancel" />
                   <Label layoutX="199.0" layoutY="290.0" text="Equipment capacity" />
-                  <Label layoutX="193.0" layoutY="106.0" text="Equipment type" />
-                  <ComboBox fx:id="equipmentType" layoutX="426.0" layoutY="100.0" prefWidth="150.0">
+                  <Label layoutX="193.0" layoutY="106.0" prefHeight="60.0" prefWidth="161.0" text="Equipment type">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+                  <ComboBox fx:id="equipmentType" layoutX="422.0" layoutY="118.0" prefWidth="150.0">
                   	<items>
                   		<FXCollections fx:factory="observableArrayList">
                   			<String fx:value="kettles" />

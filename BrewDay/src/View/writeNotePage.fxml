@@ -10,13 +10,13 @@
    <children>
       <SplitPane dividerPositions="0.14824120603015076" layoutX="92.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="21.0" prefWidth="748.0">
+            <AnchorPane id="title" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="748.0">
                <children>
-                  <Label layoutX="6.0" layoutY="16.0" text="Write Note">
+                  <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Write Note">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="36.0" />
                      </font>
-                  </Label>
+                  </Text>
                </children>
             </AnchorPane>
             <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="748.0">
@@ -25,13 +25,14 @@
                   <TextArea fx:id="note" layoutX="461.0" layoutY="51.0" prefHeight="317.0" prefWidth="321.0" />
                   <Button layoutX="276.0" layoutY="420.0" mnemonicParsing="false" onAction="#saveNote" text="Save" />
                   <Button layoutX="471.0" layoutY="420.0" mnemonicParsing="false" onAction="#toMainPage" text="Cancel" />
-                  <TableView fx:id="brewTableView" layoutX="27.0" layoutY="14.0" prefHeight="354.0" prefWidth="355.0">
+                  <TableView fx:id="brewTableView" layoutX="27.0" layoutY="51.0" prefHeight="317.0" prefWidth="354.0">
                     <columns>
                       <TableColumn fx:id="brewId" prefWidth="59.0" text="ID" />
                       <TableColumn fx:id="RecipeName" prefWidth="173.0" text="Recipe Name" />
                         <TableColumn fx:id="brewDate" prefWidth="122.0" text="DATE" />
                     </columns>
                   </TableView>
+                  <Label layoutX="33.0" layoutY="14.0" text="Brew List" />
                </children>
             </AnchorPane>
          </items>

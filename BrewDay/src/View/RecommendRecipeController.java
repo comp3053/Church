@@ -152,7 +152,6 @@ public class RecommendRecipeController implements Initializable{
 					//the listview contains string
 					currentItemSelected = recipeListView.getSelectionModel().getSelectedItem();
 					addBrew(currentItemSelected, batchSize);
-					System.out.println(currentItemSelected);
 				}
 			}
 		});
