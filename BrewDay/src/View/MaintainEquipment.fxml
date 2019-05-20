@@ -34,11 +34,11 @@
                <children>
                   <Button layoutX="573.0" layoutY="128.0" mnemonicParsing="false" onAction="#toAddEquipment" text="Add Equipment" />
                   <Button layoutX="556.0" layoutY="312.0" mnemonicParsing="false" onAction="#toUpdateEquipment" text="Update Equipment" />
-                  <TableView fx:id="equipmentTableView" layoutX="30.0" layoutY="80.0" prefHeight="275.0" prefWidth="482.0">
+                  <TableView fx:id="equipmentTableView" layoutX="14.0" layoutY="80.0" prefHeight="275.0" prefWidth="533.0">
                      <columns>
-                        <TableColumn fx:id="equipmentName" prefWidth="163.0" text="Equipment Name" />
-                        <TableColumn fx:id="equipmentCapacity" prefWidth="155.0" text="Capacity  (L)" />
-                        <TableColumn fx:id="equipmentAvailableCapacity" prefWidth="163.0" text="Available Capacity (L)" />
+                        <TableColumn fx:id="equipmentName" prefWidth="176.0" text="Equipment Name" />
+                        <TableColumn fx:id="equipmentCapacity" prefWidth="142.0" text="Capacity  (L)" />
+                        <TableColumn fx:id="equipmentAvailableCapacity" prefWidth="214.0" text="Available Capacity (L)" />
                      </columns>
                   </TableView>
                   <Label id="tablecolumn" layoutX="30.0" layoutY="23.0" text="Equipment List" />

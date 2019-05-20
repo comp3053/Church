@@ -11,7 +11,7 @@ import Model.Ingredient;
 import Model.Recipe;
 import Model.RecipeIngredient;
 import Model.StorageIngredient;
-import apple.laf.JRSUIConstants.ShowArrows;
+//import apple.laf.JRSUIConstants.ShowArrows;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

@@ -22,26 +22,26 @@
             </AnchorPane>
           <AnchorPane id="main_background" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TextField fx:id="ingredientName" layoutX="247.0" layoutY="81.0" prefHeight="29.0" prefWidth="323.0" />
-                  <TextField fx:id="ingredientValue" layoutX="246.0" layoutY="208.0" prefHeight="36.0" prefWidth="131.0" />
-                  <Label layoutX="158.0" layoutY="87.0" text="Name">
+                  <TextField fx:id="ingredientName" layoutX="247.0" layoutY="81.0" prefHeight="29.0" prefWidth="323.0" styleClass="Label" />
+                  <TextField fx:id="ingredientValue" layoutX="246.0" layoutY="208.0" prefHeight="36.0" prefWidth="131.0" styleClass="Label" />
+                  <Label id="tablecolumn" layoutX="158.0" layoutY="87.0" text="Name">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="158.0" layoutY="214.0" text="Value">
+                  <Label id="tablecolumn" layoutX="158.0" layoutY="214.0" text="Value">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Button layoutX="237.0" layoutY="393.0" mnemonicParsing="false" onAction="#addIngredient" text="Add" />
                   <Button layoutX="436.0" layoutY="393.0" mnemonicParsing="false" onAction="#backToMaintainIngredient" text="Cancel" />
-                  <Label layoutX="389.0" layoutY="214.0" text="Unit">
+                  <Label id="tablecolumn" layoutX="389.0" layoutY="214.0" text="Unit">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="ingredientUnit" layoutX="443.0" layoutY="208.0" prefHeight="36.0" prefWidth="124.0" visibleRowCount="2">
+                  <ComboBox fx:id="ingredientUnit" layoutX="443.0" layoutY="208.0" prefHeight="36.0" prefWidth="124.0" styleClass="Label" visibleRowCount="2">
                   	<items>
                   		<FXCollections fx:factory="observableArrayList">
                   		<String fx:value="g" />

@@ -29,7 +29,7 @@
                      <font>
                         <Font size="24.0" />
                      </font></Label>
-                  <ComboBox fx:id="equipmentType" layoutX="422.0" layoutY="118.0" prefWidth="150.0">
+                  <ComboBox fx:id="equipmentType" layoutX="422.0" layoutY="118.0" prefWidth="150.0" styleClass="Label">
                   	<items>
                   		<FXCollections fx:factory="observableArrayList">
                   			<String fx:value="kettles" />
@@ -40,8 +40,8 @@
                   		</FXCollections>
                   	</items>
                   </ComboBox>
-                  <TextField fx:id="equipmentCapacity" layoutX="428.0" layoutY="284.0" prefHeight="36.0" prefWidth="148.0" />
-                  <Label layoutX="587.0" layoutY="290.0" text="L" />
+                  <TextField fx:id="equipmentCapacity" layoutX="428.0" layoutY="284.0" prefHeight="36.0" prefWidth="148.0" styleClass="Label" />
+                  <Label id="tablecolumn" layoutX="587.0" layoutY="290.0" text="L" />
                </children>
             </AnchorPane>
          </items>
