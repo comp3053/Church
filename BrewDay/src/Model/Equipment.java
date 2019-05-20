@@ -58,8 +58,8 @@ public class Equipment {
 		return this.avaliableCapacity;
 	}
 	
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
+	public void setCapacity(float f) {
+		this.capacity = f;
 	}
 	
 	public String getType() {

@@ -552,7 +552,40 @@ public class Database {
 		int status = 0;
 
 		//prepare SQL
-		String sql = "UPDATE equipment SET capacity = ? WHERE equipment_id = ?;";
+		String sql = "UPDATE equipment SET capacity = ?,  avaliableCapacity = ? WHERE equipment_id = ?;";
+
+		try {
+
+			PreparedStatement pStatement = this.connection.prepareStatement(sql);
+
+			pStatement.setFloat(1, amount);
+			pStatement.setFloat(2, amount);
+			pStatement.setInt(3, Integer.parseInt(equip.getID()));
+
+			status = pStatement.executeUpdate();
+			pStatement.close();
+
+			//this.connection.close();
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+
+		if (status == 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
+	public boolean updateEquipmentAvaCapacity(Equipment equip, Float amount) {
+		int status = 0;
+
+		//prepare SQL
+		String sql = "UPDATE equipment SET  avaliableCapacity = ? WHERE equipment_id = ?;";
 
 		try {
 
@@ -580,6 +613,7 @@ public class Database {
 		}
 	}
 
+	
 	public ArrayList<Equipment> getAvailableEquipments(int batchSize){
 		
 		String sql = "SELECT * FROM equipment WHERE avaliableCapacity >= ?";
@@ -591,13 +625,13 @@ public class Database {
 
 			pStatement.setInt(1,batchSize);
 
-			ResultSet rs = pStatement.executeQuery();
-			if(rs.getRow() == 0 && !rs.isBeforeFirst()) {
+			ResultSet rSet = pStatement.executeQuery();
+			if(rSet.getRow() == 0 && !rSet.isBeforeFirst()) {
 				System.out.println("0 rows");
 				return null;
 			}
-			while (rs.next()) {
-				Equipment tempEquipment = new Equipment(rs.getFloat(1), rs.getString(2));
+			while (rSet.next()) {
+				Equipment tempEquipment= new Equipment(Integer.toString(rSet.getInt(1)),rSet.getString(4),rSet.getFloat(2));
 				equipmentsList.add(tempEquipment);
 			}
 			pStatement.close();
@@ -767,7 +801,7 @@ public class Database {
 	//return -2 no matching ingredient Name
 	//return -1 data base error
 	public int getIngredientStock(String ingredientName) {
-		System.out.println("db/668 ingredient name: " + ingredientName);
+		//System.out.println("db/668 ingredient name: " + ingredientName);
 		String sql = "SELECT * FROM storage_ingredient WHERE name = ?;";
 		try {
 			PreparedStatement pStatement = this.connection.prepareStatement(sql);
