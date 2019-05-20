@@ -82,7 +82,7 @@ public class Database {
 
 	public boolean addBrew(Brew brew) {
 		try {
-			String sql = "INSERT INTO 'brew' VALUES(null, ?, ?, ?, null);";
+			String sql = "INSERT INTO 'brew' VALUES(null, ?, ?, ?, null, ?);";
 			//TABLE 'brew' ('brew_id' INTEGER PRIMARY KEY AUTOINCREMENT,'recipe_id' INTEGER, 'batch_size' INTEGER,'date' TEXT, 'note_id' INTEGER);";
 			//add brew.recipe.getID() as recipe id;
 			System.out.println(brew.getRecipeName());
@@ -94,6 +94,7 @@ public class Database {
 			pStatement.setInt(1, Integer.parseInt(brew.getRecipe().getID()));
 			pStatement.setFloat(2, brew.getBatchSize());
 			pStatement.setString(3, brew.getDate());
+			pStatement.setString(4, brew.getRecipe().getName());
 			
 			pStatement.executeUpdate();
 
@@ -408,7 +409,7 @@ public class Database {
 				Note tempNote = getNote(Integer.toString(rSet.getInt(5)));
 				Recipe tempRecipe = getRecipe(Integer.toString(rSet.getInt(2)));
 				
-				Brew tempBrew = new Brew(Integer.toString(rSet.getInt(1)), rSet.getInt(3), tempRecipe, tempNote, rSet.getString(4), tempRecipe.getName());
+				Brew tempBrew = new Brew(Integer.toString(rSet.getInt(1)), rSet.getInt(3), tempRecipe, tempNote, rSet.getString(4), rSet.getString(6));
 				
 				brewList.add(tempBrew);
 			}
