@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import View.Start;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 
 public class Recipe {
@@ -132,19 +133,19 @@ public class Recipe {
 	}
 
 	//return a hashmap k:recipe ingredient, v: missing amount
-	public HashMap<RecipeIngredient, Integer> produceMissingIngredient(int batchSize, ArrayList<RecipeIngredient> ingredients){
-		HashMap<RecipeIngredient, Integer> missingList = new HashMap<RecipeIngredient, Integer>();
+	public HashMap<RecipeIngredient, Float> produceMissingIngredient(int batchSize, ArrayList<RecipeIngredient> ingredients){
+		HashMap<RecipeIngredient, Float> missingList = new HashMap<RecipeIngredient, Float>();
 		
 		//ArrayList<RecipeIngredient> missingList = new ArrayList<RecipeIngredient>();
 		Database db = new Database();
 		for(RecipeIngredient i : ingredients) {
 			float amount = convertMeasure(i, batchSize);
 			StorageIngredient si = db.getStorageIngredient(i.getID());
-			System.out.println("Recipe 145/ IngredientName: " + i.getName()+ " amount: " + amount + " stock: " 
+			System.out.println("Recipe 143/ IngredientName: " + i.getName()+ " amount: " + amount + " stock: " 
 			+ si.getStockFromDB(si.getName()));
 			
 			if(si.getStockFromDB(si.getName()) < amount) { //no enough stock
-				missingList.put(i, (int) (amount - si.getStockFromDB(si.getName())));
+				missingList.put(i, (amount - si.getStockFromDB(si.getName())));
 				isAvaliable = false;
 			}
 		}
@@ -155,8 +156,10 @@ public class Recipe {
 
 	//batchSize x % = amount
 	public float convertMeasure(RecipeIngredient i, int batchSize) {
-
-		return (i.getValue() / this.literOfbeer) * batchSize;
+		System.out.println("Recipe/159 ingredient value: "+i.getValue());
+		System.out.println("Recupe/160 recipe liter of beer: " + this.literOfbeer);
+		System.out.println((i.getValue() / (float) this.literOfbeer));
+		return (i.getValue() /(float) this.literOfbeer) * batchSize;
 	}
 
 }

@@ -100,7 +100,7 @@ public class RecommendRecipeController implements Initializable{
 
 	public void producingMissingIngredients(int batchSize) {
 		missingList.clear();
-		HashMap<RecipeIngredient, Integer> missingReciepList = new HashMap<RecipeIngredient, Integer>();
+		HashMap<RecipeIngredient, Float> missingReciepList = new HashMap<RecipeIngredient, Float>();
 		
 		Database db = new Database();
 		ArrayList<Recipe> rList = db.getRecipes();
@@ -109,7 +109,7 @@ public class RecommendRecipeController implements Initializable{
 			missingReciepList = r.produceMissingIngredient(batchSize, r.getList());
 			String str = "Recipe_ID: " + r.getID() + " : " + r.getName() + " _ ingredients: ";
 			int count = 1;
-			for(HashMap.Entry<RecipeIngredient, Integer> entry : missingReciepList.entrySet()) {
+			for(HashMap.Entry<RecipeIngredient, Float> entry : missingReciepList.entrySet()) {
 				str += "ingredient_" + count + " : " + entry.getKey().getName() + " -- " + entry.getValue() +" "+ entry.getKey().getUnit() + " missing ||";
 				missingList.add(str);
 			}

@@ -55,7 +55,7 @@ public class AddRecipeController implements Initializable {
 	@FXML
 	public void addRecipeTodb(ActionEvent event) {
 
-		String recipeName = null;
+		String recipeName = "";
 		int literOfBeer = -1;
 		try{
 			recipeName = Input_recipeName.getText();
@@ -83,11 +83,12 @@ public class AddRecipeController implements Initializable {
 		}
 		catch (NumberFormatException e) {
 			// TODO: handle exception
-			if(recipeName==null || literOfBeer == -1) {
+			if(recipeName == "" || literOfBeer == -1) {
 				Start.getInstance().warningMsg("Invalid input", "Please complete all the information!");
 				return;
 			}
 			else {
+				e.printStackTrace();
 				Start.getInstance().warningMsg("Invalid input", "The input for liter of beer should be integer(s)");
 				Start.getInstance().addRecipe();
 				return;
