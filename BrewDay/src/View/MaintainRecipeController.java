@@ -72,7 +72,7 @@ public class MaintainRecipeController implements Initializable{
 			literOfBeerLabel.setText(Integer.toString(recipe.getLiterOfbeer()));
 			//fill the list view
 			for(RecipeIngredient rIngredient : recipe.getList()) {
-				recipeIngredientList.add(rIngredient.getName());
+				recipeIngredientList.add(rIngredient.getName()+": " + rIngredient.getValue() + rIngredient.getUnit() );
 			}
 			recipeIngredientListView.setItems(recipeIngredientList);
 		}
