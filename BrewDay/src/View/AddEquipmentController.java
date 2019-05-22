@@ -14,7 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 	
-public class addEquipmentController implements Initializable {
+public class AddEquipmentController implements Initializable {
 	@FXML
 	private ComboBox<String> equipmentType;
 	

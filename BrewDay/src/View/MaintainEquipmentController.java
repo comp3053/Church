@@ -17,7 +17,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sun.security.pkcs11.Secmod.DbMode;
 
-public class maintainEquipmentController implements Initializable{
+public class MaintainEquipmentController implements Initializable{
 	
 	ObservableList<Equipment> equipmentList = FXCollections.observableArrayList();
 	@FXML

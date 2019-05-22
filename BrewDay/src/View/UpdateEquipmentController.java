@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sun.util.locale.provider.AvailableLanguageTags;
 
-public class updateEquipmentController implements Initializable {
+public class UpdateEquipmentController implements Initializable {
 	
 	
 	ObservableList<Equipment> EquipmentList = FXCollections.observableArrayList();

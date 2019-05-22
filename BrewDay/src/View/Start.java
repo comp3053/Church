@@ -178,7 +178,7 @@ public class Start extends Application
 	public void addEquipment() {
 		try 
 		{
-			replaceSceneContent("addEquipment.fxml");
+			replaceSceneContent("AddEquipment.fxml");
 		} 
 		catch (Exception e) 
 		{
@@ -188,7 +188,7 @@ public class Start extends Application
 	public void updateRecipe() {
 		try 
 		{
-			replaceSceneContent("updateRecipe.fxml");
+			replaceSceneContent("UpdateRecipe.fxml");
 		} 
 		catch (Exception e) 
 		{

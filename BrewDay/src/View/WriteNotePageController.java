@@ -22,7 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class writeNotePageController implements Initializable{
+public class WriteNotePageController implements Initializable{
 
 	ObservableList<Brew> brewList =FXCollections.observableArrayList();
 	@FXML
