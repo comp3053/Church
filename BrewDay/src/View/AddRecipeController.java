@@ -121,6 +121,7 @@ public class AddRecipeController implements Initializable {
 			Start.getInstance().warningMsg("Invalid input", "The input for ingredient value should be integer(s)");
 		}
 		catch(RuntimeException e) {
+			//handle exception
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
 			alert.setHeaderText("Invalid input");
@@ -155,7 +156,7 @@ public class AddRecipeController implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) 
+	public void initialize(URL location, ResourceBundle resources)
 	{
 		// TODO Auto-generated method stub
 		ArrayList<StorageIngredient> storageIngredientList = new ArrayList<StorageIngredient>();

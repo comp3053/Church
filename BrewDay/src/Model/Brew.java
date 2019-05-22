@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.Date;
-
+//different constructor for brew
 public class Brew {
 	private String ID;
 	private int batchSize;
@@ -41,6 +41,7 @@ public class Brew {
 		this.note = note;
 		this.date = date;
 	}
+	//ID is the brew ID
 	public String getID() {
 		return this.ID;
 	}
@@ -79,7 +80,7 @@ public class Brew {
 	public void setNote(Note note) {
 		this.note = note;
 	}
-	
+	//write note function
 	public void addNote(String title, String recipeName, String content) {
 		this.note = new Note(title, recipeName, content);
 		Database db = new Database();

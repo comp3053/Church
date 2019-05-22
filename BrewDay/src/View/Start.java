@@ -20,6 +20,7 @@ public class Start extends Application
 	public void start(Stage primaryStage) throws Exception 
 	{
 		stage = primaryStage;
+		//change the default icon
 		this.stage.getIcons().add(new Image("file:resources/images/beer.png"));
 		this.stage.setTitle("Brew Day");	 
 		mainPage();
@@ -195,7 +196,7 @@ public class Start extends Application
 		}
 	}
 
-
+	//set alert style
 	public void warningMsg (String title, String warning) {
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("warning");
@@ -205,7 +206,7 @@ public class Start extends Application
 		alert.getButtonTypes().setAll(buttonTypeOK);
 		alert.showAndWait();
 	}
-
+	//set confirm style
 	public void confirmMsg (String title, String msg) {
 		Alert alert = new Alert(AlertType.NONE);
 		alert.setTitle("Confirmation");

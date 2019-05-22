@@ -75,7 +75,7 @@ public class Equipment {
 	public boolean getAvaliable() {
 		return this.isAvaliable;
 	}
-	
+	//avaliable if smaller than capacity
 	public void setAvaliable(boolean isAvaliable) {
 		this.isAvaliable = isAvaliable;
 	}
@@ -85,7 +85,7 @@ public class Equipment {
 		Database db = new Database();
 		return db.updateEquipmentType(this, type);
 	}
-	
+	//For recommend recipe 
 	public boolean updateEquipmentCapacity(String name, Float amount) {
 		
 		Database db = new Database();

@@ -2,7 +2,7 @@ package Model;
 
 public class Ingredient {
 
-	private String ID;
+	private String ID; //ID is string!!!
 	private String name;
 	private String unit;
 

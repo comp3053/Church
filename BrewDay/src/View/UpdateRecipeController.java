@@ -87,7 +87,7 @@ public class UpdateRecipeController implements Initializable{
 		
 		Start.getInstance().updateRecipe();
 	}
-	
+	//modify the value of ingredient 
 	@FXML
 	public void changeIngredientValue(ActionEvent event) {
 		int value = 0;
@@ -128,7 +128,7 @@ public class UpdateRecipeController implements Initializable{
 		
 		updateValue.setText("");
 	}
-	
+	//double click to prevent the error input
 	public void displayIngredientData(RecipeIngredient chooseRecipeIngredint) {
 		updateValue.setText(Integer.toString(chooseRecipeIngredint.getValue()));
 	}

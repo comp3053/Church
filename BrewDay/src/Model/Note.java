@@ -71,7 +71,7 @@ public class Note {
 	
 	public void modifyNote(String content) {
 		setContent(content);
-		//sent the note to db
+		//sent the note to database
 		Database db = new Database();
 		db.modifyNote(this);
 	}

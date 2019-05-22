@@ -28,7 +28,7 @@ import javafx.scene.input.MouseEvent;
 
 public class UpdateIngredientController implements Initializable{
 
-	//for show data
+	// display data
 	ObservableList<StorageIngredient> StorageIngredientList = FXCollections.observableArrayList();
 	@FXML
 	private TableView<StorageIngredient> ingredientTable = new TableView<StorageIngredient>(StorageIngredientList);
@@ -43,7 +43,8 @@ public class UpdateIngredientController implements Initializable{
 	@FXML
 	private TextField inputValue;
 
-
+	//choice 1:  add
+	//choice 0:  subtract 
 	@FXML
 	public void addStock(ActionEvent event) {
 		StorageIngredient storageIngredient = ingredientTable.getSelectionModel().getSelectedItem();
@@ -79,7 +80,7 @@ public class UpdateIngredientController implements Initializable{
 		int stock= 0;
 		try {
 			stock = Integer.parseInt(inputValue.getText());
-
+			
 			if (stock > storageIngredient.getStock()) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Warning");
@@ -104,9 +105,8 @@ public class UpdateIngredientController implements Initializable{
 			return;
 		}
 	}
-
-	//choice 0:  subtract 
-	//choice 1:  add
+	
+	
 	public void updateIngredient(StorageIngredient ingredient, int choice, int stock) {
 		int tempStock = ingredient.getStock();
 		if(stock<0) {
@@ -133,11 +133,7 @@ public class UpdateIngredientController implements Initializable{
 		Start.getInstance().updateIngredient();
 	}
 
-	@FXML
-	public void backToMaintainIngredient(ActionEvent event) {
-		Start.getInstance().maintainIngredient();
-	}
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
@@ -157,6 +153,11 @@ public class UpdateIngredientController implements Initializable{
 		unitList.setCellValueFactory(new PropertyValueFactory<StorageIngredient, String>("Unit"));
 
 		ingredientTable.setItems(StorageIngredientList);
+	}
+	
+	@FXML
+	public void backToMaintainIngredient(ActionEvent event) {
+		Start.getInstance().maintainIngredient();
 	}
 
 }

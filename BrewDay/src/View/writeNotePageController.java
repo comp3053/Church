@@ -93,7 +93,7 @@ public class writeNotePageController implements Initializable{
 		Start.getInstance().writeNotePage();
 	}
 
-	//display the note content
+	//display the note 
 	public void showNote(Brew brew) {
 		Note tempNote = brew.getNote();
 		if (tempNote == null||tempNote.getContent().equals("")) {

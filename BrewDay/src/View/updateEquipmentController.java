@@ -36,7 +36,7 @@ public class updateEquipmentController implements Initializable {
 	private TextField capacityValue;
 	
 	@FXML
-	public void toMaintainEquipment(ActionEvent event) {
+	public void toMaintainEquipment(ActionEvent event) {//get back to maintain equipment page
 		Start.getInstance().maintainEquipment();
 	}
 	
