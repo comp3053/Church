@@ -48,14 +48,17 @@ public class updateEquipmentController implements Initializable {
 		
 		try {
 			capacity = Float.parseFloat(capacityValue.getText());
-			
+			if(capacity > choosen.getAvaliableCapacity()) {
+				Start.getInstance().warningMsg("Error input", "Please input a number smaller than the equipment capacity");
+				return;
+			}
 			Database database = new Database();
 			database.updateEquipmentAvaCapacity(choosen, capacity);
 			Start.getInstance().confirmMsg("Sucess", "Sucessfully update capacity");
 			Start.getInstance().updateEquipment();
 		} catch (NumberFormatException e) {
 			// TODO: handle exception
-			Start.getInstance().warningMsg("Error input", "Please input number");
+			Start.getInstance().warningMsg("Error input", "Please input a number");
 			Start.getInstance().updateEquipment();
 		} catch (NullPointerException e) {
 			// TODO: handle exception

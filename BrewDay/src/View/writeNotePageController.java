@@ -73,6 +73,7 @@ public class writeNotePageController implements Initializable{
 				choosenBrew.setNote(tempNote);
 				System.out.println("Null");
 				database.addBrewNote(choosenBrew);
+				Start.getInstance().confirmMsg("Success!", "The note has been added!");
 			}
 		}
 		//the brew has a note already, update the note content

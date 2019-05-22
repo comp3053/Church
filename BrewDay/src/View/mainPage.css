@@ -17,10 +17,10 @@
     -fx-color:white;
 }
 #maintain_background{
-	-fx-background-color:black;
+    -fx-background-color:black;
 }
 #main_background{
-	-fx-background-color:#C6E2FF;
+    -fx-background-color:#C6E2FF;
 }
 
 
@@ -35,11 +35,11 @@
 }
 
 #tablecolumn{
-	-fx-font-size:20px;
-	
+    -fx-font-size:20px;
+    
 }
 
 #change{
-	-fx-font-size:16px;
-	-fx-padding: 5 12 5 12; 
+    -fx-font-size:16px;
+    -fx-padding: 5 12 5 12; 
 }

@@ -119,10 +119,13 @@ public class RecommendRecipeController implements Initializable{
 		
 		for(Recipe r : rList) {
 			missingReciepList = r.produceMissingIngredient(batchSize, r.getList());
-			String str = "Recipe_ID: " + r.getID() + " : " + r.getName() + " _ ingredients: ";
-			int count = 1;
-			for(HashMap.Entry<RecipeIngredient, Float> entry : missingReciepList.entrySet()) {
-				str += "ingredient_" + count + " : " + entry.getKey().getName() + " -- " + entry.getValue() +" "+ entry.getKey().getUnit() + " missing ||";
+			System.out.println("List Size: "+missingReciepList.size());
+			if(r.isAvaliable == false) {
+				String str = "Recipe_ID: " + r.getID() + " : " + r.getName() + " _ ingredients: ";
+				int count = 1;
+				for(HashMap.Entry<RecipeIngredient, Float> entry : missingReciepList.entrySet()) {
+					str += "ingredient_" + count + " : " + entry.getKey().getName() + " -- " + entry.getValue() +" "+ entry.getKey().getUnit() + " missing ||";
+				}
 				missingList.add(str);
 			}
 			
@@ -187,7 +190,7 @@ public class RecommendRecipeController implements Initializable{
 	    }
 	    ChoiceDialog<String> choiceDialog = new ChoiceDialog<>("Choose a equipment",equipmentList);
 	    choiceDialog.setTitle("Confirm!");
-	    choiceDialog.setHeaderText("Confirm!");
+	    choiceDialog.setHeaderText("Choose an equipment!");
 	    choiceDialog.setContentText("Please Choose an equipment: ");
 	    ButtonType okType = new ButtonType("OK");
 	    choiceDialog.getDialogPane().getButtonTypes().set(0, okType);

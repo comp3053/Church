@@ -14,7 +14,7 @@ public class Recipe {
 	private String name;
 	private ArrayList<RecipeIngredient> ingredients;
 	private String description;
-	private boolean isAvaliable;
+	public boolean isAvaliable;
 
 	public Recipe() {
 		//default setting

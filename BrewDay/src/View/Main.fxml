@@ -18,7 +18,7 @@
             <Button layoutX="166.0" layoutY="21.0" mnemonicParsing="false" onAction="#toMaintainRecipe" text="Maintain Recipe" />
             <Button layoutX="97.0" layoutY="245.0" mnemonicParsing="false" onAction="#toMaintainEquipment" text="Maintain Equipment" />
             <Button layoutX="14.0" layoutY="358.0" mnemonicParsing="false" onAction="#toRecommendRecipe" text="Recommend Recipe" />
-            <Button layoutX="166.0" layoutY="496.0" mnemonicParsing="false" onAction="#toWriteNotePage" text="Write Note" />
+            <Button layoutX="166.0" layoutY="496.0" mnemonicParsing="false" onAction="#toWriteNotePage" text="Brew List" />
          </children>
       </Pane>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
